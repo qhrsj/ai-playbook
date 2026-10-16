@@ -1,0 +1,45 @@
+{
+  "status": "reconstructed-source-not-original-archive",
+  "version": "6.45",
+  "phase": "P67",
+  "recoveredOn": "2026-10-10",
+  "uploadedHtmlSha256": "7de80082e481a89018a4f58e1910c465245c0284d7ce0d33acc7661003351b30",
+  "baselineZipSha256": "9e88e2d150607d455bda2afc94c6ba00e7915085f1ce73b56449424fe2180648",
+  "changedModulesRecoveredFromHtml": [
+    "src/js/01-foundation.js",
+    "src/js/07a-context-help-catalog.js",
+    "src/js/08-detail-presentation.js",
+    "src/js/14-guidance-import-devlog.js",
+    "src/js/15-scratchpad-reading-boot.js",
+    "src/js/16-personal-workspace.js",
+    "src/js/17-source-catalog.js",
+    "src/js/19-independent-windows.js",
+    "src/js/20-file-import.js"
+  ],
+  "canonicalDataVerifiedUnchanged": [
+    "CATS",
+    "SOURCE_CATALOG",
+    "RETIRED_CARDS",
+    "DATA"
+  ],
+  "notRecoverableFromHtml": [
+    "original P67 external documentation",
+    "original P67 test scripts and reports"
+  ],
+  "notes": "Application/tutorial/help/runtime devlog are recovered verbatim. External P67 docs and verification are newly authored.",
+  "verification": {
+    "htmlByteIdentical": true,
+    "parserRecoveryChecksPassed": 17,
+    "checksExecuted": [
+      "check.py",
+      "luzi_square_audit.py",
+      "curation_v628_gate.py",
+      "tutorial_sync_gate.py",
+      "devlog_traceability_gate.py",
+      "verify_recovered_source.py",
+      "batch_parser_recovery_gate.js"
+    ],
+    "browserInteractionRun": false,
+    "indexedDbTransactionRun": false
+  }
+}

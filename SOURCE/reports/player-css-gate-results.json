@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "version": "6.61",
+  "phase": "P83",
+  "checks": 196,
+  "browserRun": false,
+  "limitation": "Authored CSS specificity/media resolution; no browser layout or glyph measurements"
+}

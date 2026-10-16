@@ -1,0 +1,66 @@
+{
+  "generatedAt": "2026-10-15T14:50:45.686Z",
+  "results": [
+    {
+      "check": "A boot",
+      "status": "passed",
+      "bootMs": 1545
+    },
+    {
+      "check": "B matcher moved into 系统模板 header",
+      "status": "passed",
+      "detail": "{\"oldTop\":true,\"inOfficial\":true,\"matcher\":true}"
+    },
+    {
+      "check": "C 系统模板 per-tab search",
+      "status": "passed",
+      "detail": "{\"cards\":8,\"first\":\"深度研究任务规划\"}"
+    },
+    {
+      "check": "D sort select removed",
+      "status": "passed"
+    },
+    {
+      "check": "E official category tabs full width",
+      "status": "passed",
+      "detail": {
+        "n": 19,
+        "overflow": false
+      }
+    },
+    {
+      "check": "F skills own search + category tabs",
+      "status": "passed",
+      "detail": "{\"section\":true,\"search\":true,\"cats\":20,\"visible\":15}"
+    },
+    {
+      "check": "G skills search filters",
+      "status": "passed",
+      "visible": 7
+    },
+    {
+      "check": "H official unaffected by skill query",
+      "status": "passed",
+      "visible": 15
+    },
+    {
+      "check": "I skills query persists per-tab",
+      "status": "passed",
+      "detail": "{\"q\":\"LRC\",\"visible\":7}"
+    },
+    {
+      "check": "J tab switching error-free",
+      "status": "passed"
+    },
+    {
+      "check": "K workspace 7 tabs (skills page removed)",
+      "status": "passed",
+      "tabs": 7
+    },
+    {
+      "check": "L renamed 提示词广场 (visible surfaces only)",
+      "status": "passed",
+      "detail": "{\"new\":true,\"oldUi\":false}"
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "generatedAt": "2026-10-15T14:55:51.977Z",
+  "version": "6.61",
+  "phase": "P83",
+  "results": [
+    {
+      "check": "welcome-retired",
+      "status": "passed"
+    },
+    {
+      "course": "search",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 3,
+      "steps": 2,
+      "replayPrefix": 0
+    },
+    {
+      "course": "daily-match",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 4,
+      "steps": 3,
+      "replayPrefix": 0
+    },
+    {
+      "course": "daily-fill",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 6,
+      "steps": 4,
+      "replayPrefix": 3
+    },
+    {
+      "course": "daily-copy",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 4,
+      "steps": 2,
+      "replayPrefix": 7
+    },
+    {
+      "course": "daily-source-first",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 6,
+      "steps": 3,
+      "replayPrefix": 9
+    },
+    {
+      "course": "daily-source-origin",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 6,
+      "steps": 3,
+      "replayPrefix": 12
+    },
+    {
+      "course": "daily-source-more",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 8,
+      "steps": 5,
+      "replayPrefix": 15
+    },
+    {
+      "course": "collect-card",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 3,
+      "steps": 2,
+      "replayPrefix": 0
+    },
+    {
+      "course": "collect-open",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 5,
+      "steps": 5,
+      "replayPrefix": 2
+    },
+    {
+      "course": "collect-remove",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 6,
+      "steps": 5,
+      "replayPrefix": 7
+    },
+    {
+      "course": "collect-source-add",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 6,
+      "steps": 3,
+      "replayPrefix": 12
+    },
+    {
+      "course": "collect-source-manage",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 8,
+      "steps": 5,
+      "replayPrefix": 15
+    },
+    {
+      "course": "collect-source-cleanup",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 9,
+      "steps": 4,
+      "replayPrefix": 20
+    },
+    {
+      "course": "collect-recent-clear",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 10,
+      "steps": 2,
+      "replayPrefix": 24
+    },
+    {
+      "course": "personal-create",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 10,
+      "steps": 7,
+      "replayPrefix": 0
+    },
+    {
+      "course": "personal-edit",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 7,
+      "steps": 3,
+      "replayPrefix": 7
+    },
+    {
+      "course": "personal-versions",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 7,
+      "steps": 3,
+      "replayPrefix": 10
+    },
+    {
+      "course": "source-open",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 2,
+      "steps": 2,
+      "replayPrefix": 0
+    },
+    {
+      "course": "source-search",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 5,
+      "steps": 3,
+      "replayPrefix": 2
+    },
+    {
+      "course": "source-same",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 10,
+      "steps": 7,
+      "replayPrefix": 5
+    },
+    {
+      "course": "source-filter",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 18,
+      "steps": 7,
+      "replayPrefix": 12
+    },
+    {
+      "course": "source-pages",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 20,
+      "steps": 5,
+      "replayPrefix": 19
+    },
+    {
+      "course": "source-archive",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 10,
+      "steps": 4,
+      "replayPrefix": 24
+    },
+    {
+      "course": "check-run",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 4,
+      "steps": 4,
+      "replayPrefix": 0
+    },
+    {
+      "course": "check-fix",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 5,
+      "steps": 3,
+      "replayPrefix": 4
+    },
+    {
+      "course": "check-save",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 8,
+      "steps": 6,
+      "replayPrefix": 7
+    },
+    {
+      "course": "backup-export",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 4,
+      "steps": 5,
+      "replayPrefix": 0
+    },
+    {
+      "course": "backup-trash",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 4,
+      "steps": 3,
+      "replayPrefix": 6
+    },
+    {
+      "course": "backup-restore",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 8,
+      "steps": 5,
+      "replayPrefix": 9
+    },
+    {
+      "course": "organize-archive",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 7,
+      "steps": 7,
+      "replayPrefix": 0
+    },
+    {
+      "course": "organize-trash",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 5,
+      "steps": 3,
+      "replayPrefix": 7
+    },
+    {
+      "course": "organize-restore",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 5,
+      "steps": 2,
+      "replayPrefix": 11
+    },
+    {
+      "course": "organize-versions",
+      "mode": "guided",
+      "status": "passed",
+      "seconds": 6,
+      "steps": 3,
+      "replayPrefix": 13
+    },
+    {
+      "tour": "S0",
+      "title": "界面总览",
+      "status": "passed",
+      "seconds": 0,
+      "steps": 18,
+      "writeGuardSmoke": "blocked-click-and-typing"
+    },
+    {
+      "tour": "S1",
+      "title": "找模板 → 填材料 → 复制",
+      "status": "passed",
+      "seconds": 41,
+      "steps": 9,
+      "writeGuardSmoke": false
+    },
+    {
+      "tour": "S2",
+      "title": "收藏",
+      "status": "passed",
+      "seconds": 1,
+      "steps": 3,
+      "writeGuardSmoke": false
+    },
+    {
+      "tour": "S3",
+      "title": "个人提示词",
+      "status": "passed",
+      "seconds": 15,
+      "steps": 4,
+      "writeGuardSmoke": false
+    },
+    {
+      "tour": "S4",
+      "title": "检查 / 备份 / 回收站",
+      "status": "passed",
+      "seconds": 2,
+      "steps": 4,
+      "writeGuardSmoke": false
+    }
+  ],
+  "failed": 0,
+  "logs": []
+}

@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-10-15T14:01:44.058Z",
+  "results": [
+    {
+      "check": "A boot with 49MB dist (cold)",
+      "status": "passed",
+      "bootMs": 849
+    },
+    {
+      "check": "B home Skill 广场 tab",
+      "status": "passed",
+      "visible": 15,
+      "total": "3115"
+    },
+    {
+      "check": "C1 skill overlay via JS click (message path)",
+      "status": "passed",
+      "detail": "{\"open\":true,\"title\":\"灰烬Minimax-H3视频成片复盘\",\"meta\":\"署名作者：灰烬bob · 站内发布者 · /u/灰烬bob · 入口文件：SKILL.md · 文件数：4 · 大小：2\",\"bodyLen\":1803}"
+    },
+    {
+      "check": "C2 skill overlay via real mouse",
+      "status": "passed",
+      "detail": "{\"open\":true,\"log\":[\"down:w-btn small helpable@220,419\",\"up:BUTTON\",\"click:w-btn small helpable\"]}"
+    },
+    {
+      "check": "D skill search filter",
+      "status": "passed",
+      "visible": 15
+    },
+    {
+      "check": "E workspace Skill 广场 page",
+      "status": "passed",
+      "detail": "{\"rows\":60,\"capped\":true,\"tab\":\"true\"}"
+    }
+  ]
+}

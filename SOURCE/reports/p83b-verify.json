@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-10-15T14:59:37.312Z",
+  "results": [
+    {
+      "check": "A skill jump-style pager",
+      "status": "passed",
+      "detail": "{\"jump\":true,\"max\":\"208\",\"val\":\"1\"}"
+    },
+    {
+      "check": "B page jump to 208",
+      "status": "passed",
+      "detail": "{\"val\":\"208\",\"rows\":10}"
+    },
+    {
+      "check": "C attribution labels (炉子广场/炉子广场原创)",
+      "status": "passed",
+      "detail": "{\"card\":false,\"noOld\":true}"
+    },
+    {
+      "check": "D overlay attribution labels",
+      "status": "failed",
+      "detail": "{\"meta\":\"署名作者：NicholasSpisak · 灵感来源 · 署名路由：reclaim · 入口文件：SKILL.md · 文件数：12 · 大小：10 KB\"}"
+    }
+  ]
+}

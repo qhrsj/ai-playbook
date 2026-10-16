@@ -1,0 +1,76 @@
+{
+  "generatedAt": "2026-10-15T04:37:12.915Z",
+  "version": "6.58",
+  "phase": "P80",
+  "results": [
+    {
+      "check": "0 welcome card fully retired (no element)",
+      "status": "passed"
+    },
+    {
+      "check": "3 comboBack returns to operation map",
+      "status": "passed",
+      "mapOpen": true,
+      "comboClosed": true
+    },
+    {
+      "check": "1 S0 overview button prominent",
+      "status": "passed",
+      "primary": true,
+      "w": 298,
+      "h": 49
+    },
+    {
+      "check": "2 flow chips expose all lessons",
+      "status": "passed",
+      "chips": {
+        "F1": 4,
+        "F2": 6,
+        "F3": 3,
+        "F4": 10
+      }
+    },
+    {
+      "check": "5f S1 step9 no modal flicker (backdrop stable)",
+      "status": "passed",
+      "stable": true,
+      "openStates": [
+        "open"
+      ],
+      "scrollStates": [
+        "0"
+      ]
+    },
+    {
+      "check": "5a S1 reaches 复制完整提示词 (card opens, 03 pane)",
+      "status": "passed",
+      "lastTitle": "✦ 复制完整提示词",
+      "copyVisible": true,
+      "diag": null
+    },
+    {
+      "check": "5b S2 covers 工作区+收藏页 (visible)",
+      "status": "passed",
+      "workspaceBtn": true,
+      "workspaceOpen": true,
+      "favoritesVisible": true
+    },
+    {
+      "check": "5c S3 covers 新建 (visible) and lands on 检查 (versions skipped on empty list)",
+      "status": "passed",
+      "createVisible": true,
+      "checkVisible": true
+    },
+    {
+      "check": "5d S4 备份tab可见且切面板后下载按钮可见",
+      "status": "passed",
+      "backupTabVisible": true,
+      "downloadVisible": true
+    },
+    {
+      "check": "5e S4 回收站 visible",
+      "status": "passed",
+      "highlightVisible": true
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "version": "6.52",
+  "phase": "P74",
+  "date": "2026-10-13",
+  "timezone": "America/Los_Angeles",
+  "basis": {
+    "zip": "02-AI-Playbook-v6.51-P73-DELIVERY.zip",
+    "sha256": "1e84f64a56d51555cae9457778d68f446b738d1189528deff3ba879a39178f49",
+    "originalAttachmentUntouched": true,
+    "standaloneDiff": "page-end analytics script only"
+  },
+  "html": {
+    "sha256": "0f59311be34ba57bfdade43e9b68e0c03a5896e4cb49f2216ed4b362a1aacc5d",
+    "bytes": 8402122,
+    "identicalPaths": [
+      "OPEN-v6.52-P74.html",
+      "SOURCE/dist/index.html",
+      "AI-Playbook-v6.52-P74.html"
+    ]
+  },
+  "counts": {
+    "modules": 9,
+    "steps": 159,
+    "operations": 130,
+    "observations": 29,
+    "mergedObservations": 10,
+    "nonemptyGroups": 3,
+    "navButtons": 12,
+    "dailyPages": 5,
+    "auxiliaryTools": 2,
+    "cards": 79,
+    "categories": 18,
+    "sourceCatalogRecords": 1350,
+    "themes": 6
+  },
+  "checks": {
+    "sourceBuild": "passed",
+    "pairedRealProtocol": "passed",
+    "inputCompositionAndCancel": "passed",
+    "navigationMotionLifecycle": "passed",
+    "currentMenu": "passed",
+    "cssCascadeProfiles": 108,
+    "personalDataCompatibility": "passed",
+    "actualActionModes": "passed",
+    "purposeAndGuidance": "passed",
+    "tutorialAndSixDevlogViews": "passed",
+    "zipCRC": "passed",
+    "independentRebuild": "passed",
+    "browserVisual": "not-run"
+  },
+  "reports": [
+    "surface-training-gate-results.json",
+    "navigation-motion-gate-results.json",
+    "layout-tutorial-gate-results.json",
+    "combo-action-gate-results.json",
+    "tutorial-interaction-gate-results.json",
+    "combo-sync-gate-results.json",
+    "local-personal-gate-results.json"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "version": "6.57",
+  "phase": "P79",
+  "course": "search",
+  "checks": [
+    "automatic isolated playback setup",
+    "pause acknowledgement",
+    "pause holds current chapter",
+    "resume acknowledgement",
+    "stop cancels playback",
+    "parent completion screen",
+    "no practice proof",
+    "completion exit controls",
+    "responsive video control CSS"
+  ],
+  "browserRun": false,
+  "limitation": "Production protocol runs in a DOM adapter; visual, touch and media-device performance still require a real browser."
+}

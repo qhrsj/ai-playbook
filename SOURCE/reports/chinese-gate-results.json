@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "pages": 10,
+  "renderCases": 23,
+  "policyCases": 64,
+  "reviewStates": 6,
+  "mutationChecks": {
+    "review": true,
+    "simulation": true,
+    "route": true
+  },
+  "browserRun": false,
+  "messages": []
+}

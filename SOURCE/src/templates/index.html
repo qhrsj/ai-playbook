@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 提示词母模板库 · AI Playbook · v6.61</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>✦</text></svg>">
+<style>@@PLAYBOOK_STYLE@@</style>
+</head>
+<body data-theme="nebula" data-mode="dark">
+<script>try{if(matchMedia("(max-width: 768px)").matches||/Android|iPhone|iPad|Mobile/i.test(navigator.userAgent))document.body.classList.add("m-mode")}catch(e){}</script>
+<canvas id="bgc"></canvas>
+<div class="orbs"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+<header class="nav"><div class="nav-in">
+  <div class="logo"><span class="brand-mark" aria-hidden="true">✦</span><div class="brand-copy"><div class="brand-line"><b id="logoName">母模板库</b><small class="release-chip" id="releaseBadge">v6.55 · P77</small></div><small id="logoSub">AI PLAYBOOK</small></div></div>
+  <div class="navbtns">
+    <button class="nbtn nav-scratch-btn" id="navScratchBtn" type="button" data-scratch-open title="打开随手记与已保存记录">✎<span>随手记</span><i class="scratch-nav-badge" id="navScratchBadge" hidden>0</i></button>
+    <button class="nbtn" id="importBtn" title="从 TXT、Markdown 或 JSON 文件导入个人提示词">⇩<span>导入</span></button>
+    <button class="nbtn" id="sourceCatalogBtn" type="button" title="浏览炉子广场 1350 条原始提示词与署名">▤<span>提示词广场</span></button>
+<button class="nbtn workspace-btn" id="personalWorkspaceBtn" type="button" aria-label="打开我的工作区" title="个人提示词、收藏、最近使用与随手记"><span class="workspace-glyph" aria-hidden="true">◇</span><span>我的工作区</span><i class="workspace-nav-badge" id="workspaceNavBadge" hidden>0</i></button>
+    <button class="nbtn" id="devlogBtn" title="开发日志">📜<span>日志</span></button>
+    <button class="nbtn" id="tourBtn" title="使用教程" aria-label="使用教程">📖<span id="tourLabel">使用教程</span></button>
+    <button class="nbtn" id="helpModeBtn" data-help-skip title="帮助模式：开启后点击任意控件查看用途、操作结果与注意事项" aria-pressed="false"><span class="help-q">?</span><span>帮助</span></button>
+    <button class="nbtn" id="navReadingBtn" type="button" data-reading-open aria-expanded="false" aria-controls="readingFlyout" title="全局调节阅读字号"><span>Aa 阅读 <span id="navReadValue">100%</span></span></button>
+    <button class="nbtn" id="navCountToggle" type="button" data-count-visibility aria-pressed="false" title="隐藏主页数字">隐藏主页数字</button>
+    <button class="nbtn" id="themeBtn" title="切换主题">🎨<span id="themeLabel">星云档案馆</span></button>
+    <button class="nbtn" id="modeBtn" title="选择当前主题的场景配色">◐ 场景</button>
+    <button class="nbtn" id="mobileBtn" title="手机模式：手机浏览器自动开启；点击可强制开/关" aria-pressed="false">📱<span>手机</span></button>
+  </div>
+  <button class="nav-layout-reset" id="navLayoutReset" type="button" title="恢复顶部功能默认顺序" aria-label="恢复顶部功能默认顺序">↺</button>
+</div></header>
+<div class="themeMenu" id="themeMenu" aria-label="切换主题"></div><div id="sceneMenu" class="scene-menu" hidden></div>
+<div id="veil"></div>
+<button id="fabTheme" title="切换主题">◐</button>
+<div id="themeSheet"><div id="sheetBody"></div></div>
+<aside class="context-flyout" id="scratchFlyout" hidden aria-label="全局随手记">
+  <div class="context-flyout-head">
+    <div><div class="k">GLOBAL SCRATCHPAD</div><h3>随手记 · 想法不会因切换页面消失</h3></div>
+    <button class="context-flyout-close" type="button" data-scratch-close aria-label="关闭随手记">×</button>
+  </div>
+  <div class="context-flyout-scroll">
+  <p class="context-flyout-note"><b>全局草稿。</b> 顶部选项栏和所有子界面的“随手记”打开的是同一份内容。输入过程会自动保护当前草稿；主动保存后会在本面板下方生成一条可直接查看的站内记录；「转为个人提示词」会预填新建页面，保留原草稿。</p>
+  <div class="scratch-storage-note"><span class="ss-ico">●</span><b>保存位置：当前设备 · 当前浏览器本地存储</b><span>不会自动上传到云端；草稿和“已保存随手记”都会直接在这个网站的随手记面板里显示，不需要去系统文件夹寻找。</span><small>提示：记录仍保存在当前浏览器本地数据中；如果主动清理浏览器网站数据 / 本地存储，记录可能被删除。</small></div>
+  <textarea id="globalScratchText" data-global-scratch placeholder="把正在形成的想法、临时条件、待验证的问题写在这里……"></textarea>
+  <div class="scratch-status-row"><span class="scratch-status" id="scratchStatus">等待输入</span><span class="scratch-status" id="scratchLength">0 字</span></div>
+  <div class="scratch-actions">
+    <button class="w-btn primary" type="button" data-scratch-save>保存为记录</button>
+    <button class="w-btn" type="button" data-scratch-copy>复制草稿</button>
+    <button class="w-btn" type="button" data-scratch-to-prompt>转为个人提示词</button>
+    <button class="w-btn" type="button" data-scratch-clear>清空草稿</button>
+  </div>
+  <section class="scratch-library" aria-label="随手记记录">
+    <div class="scratch-library-bar"><div class="scratch-library-tabs" role="tablist" aria-label="随手记列表">
+      <button class="scratch-library-tab active" type="button" role="tab" id="scratchSavedTab" data-scratch-tab="saved" aria-selected="true" aria-controls="scratchSavedPanel">已保存 <span class="count-value" id="scratchSavedCount">0</span></button>
+      <button class="scratch-library-tab" type="button" role="tab" id="scratchTrashTab" data-scratch-tab="trash" aria-selected="false" aria-controls="scratchTrashPanel">回收站 <span class="count-value" id="scratchTrashCount">0</span></button>
+    </div></div>
+    <div id="scratchSavedPanel" role="tabpanel" aria-labelledby="scratchSavedTab"><p class="scratch-library-note">已保存的记录可展开、继续编辑和复制。</p><div class="scratch-record-list" id="scratchRecordList"></div></div>
+    <div id="scratchTrashPanel" role="tabpanel" aria-labelledby="scratchTrashTab" hidden><p class="scratch-library-note">这里仅显示已删除的随手记；个人提示词 的回收站在「我的工作区」。恢复不会覆盖当前草稿。</p><div class="scratch-record-list" id="scratchTrashList"></div></div>
+  </section>
+  </div>
+</aside>
+
+<aside class="context-flyout" id="readingFlyout" hidden aria-label="阅读显示设置">
+  <div class="context-flyout-head">
+    <div><div class="k">READING DISPLAY</div><h3>全局阅读 · 调整整个界面的文字</h3></div>
+    <button class="context-flyout-close" type="button" data-reading-close aria-label="关闭阅读设置">×</button>
+  </div>
+  <div class="context-flyout-scroll">
+  <p class="context-flyout-note"><b>不会修改 提示词 内容。</b> 它统一调整主页、工作区、随手记、模板、来源和日志的阅读字号与行距，并记住你的选择。</p>
+  <div class="reading-card">
+    <div class="reading-row"><b>文字显示比例</b><output class="reading-value" id="readingScaleValue">100%</output></div>
+    <input id="readingScale" type="range" min="90" max="140" step="10" value="100" aria-label="阅读文字显示比例">
+    <div class="reading-presets">
+      <button type="button" data-read-preset="90">紧凑 90%</button>
+      <button type="button" data-read-preset="100">标准 100%</button>
+      <button type="button" data-read-preset="120">放大 120%</button>
+      <button type="button" data-read-preset="140">大字 140%</button>
+    </div>
+  </div>
+  <div class="reading-card">
+    <div class="reading-row"><b>它会影响什么？</b><span class="reading-value">Aa</span></div>
+    <div class="reading-sample" id="readingSample">主页、按钮文字、提示词、工作区、随手记、来源和开发日志的阅读字号会同步调整。</div>
+    <div class="reading-applied" id="readingApplied">当前：标准阅读 · 100%</div>
+  </div>
+  </div>
+</aside>
+
+<main id="home" class="wrap"></main>
+
+<footer><div class="wrap">
+  <p id="workspaceStorageStatus" class="workspace-storage-status" role="status"></p>
+  <div style="display:flex;gap:26px;flex-wrap:wrap;justify-content:center;margin-bottom:16px;font-size:12.5px">
+    <span style="color:var(--tx2)">母模板 <b style="color:var(--hi)">&gt;</b> 收藏数量</span><span style="color:var(--tx2)">能力增长 <b style="color:var(--hi)">&gt;</b> 数量增长</span><span style="color:var(--tx2)">方法 <b style="color:var(--hi)">&gt;</b> 角色扮演</span><span style="color:var(--tx2)">可复用 <b style="color:var(--hi)">&gt;</b> 一次性</span>
+  </div>
+  <div style="text-align:center;line-height:2;font-size:12.5px;color:var(--tx3)">首页长搜索条可检索模板，也可描述目标后点击匹配 · 顶部功能按钮可拖动排序并记住布局；↺ 恢复默认顺序；「✎ 随手记」查看草稿与已保存记录 · 顶部「Aa 阅读」全局调整字号，「隐藏主页数字」控制两个入口角标 · 点击卡片查看完整模板与变量说明 · 6 个主题共享统一核心工作流 · 按 <b style="color:var(--hi)">/</b> 聚焦搜索 · 按 <b style="color:var(--hi)">Esc</b> 关闭 / 退出说明模式<br>
+  填写变量 → 预览提示词 → 复制使用 · 内容在本页处理，无需联网</div>
+</div><div style="text-align:center;margin-top:16px"><button class="qbtn" id="devlogFoot">📜 开发日志 · 完整迭代记录</button></div>
+</footer>
+
+<div class="backdrop" id="backdrop"><div class="panel" id="panel"></div></div>
+<div class="srcOverlay" id="devlogOverlay" role="dialog" aria-modal="true" aria-label="开发日志"><div class="srcview devlog-view">
+<header><div><div class="st">📜 开发日志 · DEVELOPMENT LOG</div><div class="sf" id="devlogRange">AI提示词工作区 · 2026-09-11 21:43 → 2026-10-15 · P0 – P83 全程记录</div></div>
+<button class="close" id="devlogClose">✕</button></header>
+<div class="srctext devlog" id="devlogScroller">
+<div class="devlog-headline" aria-label="开发日志摘要">
+  <div class="devlog-stat"><b id="devPhaseCount">—</b><span id="devPhaseRange">开发阶段</span></div>
+  <div class="devlog-stat"><b id="devFeatureCount">—</b><span>功能演进记录</span></div>
+  <div class="devlog-stat"><b id="devBugCount">—</b><span>Bug / 回归记录</span></div>
+  <div class="devlog-stat"><b id="devInternalCount">—</b><span>优化 / 验证阶段</span></div>
+</div>
+<div class="devlog-tabs" role="tablist" aria-label="开发日志浏览方式">
+  <button class="devlog-tab" id="devTabAll" role="tab" aria-selected="true" aria-controls="devPanelAll" data-devtab="all">全部<small>完整明细</small></button>
+  <button class="devlog-tab" id="devTabFeature" role="tab" aria-selected="false" aria-controls="devPanelFeature" data-devtab="feature">新增功能<small>功能演进</small></button>
+  <button class="devlog-tab" id="devTabBug" role="tab" aria-selected="false" aria-controls="devPanelBug" data-devtab="bug">Bug 修复<small>发现 → 修复</small></button>
+  <button class="devlog-tab" id="devTabInternal" role="tab" aria-selected="false" aria-controls="devPanelInternal" data-devtab="internal">内部优化 / 验证<small>工程质量</small></button>
+  <button class="devlog-tab" id="devTabTimeline" role="tab" aria-selected="false" aria-controls="devPanelTimeline" data-devtab="timeline">版本时间线<small>P0 → P83</small></button>
+  <button class="devlog-tab" id="devTabRetro" role="tab" aria-selected="false" aria-controls="devPanelRetro" data-devtab="retro">复盘总结<small>阶段决策</small></button>
+</div>
+<div id="devlogIntegrity" class="devlog-panel-intro"></div>
+<div class="devlog-panel-intro" id="devlogDateCoverage"><b>09-22 → 09-25 覆盖核对：</b> 09-22 = P22 / v6.0.1；09-23 = 在本次用户提供的源码与成品中未发现可证实的版本发布记录，因此不虚构条目；09-24 = P23–P36 / v6.1–v6.14；09-25 = P37 / v6.15。本区与“新增功能 / Bug 修复 / 内部优化 / 版本时间线 / 复盘总结”同步维护。</div>
+<section class="devlog-panel active" id="devPanelAll" role="tabpanel" aria-labelledby="devTabAll" data-devpanel="all">
+<div class="devlog-panel-intro"><b>完整开发记录。</b> 按版本时间倒序动态生成；最新发布永远显示在最上方。每个阶段保留功能、Bug、内部验证与时间线证据。</div>
+<div class="log-legend"><span class="log-pill feature">✨ 新增功能</span><span class="log-pill fix">🛠 Bug 修复</span><span class="log-pill internal">🔧 内部优化 / 验证</span></div>
+<div id="devAllDynamic" class="log-stream"></div>
+</section>
+<section class="devlog-panel" id="devPanelFeature" role="tabpanel" aria-labelledby="devTabFeature" data-devpanel="feature">
+  <div class="devlog-panel-intro"><b>功能演进。</b> 这里不按发布时间复述整篇日志，而是只保留“产品能力是怎样一步步增加的”。每张记录仍保留对应 P 阶段，方便回到“全部”查看上下文。</div>
+  <div class="log-stream" id="devFeatureStream"></div>
+</section>
+<section class="devlog-panel" id="devPanelBug" role="tabpanel" aria-labelledby="devTabBug" data-devpanel="bug">
+  <div class="devlog-panel-intro"><b>Bug 修复账本。</b> 除了“修了什么”，还记录“谁/怎样发现、是否由上一版实现引入、根因、修复办法、如何验证”。历史上没有记录的信息会明确写“未记录”，不会倒推补写。</div>
+  <div class="log-stream" id="devBugStream"></div>
+</section>
+<section class="devlog-panel" id="devPanelInternal" role="tabpanel" aria-labelledby="devTabInternal" data-devpanel="internal">
+  <div class="devlog-panel-intro"><b>工程质量记录。</b> 汇总那些用户不一定直接看到、但决定系统是否可维护的工作：数据治理、状态隔离、回归测试、压力测试、兼容性、静态校验与架构调整。</div>
+  <div class="log-stream" id="devInternalStream"></div>
+</section>
+<section class="devlog-panel" id="devPanelTimeline" role="tabpanel" aria-labelledby="devTabTimeline" data-devpanel="timeline">
+  <div class="devlog-panel-intro"><b>版本时间线。</b> 按开发阶段补上“事情发生的先后顺序”，用于快速理解项目从 提示词 收藏夹如何演进成现在的 AI Playbook。</div>
+  <div class="timeline" id="devTimeline"></div>
+</section>
+<section class="devlog-panel" id="devPanelRetro" role="tabpanel" aria-labelledby="devTabRetro" data-devpanel="retro">
+  <div class="devlog-panel-intro"><b>阶段复盘归档。</b> 这里不记录单次改动，而记录一段开发结束后对“现状、痛点、取舍和下一阶段路线”的系统性判断。每次形成新的正式复盘，就按“复盘总结 N”追加，便于未来追溯为什么做出某个架构或产品决策。</div>
+  <div class="retro-stream">
+    <article class="retro-card" data-retro="17"><div class="retro-meta">复盘总结 17 · 2026-10-15 · v6.60 → v6.61 / P83</div><h3>分栏搜索：提示词与 Skill 各搜各的</h3><p>Skill 入驻后，主页顶部的全局大搜索框开始"串味"——输入关键词会同时翻提示词和 Skill，结果混在一起。本轮把它退役：系统模板、Skill 广场、个人模板三栏各自在栏头带独立搜索框，搜什么取决于当前栏，互不混排。</p><p>布局同步梳理：系统模板去掉排序旋钮（默认评分优先），分类选项卡上移到栏头并换行铺全——所有分类一眼可见，不再藏在横向滚动条里；Skill 广场补齐同款分类选项卡（按标题/标签/场景自动归类）。「匹配模板」按钮随系统模板栏保留，需求导航与相关课程完全兼容。「来源广场」更名为「提示词广场」，名字与内容对齐；工作区里与主页重复的 Skill 页移除。</p><p>兼容性是本轮重点：#q 输入框原样迁入系统模板栏头，#needGatewayForm 表单结构不变，三门课程与地图 F1 的选择器零改动；教程、帮助、导览文案全部同步到新布局。</p></article>
+    <article class="retro-card" data-retro="16"><div class="retro-meta">复盘总结 16 · 2026-10-15 · v6.59 → v6.60 / P82</div><h3>Skill 入驻：独立分栏，正文带署名</h3><p>发布 GitHub 前的内容升级：发现系统的存储与浏览机制对 Skill 同样适用，于是接入炉子广场 Skill 全量 3285 条（去重后 3115 条），并把文本提示词来源库从 1350 条更新至 1612 条（原位刷新 36、新增 262、正文指纹去重 5）。</p><p>类型隔离是本轮核心：Skill 与提示词严格分栏——主页新增「Skill 广场」标签页，我的工作区新增「Skill 广场」页；正文查看浮层逐条展示署名作者、署名来源、作者主页、入口文件、文件数与大小，复制时明确提示保留作者信息——这些内容不是本系统创作的，署名是底线。</p><p>工程上：合并管线按广场条目 UUID 去重、正文指纹兜底，超长正文分段表按序拼接（文本 2 条、Skill 76 条）；工作区 Skill 列表截断至 60 条，对照容量基准（3000 条列表渲染 0.87s）守住不卡顿底线；基线数据指纹新增 skill-catalog.json。</p></article>
+    <article class="retro-card" data-retro="15"><div class="retro-meta">复盘总结 15 · 2026-10-15 · v6.58 → v6.59 / P81</div><h3>跟读节奏、滚动定位与逐招拆分</h3><p>用户通读全部教程后反馈：亲手练的说明"跳得太快"——做对一步只停留 650 毫秒就自动跳下一环，解释根本读不完；工作台内的高亮常被顶部工具栏挡住，看起来像指错了按钮；「更多」菜单样式突兀；「整理收藏与最近使用」一课把取消收藏和删记录混在一起，容易让人误以为取消收藏就必须删记录。</p><p>本轮把推进权再次交还用户：做对一步后说明常驻，点「下一步 →」才继续（最后一环变为「完成本课」）；沙箱高亮滚动改为居中策略，不再被工具栏遮挡；「更多」菜单改为卡片面板；「整理收藏与最近使用」拆为「删除来源收藏」与「清理最近使用记录」两课（33 门 / 130 步不变）。</p><p>协议变更影响全部练习类门禁：自动推进断言改为按钮断言，13 条门禁与真实浏览器 33 门逐课诊断复跑通过。</p></article>
+    <article class="retro-card" data-retro="14"><div class="retro-meta">复盘总结 14 · 2026-10-14 · v6.57 → v6.58 / P80</div><h3>把节奏还给用户：地图、导览、亲手练</h3><p>用户对视频教程的最终反馈是"反应不过来、有点混乱"。复盘后确认根因只有一个：节奏不归用户。视频自动播、观察环节只能看、中途进课状态对不上，三件事都源于把"学会操作"做成了"被动观看"。</p><p>本轮整体移除 video/demo 双模式（播放条、倍速旋钮、观看进度键、示范面板全链路下线），29 个纯观察环节迁入 5 个实景导览剧本；教程改为三层漏斗：先看一页操作地图（4 条核心流程、真实按钮名），再在真实界面上跟导览逐个认识控件（只拦写操作、滚动阅读不受限），最后进沙箱亲手练。首启改为轻量欢迎卡，主按钮直达第一个真实任务课程。</p><p>数据层升级 schema v3：8 条原链逐字节保留作重放事实源，32 门课只含操作步（130 个）并新增 chainMap 显式映射，切片完整性改为动作子序列无缝覆盖断言。13 条门禁与真实浏览器逐课 guided 诊断、5 剧本导览冒烟全部通过；真实触屏与设备性能仍需实际设备验收。</p></article>
+    <article class="retro-card" data-retro="13"><div class="retro-meta">复盘总结 13 · 2026-10-14 · v6.56 → v6.57 / P79</div><h3>组合技拆成单招，一课只教一件事</h3><p>用户反馈教程里都是组合技，一口气教太多，建议拆成单个的。复盘九门长课（最多 28 个环节）后确认：步骤本身没问题，问题在课程粒度——一门课从搜索讲到回收站，用户消化不了。</p><p>本轮把九门长课切成 37 门单招小课，一课只教一个动作技能，最长 7 个环节。原 159 个环节一条不改（指令、why、成功语、目标与核对全部原样），整体保存在 chains 里作为课程片段的来源；进入中途的小课时，播放器会自动先静默完成前面的准备步骤，再从本课第一个动作开始。</p><p>切片完整性进入门禁：37 门课必须无缝覆盖全部链条，指令与核对逐字节一致；演示、带练、独立挑战、单环节重练与重试全部支持中途进入。真实浏览器逐课播放诊断与 16 条门禁复跑通过。</p></article>
+    <article class="retro-card" data-retro="12"><div class="retro-meta">复盘总结 12 · 2026-10-14 · v6.55 → v6.56 / P78</div><h3>镜头不放大，注释不消失，播放不卡死</h3><p>用户实际观看后反馈三件事：跟随镜头放大移动让人头晕；注释排在高亮框旁边时可能看不到；部分教程视频会停在某一步不动。三条都指向同一类根因——此前所有验证都跑在压缩时钟与固定坐标的 DOM 适配器里，真实浏览器的几何与时序完全在盲区。</p><p>本轮把视频画面固定为完整界面等比缩放，删除跟随/放大镜头与切换按钮，只有金色高亮框移动；浮动注释在包括视频在内的所有模式都显示，排在高亮框旁，放不下时停靠画面底部，不再消失。演示动作的控件等待与结果核对改为真实时间预算且不随倍速缩短，核对异常不再中断流程。</p><p>真实浏览器逐课播放诊断进入常规验证流程，覆盖九门课双倍速与原速；真实触屏与设备性能仍需实际设备验收。</p></article>
+    <article class="retro-card" data-retro="11"><div class="retro-meta">复盘总结 11 · 2026-10-14 · v6.54 → v6.55 / P77</div><h3>把「写给审计看的运行说明」翻译成「陪用户走一遍的人话」</h3><p>用户反馈使用教程不够人性化，希望从游戏教程里找灵感。复盘现有的四种学习模式后发现：机制其实已经够用，缺的是语言层——每步的 why 像免责声明，成功语全场复读，用户既看不到、也感受不到「这一步做对了什么」。</p><p>本轮不重排课程，只补人性化的语言与引导：每门课加一句开场动机和完成庆祝；做对一步就在右侧告诉你这一步具体发生了什么；失败与中途停止的提示去指责化、给下一步；提示按钮按需出现，细节默认折叠。</p><p>课程数据重写为第二人称，手册散文同步改写并修复生成器换行缺陷（产物统一 UTF-8 + LF）。九门课 159 环节不变，帮助、Coverage、版本、六日志视图与交付件一并收口；真实浏览器视觉、触屏与性能仍需实际设备验收。</p></article>
+    <article class="retro-card" data-retro="10"><div class="retro-meta">复盘总结 10 · 2026-10-14 · v6.53 → v6.54 / P76</div><h3>完整播放路径与可见结果一起验收</h3><p>本轮从用户重新上传的 P75 完整包重建，确认旧成品逐字节一致后修改。定位播放器多余闭合标签、父层拒收后续步骤消息、零等待穿过暂停，以及已打开工作区不渲染备份预览的问题。</p><p>左侧只显示演示，右侧集中解说与播放控制。演示按固定完整视口缩放，支持框选居中跟随、全景、调速旋钮和失败后的当前环节重试；暂停、重播与退出有明确状态。备份读取立即显示状态，恢复核对紧邻文件选择与确认，旧文件读取结果不能覆盖新选择。</p><p>教程生成器改为当前观看流程；功能、Bug、内部验证、全部记录、时间线和本复盘一起更新。验证采用生产处理器、DOM适配、存储故障与几何枚举，覆盖整课播放及边界；真实浏览器视觉、触屏和性能尚未验收。下载交付以本轮实际生成并保存的文件为准。</p></article>
+    <article class="retro-card" data-retro="9"><div class="retro-meta">复盘总结 9 · 2026-10-14 · v6.52 → v6.53 / P75</div><h3>把教程从“操作考试”改成“看得懂的视频演示”</h3><p>用户在逐步练习中容易卡住，反复点击确认也会打断注意力。本版把教程主路径改为隔离数据中的自动演示：画面展示真实界面位置，右侧同步解释用途、目的和结果。</p><p>播放器提供暂停、继续、重播和进度显示；暂停时保留当前高亮和解说，继续后从当前环节播放。观看完成后明确显示“视频教程已完成”，点击完成并退出返回主页。原个人资料和业务数据不参与演示。</p><p>同步教程、帮助、版本元信息、六个日志视图和交付包；验证覆盖自动播放、暂停/继续、退出清理与移动布局。真实浏览器视觉与性能仍需实际设备验收。</p></article>
+    <article class="retro-card" data-retro="8"><div class="retro-meta">复盘总结 8 · 2026-10-13 · v6.51 → v6.52 / P74</div><h3>把注意力留在用户正在操作的地方</h3><p>标题区的弹性宽度使顶栏出现大片留白；改成内容宽度，宽屏十二入口紧凑同排。按钮换位用位移补间让相邻项平滑让位，松手归位；尊重减少动态效果设置，保留顺序和取消边界。</p><p>教程不再每个动作后要求到右侧确认。输入自动核对，真实动作成功后短暂展示结果再推进；十个重复观察合并进操作说明。材料和练习工具放在左侧，右侧只有解说；纯讲解可轻点高亮区域继续，不执行该控件的业务功能。</p><p>九模块159环节，130操作与29讲解。未输入、错误动作、示范和计时本身不能形成完成信用；完成与退出仍明确。同步手册、帮助、版本和六日志视图，用户资料及历史原文保持。验证使用生产处理器和DOM/动画替身，真实浏览器视觉尚未验收。</p></article>
+    <article class="retro-card" data-retro="7"><div class="retro-meta">复盘总结 7 · 2026-10-13 · v6.50 → v6.51 / P73</div><h3>布局变了，教程目录和位置说明也要一起变</h3><p>顶栏用等宽网格稳定排列，名称与版本分行；工作区辅助入口采用紧凑尺寸，窄屏保留触控高度并换行。日志有序与无序列表统一保留序号缩进，长内容自然换行。</p><p>旧教程目录硬编码了已移除工具的分组，产生空标题，同时漏掉检查、备份、整理三个实际模块。改为从当前课程生成分组与下拉列表，补齐四个模块缺失的目标摘要，九个模块都能从卡片进入。</p><p>后续任何功能或界面改动，都要核对课程目录、真实入口、模块目的、观察目标及版本，不能只更新版本号。保留历史日志和用户资料；本轮验证用生产处理器、DOM与样式门禁，真实浏览器视觉仍未验收。</p></article>
+    <article class="retro-card" data-retro="6"><div class="retro-meta">复盘总结 6 · 2026-10-13 · v6.49 → v6.50 / P72</div><h3>让个人用户只看见日常需要的操作</h3><p>十项维护工具在本地运行，目的却是模板库发布治理。本版移除它们的入口和处理器，集中到五个个人页面，以及检查和备份两项辅助任务。</p><p>检查逐项说明下一步，不用总分冒充AI效果。备份解释完整副本与单独提示词区别，先预览数量与覆盖范围，再确认恢复。9模块围绕真实个人任务练习，虚拟文件选择明确标注。</p><p>升级不执行自动归零，已有资料和旧记录继续保存与备份；保存失败不显示假成功。教程、帮助、版本和全部六日志视图同步。真实浏览器视觉仍未验收。</p></article>
+
+    <article class="retro-card" data-retro="5"><div class="retro-meta">复盘总结 5 · 2026-10-12 · v6.48 → v6.49 / P71</div><h3>先清理验证痕迹，再让收藏入口可见</h3><p>旧工作区来自浏览器持久保存，重新交付文件并不能自动消除。按用户要求，本版本首次正式启动先备份再归零个人与治理运行记录，保留显示偏好和教程进度；归零标记防止以后每次打开清空新数据。</p><p>主页全部模板、详情顶部、提示词广场列表及详情、旧模板档案均提供收藏。收藏栏区分母模板、个人模板、来源原文和旧档案，打开返回真实对象。删除收藏与最近使用只移除记录，不删除模板。</p><p>新增逐步收藏整理课程，帮助、教程、元信息与六视图日志同步。新增持久存储失败、再次打开、备份恢复、原始资料保留与真实处理器路径检查；DOM 行为检查不等于真实浏览器视觉验收。</p></article>
+
+    <article class="retro-card" data-retro="4"><div class="retro-meta">复盘总结 4 · 2026-10-12 · v6.47 → v6.48 / P70</div><h3>让用户知道为什么做、变了什么、何时完成</h3><p>用户八项反馈说明：真实按钮还不够，必须解释每一步目的，指明示例从哪里复制、何时检查，并让用户看清实际状态变化。</p><p>本版逐个模块先读目的说明。主页、筛选、推荐、个人版本、来源和十项高级工具分别教学，共 16 模块、143 个操作与 34 个观察。匹配按真实提交、推荐、选择流程，来源回链以实际存在的按钮为准。</p><p>注释避开当前操作；放不下时到练习区外侧说明栏。操作后确认变化才继续，结束清理并提供完成退出。默认最大化，同时修复缩小后的相对/固定坐标冲突与 620–760px 搜索按钮宽度挤压。</p><p>继续维护教程、帮助、日志六视图、版本与最终源码构建。动作、样式和几何检查已执行，真实浏览器视觉仍未运行。P70 日期采用用户本地时区，P69 保留上传包原日期。</p></article>
+
+    <article class="retro-card" data-retro="3">
+      <div class="retro-meta">复盘总结 3 · 2026-10-13 · 基线 v6.46 → v6.47 / P69</div>
+      <h3>从看说明，到亲手完成每一个动作</h3>
+      <p>用户仍不能熟练操作，尤其不理解十项高级工具。教程需要借鉴英雄拆招：先看整套流程，再把动作拆开，做对一个才继续，最后撤掉提示独立练。</p>
+      <p>本版复用真实界面与处理器，提供 13 套课程、100 个动作。高级工具使用虚构前置记录，把内容发布、版本登记、预览和稳定通道区分清楚；模拟、预演、建议、审批与修复各自说明结果。</p>
+      <p>练习必须与正式数据隔离。示范和自动准备不计用户完成；修复计划示例保留阻断，让用户看到未补事实时复检不会自动通过。</p>
+      <p>逐动作核对还发现预演路由误译及通道登记保存遗漏，分别记入 Bug 账本。生产处理器与数据边界测试已执行；浏览器视觉、焦点与性能仍待实际设备验收，不把模拟测试写成浏览器通过。</p>
+    </article>
+
+    <article class="retro-card" data-retro="2">
+      <div class="retro-meta">复盘总结 2 · 2026-09-25 · 基线 v6.14 → v6.15</div>
+      <h3>开发日志不能只“数据存在”：用户看到的每一个日志表面都必须同步</h3>
+      <p><b>问题确认：</b>用户上传的 v6.14 成品与源码证明，P23–P36 的结构化日志实际上已经存在，功能/Bug/内部/时间线也能动态渲染；但开发日志弹窗头部仍硬编码“→ 2026-09-22”，复盘页仍停留在 2026-09-21，造成“详细页更新了、后面的页面没有更新”的真实体验。</p>
+      <h4>根因</h4><ul><li><b>双层真相源：</b>结构化 DEVLOG 数据已更新，但 Header 日期、Timeline 标签、Retro 复盘仍由 shell.html 静态维护。</li><li><b>验收范围过窄：</b>旧 检查门槛 重点验证动态列表，没有验证弹窗头部日期、每个 Tab、复盘页和最终成品一起前进。</li><li><b>成品与源码未做全表面对照：</b>此前证明了某个视图能看到新日志，却没有证明从头到尾浏览日志时不会遇到旧版本信息。</li></ul>
+      <h4>09-25 开发事件账本</h4>
+      <ol>
+        <li>用户最终 HTML + 源码双材料审计。</li>
+        <li>09-22→09-25 日期与版本证据逐日核对。</li>
+        <li>全部 / 功能 / Bug / 内部 / 时间线 / 复盘六表面统一同步。</li>
+        <li>使用教程 / 开发日志 / 发布版本清单 三联证据链继续硬化。</li>
+        <li>记录连续多轮“已修复但用户仍看到旧日期”的验收失败。</li>
+        <li>修复“一天只有一条 P37 摘要”导致的事件粒度丢失。</li>
+        <li>最终 dist 交付文件 成为日志验收对象。</li>
+        <li>建立 开发日志 Completeness 检查门槛。</li>
+        <li>重新定义日志 Single Source of Truth 的边界。</li>
+        <li>把本轮教训固化为后续版本的发布制度。</li>
+      </ol>
+      <h4>本轮修复</h4><ul><li>版本推进到 <b>v6.15 / P37 / 2026-09-25</b>，补齐 09-22→09-25 日期覆盖说明。</li><li>同步更新“全部 / 新增功能 / Bug 修复 / 内部优化 / 版本时间线 / 复盘总结”六个日志表面。</li><li>弹窗头部截止日期、Timeline 范围、发布 / 使用教程 / 开发日志 三联版本全部同步到 P37。</li><li>新增 Full-Surface 开发日志 检查门槛：直接打开最终 dist/index.html，逐 Tab 验证当前版本、日期、历史连续性和复盘。</li></ul>
+      <h4>以后必须遵守</h4><p>任何版本只要修改开发日志，就必须把“结构化记录 + 弹窗摘要 + 全部 Tab + 时间线 + 复盘 + 发布版本清单 + 使用教程 版本 + 最终 dist 成品”视为一个不可拆分的发布事务；只要其中一处仍停留旧日期/旧 Phase，发布即失败。</p>
+    </article>
+    <article class="retro-card">
+      <div class="retro-meta">复盘总结 1 · 2026-09-21 · 基线 v5.11 → v5.12</div>
+      <h3>从 提示词 收藏库到本地 AI Playbook：现在最需要的是收敛，而不是继续堆功能</h3>
+      <p><b>阶段判断：</b>系统已经具备母模板策展、需求匹配、个人提示词、工作台、主题体验、教程/帮助、随手记与开发审计能力；产品能力已接近小型应用，但工程底座仍主要是“单文件构建产物 + 多轮补丁式迭代”。因此下一阶段的主要矛盾已经从“缺功能”变成“如何在不破坏已有体验的前提下，降低耦合、统一操作、稳定数据并建立可持续开发底座”。</p>
+      <h4>当前核心痛点</h4>
+      <ul>
+        <li><b>源码真相源漂移：</b>历史设计要求 build_page.py / 卡片数据为源，但当前持续在自包含 HTML 构建产物上迭代；如果未来重新从旧生成器构建，P11 之后的能力存在覆盖风险。</li>
+        <li><b>单文件开发负担增大：</b>单文件非常适合交付，但已经不适合作为长期开发形态；事件代理、overlay、主题状态、localStorage 与渲染函数之间耦合越来越高。</li>
+        <li><b>主题过多、操作模型过度分化：</b>10 套主题曾强调“每个世界一套体验”，但实际形成较高学习成本与回归矩阵；用户切换主题后可能需要重新学习工作台。</li>
+        <li><b>需求导航仍偏“匹配器”：</b>目前擅长把明确需求匹配到模板，下一阶段应能判断信息缺口、主动追问并组合多张母模板。</li>
+        <li><b>个人数据散落：</b>个人提示词、随手记、阅读偏好、主题设置等已经形成用户资产，但仍由多组 localStorage key 分散维护，缺少统一 Workspace Schema 与数据迁移机制。</li>
+        <li><b>自动化回归仍不足：</b>已有静态检查、压力测试和人工回归，但缺少固定的黄金用户流程和统一发布门禁。</li>
+        <li><b>版本元信息多处维护：</b>教程版本、日志阶段、文件名、页面统计等仍可能发生漂移，需要 发布版本清单 成为单一事实源。</li>
+      </ul>
+      <h4>本轮已经执行的主题决策</h4>
+      <p>主题从 10 个收敛为 6 个：保留 <b>星云档案馆、炼金术士手稿、东方藏书阁、AI 生物舱、AI 文明博物馆、极光观测站</b>；退役 <b>异常实验室、赛博终端、1984 情报局、Y2K 未来档案</b>。所有保留主题统一核心路径为 <b>概览 → 参数 → 提示词 → 来源</b>，并统一返回、场景、换主题和复制等关键动作的位置。主题差异主要保留在视觉语言、材质、术语和不阻断主流程的特色功能。</p>
+      <h4>后续开发路径</h4>
+      <div class="retro-roadmap">
+        <article><b>v6.0 FOUNDATION</b><span>恢复源码工程、模块拆分、统一 Store / Persistence / Overlay Manager、发布版本清单、自动化回归。</span></article>
+        <article><b>v6.1 WORKSPACE</b><span>把个人提示词、随手记、收藏、历史、备份恢复收敛为“我的工作区”。</span></article>
+        <article><b>v6.2 NAVIGATOR 2.0</b><span>需求诊断、必要追问、置信度解释、多模板组合与为什么推荐。</span></article>
+        <article><b>v6.3 COMPOSER</b><span>从“找模板”升级为“完成任务”：多模板编排、提示词 组装、版本比较与运行前检查。</span></article>
+        <article><b>v7.0 PLAYBOOK</b><span>在本地优先原则上引入可选 AI 层、个人知识资产与更完整的工作流。</span></article>
+      </div>
+      <h4>开发原则</h4>
+      <ul>
+        <li>优先减少认知负担和耦合，而不是继续增加主题和装饰性功能。</li>
+        <li>主题只改变“气质”，不改变“基本驾驶方式”。</li>
+        <li>任何用户输入都优先考虑防丢、可找回、可备份、可迁移。</li>
+        <li>每次主要功能发布必须同步：教程、帮助、开发日志、复盘/路线（如涉及方向调整）与回归清单。</li>
+        <li>单文件继续作为交付格式；完整源码工程应成为唯一开发真相源。</li>
+      </ul>
+    </article>
+  </div>
+</section>
+</div>
+<div class="sfoot"><span>完整工程记录见项目根目录 DEVELOPMENT.md · 批次决策见 CHANGELOG.md</span></div>
+</div></div>
+<div class="srcOverlay" id="srcOverlay" role="dialog" aria-modal="true" aria-label="来源摘录"><div class="srcview" id="srcview"></div></div>
+<div class="utilityOverlay source-catalog-overlay" id="sourceCatalogOverlay" role="dialog" aria-modal="true" aria-label="炉子广场来源库">
+ <div class="utilityView source-catalog-dialog"><header><div><div class="uv-title">提示词广场 · 文本提示词来源库</div><div class="uv-sub">1,612 条原始发布记录 · 逐条保留署名与正文 · 离线可查</div></div><button class="close" type="button" id="sourceCatalogClose" aria-label="关闭来源库">✕</button></header>
+ <div class="utilityBody source-catalog-body"><p class="utility-note">这里保留原始发布记录，供检索、核对和复制。母模板是另行策展的内容；相同正文可能由不同账号发布，署名发布者不自动等于唯一原创作者。</p>
+ <label class="source-search-label">检索标题、作者、标签或正文<input id="sourceCatalogSearch" type="search" placeholder="例如：费曼、分镜、作者名…" autocomplete="off"></label>
+ <div class="source-filter-row"><label>主题分类（由标题与标签推断）<select id="sourceCatalogCategory" aria-label="来源主题分类"></select></label><label>排序<select id="sourceCatalogSort" aria-label="来源排序"><option value="seq-asc">原始序号 · 从小到大</option><option value="seq-desc">原始序号 · 从大到小</option><option value="title">标题 · 拼音/字母顺序</option><option value="publisher">发布者 · 拼音/字母顺序</option></select></label></div>
+ <div class="source-summary" id="sourceCatalogSummary" aria-live="polite"></div>
+ <div class="source-summary" id="retiredCardShelf"></div>
+ <div class="source-layout"><div><div class="source-list" id="sourceCatalogList"></div><div class="source-pages" id="sourceCatalogPages"></div></div><article class="source-detail" id="sourceCatalogDetail"><p>选择一条来源查看署名、完整正文与原始条目 ID。</p></article></div></div></div>
+</div>
+<div class="utilityOverlay" id="needOverlay" role="dialog" aria-modal="true" aria-label="需求导航">
+ <div class="utilityView"><header><div><div class="uv-title">✨ 需求导航 · 不用先懂分类</div><div class="uv-sub">LOCAL MATCHER · 输入只在本页处理</div></div><button class="close" data-utility-close="need" aria-label="关闭需求导航">✕</button></header>
+ <div class="utilityBody"><div class="utility-note"><b>直接说人话即可。</b> 例如：“我要准备产品经理面试”“把一篇 AI 味很重的文章改自然”“我想研究一个 GitHub 项目值不值得用”。系统会在现有母模板与个人导入中本地匹配。</div>
+ <div class="need-thread" id="needThread" aria-live="polite"></div>
+ <form class="need-form" id="needForm"><textarea id="needInput" placeholder="我现在想……（可以写目标、已有材料、给谁看、最后想产出什么）" aria-label="描述你的需求"></textarea>
+ <div class="need-examples"><button type="button" class="w-btn small" data-need-example="我要准备产品经理面试，希望你模拟面试官并追问">产品经理面试</button><button type="button" class="w-btn small" data-need-example="我有一篇文章 AI 味很重，想改得自然一点但不要改事实">文章去 AI 味</button><button type="button" class="w-btn small" data-need-example="我想判断一个 GitHub 开源项目是否适合生产使用">GitHub 项目调研</button><button type="button" class="w-btn small" data-need-example="我有一个 30 秒短视频文案，想拆成可生成的视频分镜">视频分镜</button></div>
+ <div class="row"><button type="button" class="w-btn small" data-need-reset>重新开始</button><button class="w-btn primary" type="submit">匹配并生成提示词 →</button></div></form></div></div>
+</div>
+<div class="utilityOverlay personal-workspace-overlay" id="personalWorkspaceOverlay" aria-hidden="true">
+ <div class="utilityView personal-workspace-dialog" role="dialog" aria-modal="true" aria-labelledby="personalWorkspaceTitle">
+  <header class="pw-head">
+   <div class="pw-brand"><span class="pw-sigil" aria-hidden="true">◇</span><div><div class="uv-title" id="personalWorkspaceTitle">我的工作区</div><div class="uv-sub">本地个人使用 · 保存、找回和整理</div></div></div>
+   <div class="pw-head-actions"><button class="w-btn primary pw-scratch-btn" type="button" data-scratch-open>✎ 写随手记</button><button class="w-btn small pw-help-btn" id="workspaceHelpBtn" type="button" data-help-skip aria-expanded="false" aria-controls="workspaceHelpPanel">? 使用帮助</button><button class="close" type="button" data-personal-close aria-label="关闭我的工作区">✕</button></div>
+  </header>
+  <nav class="pw-nav" aria-label="我的工作区页面">
+   <label class="pw-jump">切换页面 <select id="personalWorkspaceTabSelect" aria-label="选择工作区页面"><option value="prompts">我的提示词</option><option value="favorites">收藏</option><option value="recent">最近使用</option><option value="scratch">随手记</option><option value="trash">回收站</option><option value="check">检查提示词</option><option value="backup">备份与恢复</option></select></label>
+   <div class="pw-daily-row"><div class="pw-tabs" role="tablist" aria-label="日常使用"><button class="pw-tab active" data-pw-tab="prompts">我的提示词 <span class="count-value" data-pw-count="prompts">0</span></button><button class="pw-tab" data-pw-tab="favorites">收藏 <span class="count-value" data-pw-count="favorites">0</span></button><button class="pw-tab" data-pw-tab="recent">最近使用 <span class="count-value" data-pw-count="recent">0</span></button><button class="pw-tab" data-pw-tab="scratch">随手记 <span class="count-value" data-pw-count="scratch">0</span></button><button class="pw-tab" data-pw-tab="trash">回收站 <span class="count-value" data-pw-count="trash">0</span></button></div></div>
+   <div class="pw-local-tools" role="tablist" aria-label="常用辅助操作"><span aria-hidden="true">辅助</span><button type="button" class="w-btn small" data-pw-tab="check" role="tab" aria-controls="personalWorkspaceList">检查提示词</button><button type="button" class="w-btn small" data-pw-tab="backup" role="tab" aria-controls="personalWorkspaceList">备份与恢复</button></div>
+  </nav>
+  <div class="utilityBody pw-body">
+   <input type="file" id="workspaceBackupFile" accept=".json,application/json" hidden>
+   <section class="pw-help-panel" id="workspaceHelpPanel" hidden aria-label="工作区使用帮助"><h2 tabindex="-1">三件事就能开始</h2><ol><li><b>留住好用的：</b>主页或提示词广场点收藏，回来就能找回原模板。</li><li><b>改成适合自己的：</b>点存成我的版本，再保存；以后修改可以查看旧版本。</li><li><b>怕遗漏或丢失：</b>检查提示词列出修改线索，备份与恢复帮你保留下载副本。</li></ol><p>最近使用可以删记录；随手记先留想法；删除的个人内容可以到回收站恢复。这里用于本地个人创作，无需学习发布或审批流程。</p><p id="workspaceHelpContext"></p><button class="w-btn small" type="button" data-pw-help-close>我知道了</button></section>
+   <section class="pw-hero"><div><span class="pw-kicker">你的个人提示词</span><h2>把好用的提示词留给下次</h2><p>新建或存成自己的版本，修改后保留旧版。常用的先收藏，暂时不用的可以收起。</p></div><button class="w-btn primary pw-create" type="button" data-pw-create>＋ 新建提示词</button></section>
+   <div class="pw-toolbar"><label class="pw-search"><span aria-hidden="true">⌕</span><input id="personalWorkspaceSearch" type="search" placeholder="搜索名称、正文、标签…"></label><div class="pw-toolbar-actions"><select id="personalWorkspaceStatus" class="pw-select" aria-label="状态筛选"><option value="usable">可用和草稿</option><option value="all">全部状态</option><option value="active">使用中</option><option value="draft">草稿</option><option value="archived">已收起</option></select><select id="personalWorkspaceTag" class="pw-select" aria-label="标签筛选"><option value="all">全部标签</option></select><select id="personalWorkspaceSort" class="pw-select" aria-label="排序"><option value="updated-desc">最近更新</option><option value="created-desc">最近创建</option><option value="name-asc">名称 A–Z</option><option value="versions-desc">版本最多</option></select><button type="button" class="w-btn small" data-personal-import>导入文件</button></div></div>
+   <p class="pw-tab-intro" id="workspaceTabIntro"></p>
+   <div id="workspaceResetNotice" class="workspace-reset-notice" hidden role="status"><p>旧工作区已归零。归零前备份保留在当前浏览器，可导出查看或通过「恢复备份」找回。</p><button type="button" class="w-btn small" data-workspace-reset-backup>导出归零前备份</button></div>
+   <div class="pw-list" id="personalWorkspaceList" role="tabpanel" aria-label="工作区内容"></div>
+  </div>
+ </div>
+</div>
+<div class="utilityOverlay" id="promptLifecycleOverlay" aria-hidden="true">
+ <div class="utilityView lifecycle-dialog" role="dialog" aria-modal="true" aria-labelledby="lifecycleTitle">
+  <header><div><div class="uv-title" id="lifecycleTitle">提示词 编辑器</div><div class="uv-sub" id="lifecycleSubtitle">新建 · 编辑 · 版本</div></div><button class="close" type="button" data-lifecycle-close aria-label="关闭编辑器">✕</button></header>
+  <div class="utilityBody">
+   <input type="hidden" id="lifecycleId">
+   <div class="lifecycle-grid">
+    <label class="lifecycle-field full"><span>名称</span><input id="lifecycleName" maxlength="120" placeholder="给这条 提示词 一个清晰名称"></label>
+    <label class="lifecycle-field"><span>状态</span><select id="lifecycleStatus"><option value="active">使用中</option><option value="draft">草稿</option><option value="archived">已收起</option></select></label>
+    <label class="lifecycle-field"><span>标签</span><input id="lifecycleTags" placeholder="例如：写作, 周报, 团队"></label>
+    <label class="lifecycle-field full"><span>用途 / 说明</span><input id="lifecycleDesc" maxlength="240" placeholder="这条 提示词 用来解决什么问题"></label>
+    <label class="lifecycle-field full"><span>提示词 正文</span><textarea id="lifecyclePrompt" placeholder="输入 提示词 正文；支持 [变量] 与 {{变量}}"></textarea></label>
+   </div>
+   <div class="lifecycle-history" id="lifecycleHistory"></div>
+   <div class="w-actions lifecycle-footer"><button class="w-btn small" type="button" data-lifecycle-cancel>取消</button><button class="w-btn primary" type="button" data-lifecycle-save>保存提示词</button></div>
+  </div>
+ </div>
+</div>
+<div class="utilityOverlay" id="versionInspectorOverlay" aria-hidden="true">
+ <div class="utilityView version-dialog" role="dialog" aria-modal="true" aria-labelledby="versionInspectorTitle"><header><div><div class="uv-title" id="versionInspectorTitle">版本历史</div><div class="uv-sub">查看 · 差异 · 恢复</div></div><button class="close" type="button" data-version-close>✕</button></header><div class="utilityBody"><div id="versionInspectorBody"></div></div></div>
+</div>
+<div class="utilityOverlay" id="skillOverlay" role="dialog" aria-modal="true" aria-label="Skill 正文">
+ <div class="utilityView"><header><div><div class="uv-title" id="skillOverlayTitle">Skill</div><div class="uv-sub" id="skillOverlayMeta"></div></div><button class="close" type="button" id="skillOverlayClose" data-skill-close aria-label="关闭 Skill 正文">✕</button></header><div class="utilityBody"><pre id="skillOverlayBody" style="white-space:pre-wrap;overflow-wrap:anywhere;margin:0;font-size:13px;line-height:1.8"></pre></div><footer class="utilityBody" style="padding-top:0"><button class="w-btn small" type="button" id="skillOverlayCopy">复制正文</button><button class="w-btn small" type="button" data-skill-close>关闭</button></footer></div>
+</div>
+<div class="utilityOverlay" id="importOverlay" role="dialog" aria-modal="true" aria-label="文件导入">
+ <div class="utilityView"><header><div><div class="uv-title">⇩ 从文件导入 提示词</div><div class="uv-sub">FILE IMPORT · PERSONAL PROMPTS</div></div><button class="close" type="button" data-utility-close="import" aria-label="关闭文件导入">✕</button></header>
+ <div class="utilityBody"><p class="utility-note">选择文件，核对预览，再确认导入。导入后可在「我的工作区」编辑、分类和整理；工作区备份也在工作区中恢复。</p>
+ <label class="file-import-picker"><b>上传提示词文件</b><span>支持 Excel（XLSX / XLS）、CSV / TSV、TXT / Markdown、单条或多条 JSON。单文件最多 20 MB，本批合计 40 MB、最多 10000 条；内容只在当前浏览器读取。</span><input type="file" id="importFile" multiple accept=".xlsx,.xls,.csv,.tsv,.txt,.md,.json" aria-label="选择提示词文件"></label>
+ <div class="import-progress-row"><progress id="fileImportProgress" max="100" value="0" aria-label="当前文件读取进度" hidden></progress><button id="fileImportCancel" class="w-btn" type="button" hidden>取消读取</button></div>
+ <p id="fileImportStorageStatus" class="import-storage-status" role="status"></p>
+ <div id="fileImportMapping" class="import-mapping" aria-label="工作表与列映射"></div>
+ <p class="file-import-status" id="fileImportStatus" role="status" aria-live="polite">尚未选择文件。</p>
+ <p id="fileImportErrors" class="import-errors" role="alert" hidden></p>
+ <div class="import-review-tools"><label>预览范围<select id="fileImportFilter"><option value="all">全部记录</option><option value="selected">已勾选</option><option value="issues">重复、同名和无效</option></select></label><button class="w-btn small" type="button" data-import-select="eligible">勾选可直接导入的条目</button><button class="w-btn small" type="button" data-import-select="none">全部取消</button></div>
+ <p class="utility-note">正文相同、同名不同正文默认不勾选；可核对后单独勾选重复或同名条目，它们会作为新记录保存，不覆盖旧内容。修改列映射或拆分方式会重新生成本批勾选。</p>
+ <div id="fileImportPreview" aria-label="导入内容预览"></div>
+ <div class="import-pager"><button class="w-btn small" type="button" data-import-page="prev">上一页</button><label>第 <input id="fileImportPage" type="number" min="1" value="1" aria-label="预览页码"> <span id="fileImportPages">/ 1</span> 页</label><button class="w-btn small" type="button" data-import-page="next">下一页</button><span>每页 15 条</span></div>
+ <div class="w-actions import-commit-actions"><button class="w-btn" type="button" data-file-import-reset>重新选择</button><button class="w-btn primary" type="button" data-file-import-commit disabled>确认导入</button></div>
+ </div></div>
+</div>
+<div class="help-popover" id="helpPopover" role="dialog" aria-label="功能说明" hidden>
+  <header class="floating-window-head" tabindex="0" title="拖动标题移动说明；Alt + 方向键微调位置"><div><div class="hp-k">用途与操作</div><div class="hp-t" id="helpTitle">功能说明</div></div><button class="hp-close" data-help-skip aria-label="关闭说明">✕</button></header>
+  <div class="hp-d" id="helpText"></div>
+  <div class="hp-mode-note"><b>你现在仍在帮助模式。</b> 本次点击只查看说明，不会执行原按钮。</div>
+  <div class="hp-actions"><button type="button" data-help-exit>退出帮助</button><button class="primary" type="button" data-help-exit-run>退出帮助并继续操作</button></div>
+</div>
+<div class="help-mode-hint" id="helpModeHint" role="status" aria-live="polite" hidden>
+  <span class="hm-q">?</span><b>帮助模式已开启</b><span class="hm-warning">现在点击控件只会显示说明，不会执行操作</span><kbd>Esc</kbd><button class="help-mode-exit" id="helpModeExitBtn" type="button" data-help-exit>退出帮助并恢复操作</button>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite">✓ 已复制</div>
+
+<div class="utilityOverlay" id="comboTrainingOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="comboTrainingTitle">
+ <div class="utilityView combo-training-view">
+  <header><div><div class="uv-title" id="comboTrainingTitle">使用教程 · 亲手练会每一个动作</div><div class="uv-sub">v6.61 · P83 · 分栏搜索 · 分类铺全</div></div><button type="button" class="close" id="comboClose" aria-label="退出使用教程">✕</button></header>
+  <section id="comboMenuSection" class="combo-menu-body">
+   <div class="combo-hero"><span class="w-kicker">从第一个真实任务开始</span><h2>看地图 → 跟导览 → 亲手练。</h2><p>每门课教一个动作：进入隔离练习场，跟着高亮指引亲手操作，系统自动核对结果；做错会给线索，卡住可以点提示。建议先用顶部「使用教程」打开操作地图看一遍四条核心流程。</p><div class="combo-method"><span>隔离虚构资料</span><span>亲手操作真实界面</span><span>自动核对结果</span><span>卡住有提示</span></div></div>
+   <div class="combo-start-controls"><label>要练什么<select id="comboCourseSelect" aria-label="教程章节"></select></label><select id="comboSingleSelect" hidden aria-label="选择单个环节"></select><button class="w-btn primary" type="button" id="comboBegin">查看章节说明 →</button></div>
+   <p class="combo-safety">目录按当前功能自动分组。想先认识界面各按钮？在地图页点「跟导览看一遍」，或在真实界面上跟着分步导览走。练习使用隔离的虚构数据，退出后不会改动你的工作区。</p>
+   <div id="comboCourseMenu"></div>
+  </section>
+  <section id="comboBriefingSection" class="combo-menu-body" hidden aria-labelledby="comboBriefTitle">
+   <button class="w-btn small" type="button" id="comboBriefBack">← 教程目录</button><h2 id="comboBriefTitle"></h2><p id="comboBriefMode" class="combo-brief-mode"></p>
+   <p class="combo-brief-hook" id="comboBriefHook"></p>
+   <details class="combo-brief-details"><summary>展开看完整说明：作用、时机、原理、准备、结果、边界</summary>
+   <div class="combo-brief-grid"><article><h3>这件事有什么用？</h3><p id="comboBriefPurpose"></p></article><article><h3>什么时候需要它？</h3><p id="comboBriefWhen"></p></article><article class="combo-brief-wide"><h3>系统实际怎样工作？</h3><p id="comboBriefMechanism"></p></article><article><h3>正式使用前要准备什么？</h3><p id="comboBriefPrerequisites"></p></article><article><h3>学完能做到什么？</h3><p id="comboBriefResult"></p></article><article class="combo-brief-wide"><h3>这一步的边界</h3><p id="comboBriefBoundary"></p></article></div></details>
+   <button class="w-btn primary combo-brief-start" type="button" id="comboBriefStart">开始带练 →</button>
+  </section>
+  <section id="comboSessionSection" hidden>
+   <div class="combo-stage">
+    <div class="combo-practice-column" aria-label="教程练习画面">
+     <div class="combo-frame-host" id="comboFrameHost"></div>
+    </div>
+    <aside class="combo-coach" aria-label="教程解说与练习控制">
+     <div class="combo-session-head"><button class="w-btn small" type="button" id="comboBack">← 教程目录</button><b id="comboCourseName"></b><span id="comboProgressText" role="status"></span></div>
+     <div id="comboCompletionBanner" hidden role="status"><h2 id="comboCompletionTitle">✓ 教程已完成</h2><p id="comboCompletionText"></p><button class="w-btn primary" type="button" id="comboFinish">完成并退出 →</button></div>
+     <div class="combo-playbar">
+      <p id="comboPlayStatus" role="status" aria-live="polite">正在准备独立练习界面，请稍候。</p>
+      <button class="w-btn small" type="button" id="comboHint" hidden>卡住了？点我看这步要点</button><details class="combo-practice-tools" id="comboPracticeTools"><summary>需要时展开练习工具</summary><div class="combo-coach-actions"><button class="w-btn small" type="button" id="comboRestartStep">重练本步（随便点，不会弄坏任何东西）</button><button class="w-btn small" type="button" id="comboRestartAll">从头练习（随时可重来，不影响资料）</button></div></details>
+      <div id="comboExpectedInput" hidden><div class="combo-material-row"><span>本步练习材料</span><button class="w-btn small" type="button" id="comboCopySample">复制练习文字</button></div><details id="comboMaterialDetails"><summary>展开查看文字，也可选中复制</summary><label class="sr-only" for="comboInputMaterial">练习文字</label><textarea id="comboInputMaterial" readonly></textarea></details><p id="comboMaterialNote" class="combo-inline-note" hidden></p></div>
+     </div>
+     <span class="w-kicker">当前环节 · 动作与目的</span><h2 id="comboInstruction">正在准备练习界面…</h2><p id="comboWhy"></p><p class="combo-feedback" id="comboFeedback"></p><div id="comboFrameNote" class="combo-frame-note" hidden aria-live="polite"></div><div id="comboActionStrip" class="combo-action-strip" aria-label="环节进度"></div><p class="combo-session-boundary">练习使用隔离的虚构资料，退出后不会改动原工作区；自动完成的准备步骤不计入你的操作记录。</p>
+    </aside>
+   </div>
+  </section>
+ </div>
+</div>
+
+<div class="utilityOverlay" id="tutorialMapOverlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="tutorialMapTitle">
+ <div class="utilityView tutorial-map-view">
+  <header><div><div class="uv-title" id="tutorialMapTitle">操作地图 · 一页看懂四条流程</div><div class="uv-sub" id="tutorialMapSub">v6.61 · P83 · 看地图 → 跟导览 → 亲手练</div></div><button type="button" class="close" id="tutorialMapClose" aria-label="关闭操作地图">✕</button></header>
+  <div class="tutorial-map-body" id="tutorialMapBody"></div>
+ </div>
+</div>
+
+<script>@@PLAYBOOK_SCRIPT@@</script>
+</body>
+</html>

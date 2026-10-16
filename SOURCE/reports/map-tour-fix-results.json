@@ -1,0 +1,46 @@
+{
+  "generatedAt": "2026-10-15T03:13:37.396Z",
+  "version": "6.58",
+  "phase": "P80",
+  "results": [
+    {
+      "check": "S3 opens workspace + visible highlight",
+      "status": "passed",
+      "workspaceOpen": true,
+      "highlightVisible": true,
+      "title": "✦ 我的提示词页"
+    },
+    {
+      "check": "S3 step2 stays in workspace, 新建 visible",
+      "status": "passed",
+      "workspaceOpen": true,
+      "highlightVisible": true
+    },
+    {
+      "check": "S3 step3 检查 tab visible",
+      "status": "passed",
+      "highlightVisible": true
+    },
+    {
+      "check": "S4 opens workspace + backup tab visible",
+      "status": "passed",
+      "workspaceOpen": true,
+      "highlightVisible": true
+    },
+    {
+      "check": "S4 step2 stays open, trash tab visible",
+      "status": "passed",
+      "workspaceOpen": true,
+      "highlightVisible": true
+    },
+    {
+      "check": "map practice button opens personal-create",
+      "status": "passed"
+    },
+    {
+      "check": "S2 regression: favorite card visible",
+      "status": "passed",
+      "highlightVisible": true
+    }
+  ]
+}

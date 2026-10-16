@@ -1,0 +1,9 @@
+﻿# Build output (rebuilt via SOURCE/tools/build.py; published file lives in /dist)
+SOURCE/dist/
+# Local workbench data
+.workbuddy/
+# Delivery archives (published via GitHub Releases)
+*.zip
+# OS noise
+Thumbs.db
+.DS_Store

@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "version": "6.61",
+  "phase": "P83",
+  "checks": [
+    "module purpose before starting",
+    "right-side sample highlight",
+    "playback surface has no controls",
+    "verified action schedules auto-advance",
+    "explicit completion then finish exits",
+    "observe fallback button removed",
+    "bounded non-overlap popup placement",
+    "fallback rail outside iframe",
+    "search button widths including 620–760",
+    "relative/fixed geometry regression negative",
+    "container responsive layout",
+    "phone viewport rules",
+    "production default maximize and restore coordinates",
+    "tutorial resize minimum matches CSS",
+    "short-view coach sizing and scrollable navigation",
+    "six light scenes and mobile preferences preserved"
+  ],
+  "widths": [
+    320,
+    390,
+    620,
+    680,
+    740,
+    760,
+    900,
+    1280
+  ],
+  "popupPlacements": 19,
+  "popupFallbacks": 1,
+  "browserRun": false,
+  "limitation": "CSS cascade/geometry and DOM adapter checks do not constitute a browser screenshot test; end-to-end timers are covered separately by surface_training_gate.cjs"
+}

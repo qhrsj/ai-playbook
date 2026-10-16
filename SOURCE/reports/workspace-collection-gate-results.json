@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "version": "6.49",
+  "phase": "P71",
+  "checks": [
+    "database and local reset",
+    "all 21 governance and 5 legacy personal keys",
+    "full recovery backup",
+    "preserve preferences and tutorial",
+    "one-time reset preserves new data",
+    "transaction/storage failure rollback",
+    "malformed and future schema refusal",
+    "native storage untouched in training",
+    "six-theme visible favorites do not open card",
+    "all 79 card pages and 1350 source rows",
+    "source/retired favorite open and attribution",
+    "no automatic personal copy",
+    "idempotent delete and rapid queued toggles",
+    "missing favorite removable",
+    "recent delete keeps card and reopen records again",
+    "failed list writes revert state",
+    "backup restores governance and reset marker",
+    "native keyboard button boundary",
+    "mobile collection CSS"
+  ],
+  "browserRun": false
+}

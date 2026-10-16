@@ -1,0 +1,1 @@
+})().catch(error=>{console.error(error);const notice=document.createElement('div');notice.id='workspaceBootError';notice.style.cssText='position:fixed;inset:0;z-index:2147483647;background:#fff;color:#222;padding:40px;overflow:auto';notice.textContent='个人数据读取未完成，已停止启动以保护已有记录。请重新打开页面，或回到上个版本导出备份。原因：'+(error.message||'本地数据库读取失败');document.body.appendChild(notice);});

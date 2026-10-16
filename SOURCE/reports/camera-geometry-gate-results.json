@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "version": "6.57",
+  "phase": "P79",
+  "cases": 8,
+  "checks": [
+    "whole viewport scaled to fit and centered",
+    "no zoom beyond fit scale",
+    "transform is stationary during playback"
+  ],
+  "browserRun": false
+}

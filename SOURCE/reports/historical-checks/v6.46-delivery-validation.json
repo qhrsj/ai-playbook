@@ -1,0 +1,12 @@
+{
+  "version": "6.46",
+  "phase": "P68",
+  "htmlSha256": "2b6bea836bb5a674093c087b8ddc47e22ea9233f488c419744bcbe675cbdf720",
+  "htmlBytes": 8327010,
+  "requiredChecks": [
+    "Complete ZIP CRC",
+    "Independent source rebuild byte equality",
+    "Chinese rendering and compatibility gate"
+  ],
+  "browserRun": false
+}

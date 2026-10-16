@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "version": "6.61",
+  "phase": "P83",
+  "surfaces": {
+    "FEATURES": 1,
+    "BUGS": 2,
+    "INTERNALS": 1,
+    "TIMELINE": 1
+  },
+  "timelineCount": 84,
+  "expectedTimelineCount": 84,
+  "source": "src/js/08-detail-presentation.js",
+  "browserRun": false
+}

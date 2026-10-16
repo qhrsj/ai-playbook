@@ -1,0 +1,5141 @@
+{
+  "schema": "ai-playbook-combo-training-v3",
+  "version": "6.61",
+  "phase": "P83",
+  "sample": "周会决定先校对访谈字幕。小林负责核对人名，周二交付；小周负责整理标题，截止时间尚未确认。短视频方案仍待讨论。",
+  "prompt": "根据 [会议记录]，为 [阅读对象] 整理决定、待确认问题和行动项。每项行动列出任务、负责人、截止时间与依据原句。未说明的信息写“待确认”，不补造事实。",
+  "chains": {
+    "home": [
+      {
+        "type": "observe",
+        "target": ".nav .brand-copy",
+        "instruction": "观看「系统身份与版本」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "标题区只占需要的宽度，名称、版本和副标题都在里面。",
+        "success": "顶上这块是名称、版本和副标题，功能按钮挨着它。",
+        "id": "home:0"
+      },
+      {
+        "type": "observe",
+        "target": "#navScratchBtn",
+        "instruction": "观看「随手记」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "想法还没成形时先记在这；它会自动保底，成熟后转成正式提示词。",
+        "success": "随手记在这儿，想法没成形时先写在这。",
+        "id": "home:1"
+      },
+      {
+        "type": "observe",
+        "target": "#importBtn",
+        "instruction": "观看「导入」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "从本地文件批量加你的提示词，先预览再确认保存。",
+        "success": "导入从本地文件批量加你的提示词。",
+        "id": "home:2"
+      },
+      {
+        "type": "observe",
+        "target": "#sourceCatalogBtn",
+        "instruction": "观看「来源广场」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "查原始发布记录、署名和全文，也能复制或另存个人版。",
+        "success": "来源广场是原文的住处，署名和全文都在里面。",
+        "id": "home:3"
+      },
+      {
+        "type": "observe",
+        "target": "#personalWorkspaceBtn",
+        "instruction": "观看「我的工作区」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "管理你的提示词、收藏、最近、随手记和回收站，都在这里。",
+        "success": "我的工作区放你的提示词、收藏和随手记。",
+        "id": "home:4"
+      },
+      {
+        "type": "observe",
+        "target": "#devlogBtn",
+        "instruction": "观看「日志」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "看每次功能、Bug、验证和复盘，用来核对版本和改动。",
+        "success": "日志记下每次改动，用来核对版本。",
+        "id": "home:5"
+      },
+      {
+        "type": "observe",
+        "target": "#tourBtn",
+        "instruction": "观看「使用教程」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "进入当前版本的训练目录，先读目的再动手。",
+        "success": "使用教程就是你正在看的这个入口。",
+        "id": "home:6"
+      },
+      {
+        "type": "observe",
+        "target": "#helpModeBtn",
+        "instruction": "观看「帮助」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "点一个控件就能看它的用途和边界，看完退出再继续。",
+        "success": "帮助点一下看用途，看完退出再操作。",
+        "id": "home:7"
+      },
+      {
+        "type": "observe",
+        "target": "#navReadingBtn",
+        "instruction": "观看「阅读」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "统一调整主页和各窗口的字号、行距，正文不受影响。",
+        "success": "阅读整体调字号和行距，正文保持原样。",
+        "id": "home:8"
+      },
+      {
+        "type": "observe",
+        "target": "#navCountToggle",
+        "instruction": "观看「主页数字开关」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "只管随手记和工作区两个主页角标，记录本身不动。",
+        "success": "这个开关只管主页两个数字角标。",
+        "id": "home:9"
+      },
+      {
+        "type": "observe",
+        "target": "#themeBtn",
+        "instruction": "观看「主题」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "更换视觉主题；六个主题共用同一套核心流程。",
+        "success": "主题换外观，核心流程还是一样。",
+        "id": "home:10"
+      },
+      {
+        "type": "observe",
+        "target": "#modeBtn",
+        "instruction": "观看「场景配色」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "选当前主题里的场景和配色，和模板分类无关。",
+        "success": "场景配色挑当前主题的场景，跟模板分类无关。",
+        "id": "home:11"
+      },
+      {
+        "id": "home:favorite-entry",
+        "type": "observe",
+        "target": "#home [data-favorite-card]",
+        "instruction": "观察主页模板卡片上的「☆ 收藏」按钮。",
+        "check": "visible",
+        "why": "点☆把模板加入收藏，★再点一下取消，不用先进详情。",
+        "success": "☆ 在卡片上直接收藏，不用先进详情。"
+      },
+      {
+        "type": "observe",
+        "target": "#mobileBtn",
+        "instruction": "观看「手机模式」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "自动适配手机，也可手动开关；只换布局，不改资料。",
+        "success": "手机模式切布局，名称和功能都还在。",
+        "id": "home:12"
+      },
+      {
+        "type": "observe",
+        "target": "#navLayoutReset",
+        "instruction": "观看「恢复按钮顺序」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "按钮能拖动排序，↺ 恢复默认；偏好会继续保存。",
+        "success": "↺ 把按钮顺序恢复成默认，偏好会保存。",
+        "id": "home:13"
+      },
+      {
+        "type": "observe",
+        "target": "#q",
+        "instruction": "观看「主页长搜索框」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "输入关键词会筛选模板；点匹配或回车才进入推荐。",
+        "success": "长搜索框筛选模板，点匹配才进推荐。",
+        "id": "home:14"
+      },
+      {
+        "type": "observe",
+        "target": "#needGatewayForm button[type=\"submit\"]",
+        "instruction": "观看「匹配模板」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "把当前输入交给本地匹配器，显示前三推荐。",
+        "success": "匹配模板把当前输入交给本地推荐。",
+        "id": "home:15"
+      },
+      {
+        "type": "observe",
+        "target": "[data-home-library-tab=\"official\"]",
+        "instruction": "观看「系统模板」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "查看整理过的母模板，每页最多 15 张，可按分类排序。",
+        "success": "系统模板是整理过的母模板，能按分类排序。",
+        "id": "home:16"
+      },
+      {
+        "type": "observe",
+        "target": "[data-home-library-tab=\"personal\"]",
+        "instruction": "观看「个人模板」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "切换看你自己的个人版：创建、导入或从来源保存的。",
+        "success": "个人模板是你自己建、导入或保存的版本。",
+        "id": "home:17"
+      },
+      {
+        "type": "observe",
+        "target": "#home .home-category-tabs",
+        "instruction": "观看「分类按钮」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "只筛当前模板类型的任务分类；找不到就切回全部。",
+        "success": "分类按钮只筛当前类型，切回全部就能全看。",
+        "id": "home:18"
+      },
+      {
+        "type": "observe",
+        "target": "#sort",
+        "instruction": "观看「排序」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "评分优先和编号顺序只改展示次序，评分为修改判断。",
+        "success": "排序只改展示次序，分数代表修改判断。",
+        "id": "home:19"
+      },
+      {
+        "type": "observe",
+        "target": "#home .home-pager",
+        "instruction": "观看「页码」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "上一页、页码和下一页翻看更多结果。",
+        "success": "页码翻页看更多结果，改动后回到第一页。",
+        "id": "home:20"
+      },
+      {
+        "type": "observe",
+        "target": "#home .card",
+        "instruction": "观看「模板卡片」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "先读任务和适用性，再点开工作台按四页使用。",
+        "success": "卡片先读任务和适用性，点开才进工作台。",
+        "id": "home:21"
+      },
+      {
+        "type": "observe",
+        "target": "#home [data-home-action=\"rotate-hero\"]",
+        "instruction": "观看「换一句」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "轮换主题引言，署名和出处仍在旁边。",
+        "success": "换一句只轮换主题引言，不动你的记录。",
+        "id": "home:22"
+      },
+      {
+        "type": "observe",
+        "target": "#home .home-primary-actions [data-scratch-open]",
+        "instruction": "观看「主页醒目的随手记入口」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "和顶部随手记打开同一份草稿，想到就随手记下来。",
+        "success": "这里和顶部随手记打开同一份草稿。",
+        "id": "home:23"
+      },
+      {
+        "type": "observe",
+        "target": "#home .home-primary-actions [data-workspace-open]",
+        "instruction": "观看「主页醒目的工作区入口」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "和顶部工作区进同一份个人资产，方便保存和迭代。",
+        "success": "这里和顶部工作区进同一份个人资产。",
+        "id": "home:24"
+      },
+      {
+        "type": "observe",
+        "target": "#devlogFoot",
+        "instruction": "观看「页脚开发日志入口」：画面自动高亮并解说，暂停后可继续观看。",
+        "check": "visible",
+        "why": "和顶部日志打开同一套完整记录，方便核对版本演进。",
+        "success": "页脚的日志和顶部点开的是同一套记录。",
+        "id": "home:25"
+      }
+    ],
+    "daily": [
+      {
+        "type": "input",
+        "target": "#q",
+        "instruction": "在主页长搜索框输入「会议纪要」。",
+        "value": "会议纪要",
+        "check": "search",
+        "why": "先看下面的筛选结果，这一步还没进需求导航。",
+        "success": "「会议纪要」已输入，下面的卡片跟着收窄了。",
+        "id": "daily:0",
+        "observe": {
+          "target": "#home-library-view",
+          "message": "输入和本地状态已核对，请看高亮的实际结果。 先看下面的筛选结果；还没有进入需求导航，也没有生成 AI 回答。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "#needGatewayForm button[type=\"submit\"]",
+        "instruction": "点击搜索框右侧「匹配模板 →」。",
+        "check": "need-results",
+        "why": "点它会带着你的需求打开推荐列表；匹配按本地关键词算。",
+        "success": "推荐列表打开了，先看前三张卡片。",
+        "id": "daily:1",
+        "observe": {
+          "target": "#needThread .need-result",
+          "message": "匹配是本地关键词规则；较匹配不是模型准确率，核对模板用途后再选择。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "#needThread .need-prompt summary",
+        "instruction": "点击「查看已适配的提示词」。",
+        "check": "need-expanded",
+        "why": "展开的是模板加本次需求的预填指令，还没调用 AI。",
+        "success": "适配稿展开了，看到的是预填指令。",
+        "id": "daily:3",
+        "observe": {
+          "target": "#needThread .need-prompt pre",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 展开的是模板加本次需求的预填指令；它没有调用 AI，也不是会议纪要答案。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "[data-need-copy=\"PC-09-006\"]",
+        "instruction": "点击第一候选的「复制自动生成提示词」。",
+        "check": "need-copy",
+        "why": "可以直接带走需求适配稿；真实使用还要补齐材料。",
+        "success": "适配稿已复制到练习区。",
+        "id": "daily:4",
+        "observe": {
+          "target": "[data-need-copy=\"PC-09-006\"]",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 可直接带走需求适配稿，但当前只输入任务名，真实使用还需补齐材料；训练只核对内部复制内容。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "[data-need-use=\"PC-09-006\"]",
+        "instruction": "点击会议纪要模板的「进入模板继续填写」。",
+        "check": "card",
+        "why": "真实处理器会关掉需求导航、打开模板，并把需求带进一个参数。",
+        "success": "模板打开了，「会议纪要」已带进参数。",
+        "id": "daily:5",
+        "observe": {
+          "target": "textarea[data-field=\"[会议记录]\"]",
+          "message": "这里被带入的是「会议纪要」这句需求，不是完整记录。把它换成真实材料，避免把任务名当成输入事实。 选中状态表示当前页。下一环节直接填写材料，不把重复点击当作必要操作。"
+        }
+      },
+      {
+        "id": "daily:8",
+        "type": "input",
+        "target": "textarea[data-field=\"[会议记录]\"]",
+        "instruction": "把练习区提供的虚构会议记录填进「会议记录」。",
+        "value": "周会决定先校对访谈字幕。小林负责核对人名，周二交付；小周负责整理标题，截止时间尚未确认。短视频方案仍待讨论。",
+        "check": "material",
+        "success": "会议记录填好了，和这次材料对得上。",
+        "why": "占位符代表每次会变的材料，换成你这次的真实记录。",
+        "observe": {
+          "target": "#panel [data-completion-text]",
+          "message": "输入已检查，内容符合本步条件。 占位符表示每次会变化的材料，不是模板正文的一部分。"
+        }
+      },
+      {
+        "type": "input",
+        "target": "textarea[data-field=\"[会议日期]\"]",
+        "instruction": "在可选的「会议日期」填写材料中缺失的信息状态。",
+        "value": "材料未提供会议日期或时区；周二对应的具体日期待确认。",
+        "check": "meeting-date",
+        "why": "材料缺日期就明确写待确认，别补造。",
+        "success": "两项参数都填齐，缺的日期标成待确认。",
+        "observe": {
+          "target": "#panel [data-completion-text]",
+          "message": "这里应显示 2/2。日期与时区没有从无依据的信息推造，下一步预览完整指令。"
+        },
+        "id": "daily:9"
+      },
+      {
+        "id": "daily:10",
+        "type": "click",
+        "target": "[data-view=\"core-prompt\"]",
+        "instruction": "点击工作台「03 提示词」。",
+        "check": "pane:core-prompt",
+        "success": "切到提示词页，看到组装后的指令。",
+        "why": "同一工作台按概览、参数、提示词、来源分步组织。",
+        "observe": {
+          "target": "#panel [data-pane=\"core-prompt\"]",
+          "message": "已切到组装后的提示词。 同一工作台按概览、参数、提示词、来源分步组织；切页不会生成 AI 回答。"
+        }
+      },
+      {
+        "id": "daily:11",
+        "type": "click",
+        "target": "[data-action=\"copy\"]",
+        "instruction": "点击「复制完整提示词」。",
+        "check": "copy",
+        "success": "指令复制好了，没有留下占位符。",
+        "why": "正式用时把指令粘到自己的 AI 工具，逐项核对输出。",
+        "observe": {
+          "target": "#panel [data-action=\"copy\"]",
+          "message": "练习复制区已收到包含会议记录的指令。 正式使用时将指令粘贴到自己的 AI 工具，逐项核对输出。练习复制只在训练场内记录。"
+        }
+      },
+      {
+        "id": "daily:12",
+        "type": "click",
+        "target": "[data-view=\"core-source\"]",
+        "instruction": "点击工作台「04 来源」。",
+        "check": "pane:core-source",
+        "success": "来源和整理说明都显示出来了。",
+        "why": "来源用来回查依据；整理说明讲模板怎么形成。",
+        "observe": {
+          "target": "#panel [data-pane=\"core-source\"] .meta-content",
+          "message": "整理说明解释模板怎样形成；署名发布者不自动等于原创作者，评分不能代替试用。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "#panel [data-source=\"0\"]",
+        "instruction": "点击第一条来源的「查看摘录 ↗」。",
+        "check": "excerpt-open",
+        "why": "摘录让你对照改写前的原文和发布者。",
+        "success": "第一条摘录打开了，能看到原文。",
+        "id": "daily:14",
+        "observe": {
+          "target": "#srcview .source-attribution",
+          "message": "核对署名与条目编号；完整原文仍要结合来源说明判断，不能据此自动认定原创权属。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "#srcCopy",
+        "instruction": "点击「复制摘录」。",
+        "check": "excerpt-copy",
+        "why": "复制的是原始摘录，母模板指令另在提示词页。",
+        "success": "摘录已复制到练习区。",
+        "id": "daily:16",
+        "observe": {
+          "target": "#srcCopy",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 复制的是原始摘录，不是已经填好参数的母模板指令。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "#srcview [data-source-catalog-entry]",
+        "instruction": "点击「查看广场记录」。",
+        "check": "catalog-274",
+        "why": "回链会定位来源记录，看完整正文和条目 ID。",
+        "success": "广场记录 #274 打开了，正文和 ID 都在。",
+        "id": "daily:17",
+        "observe": {
+          "target": "#sourceCatalogDetail .source-meta",
+          "message": "这一页是发布记录；不要把发布署名、推断分类和策展评分混为同一件事。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "[data-square-copy]",
+        "instruction": "点击「复制完整原文」。",
+        "check": "source-copy",
+        "why": "这里复制来源原文，母模板指令在提示词页复制。",
+        "success": "原文复制好了，正文完整。",
+        "id": "daily:19",
+        "observe": {
+          "target": "#sourceCatalogDetail .source-actions",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 这里复制来源原文；个人保存、分类、排序和同文记录另有来源广场专项训练。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "[data-square-card=\"PC-09-006\"]",
+        "instruction": "点击关联母模板「查看策展版本」。",
+        "check": "card",
+        "why": "顺着真实关联按钮回到母模板，原文和方法是两种内容。",
+        "success": "回到母模板了，能看到策展后的方法。",
+        "id": "daily:20",
+        "observe": {
+          "target": "#workspaceTitle",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 沿真实关联按钮返回母模板；原文与策展后的方法是两种内容。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "[data-view=\"core-source\"]",
+        "instruction": "再次点击「04 来源」。",
+        "check": "pane:core-source",
+        "why": "返回来源页继续看其余来源，别漏了可互动摘录。",
+        "success": "回到来源页，接着看其余来源。",
+        "id": "daily:21",
+        "observe": {
+          "target": "#panel [data-pane=\"core-source\"]",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 返回来源页，继续查看其余来源，不能遗漏可互动摘录。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "#panel [data-source=\"1\"]",
+        "instruction": "点击第二条来源的「查看摘录 ↗」。",
+        "check": "excerpt-open",
+        "why": "同一母模板可能融合多条原文，逐条核对更稳。",
+        "success": "第二条摘录打开了。",
+        "id": "daily:22",
+        "observe": {
+          "target": "#srcText",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 同一母模板可能融合多条原文；逐条核对而不是只看第一条。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "#srcClose",
+        "instruction": "关闭第二条摘录窗口。",
+        "check": "excerpt-closed",
+        "why": "关闭只返回来源页，来源记录还在。",
+        "success": "第二条摘录关上了，来源没删。",
+        "id": "daily:23",
+        "observe": {
+          "target": "#panel [data-pane=\"core-source\"]",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 关闭只返回模板来源页，不删除来源。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "#panel [data-source=\"2\"]",
+        "instruction": "点击第三条来源的「查看摘录 ↗」。",
+        "check": "excerpt-open",
+        "why": "第三条原文和发布者独立保留，值得单独回查。",
+        "success": "第三条摘录打开了。",
+        "id": "daily:24",
+        "observe": {
+          "target": "#srcText",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 第三条仍保留自己的原文与发布者，需要独立回查。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "#srcClose",
+        "instruction": "关闭第三条摘录窗口。",
+        "check": "excerpt-closed",
+        "why": "三个摘录入口都用过了，课后仍可回查。",
+        "success": "第三条也关上了，来源回查到此完成。",
+        "id": "daily:25",
+        "observe": {
+          "target": "#panel [data-pane=\"core-source\"]",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 三个互动摘录入口都已实际使用；课程结束后仍可在正式页面回查。"
+        }
+      }
+    ],
+    "collections": [
+      {
+        "id": "collections:0",
+        "type": "input",
+        "target": "#q",
+        "instruction": "在主页长搜索框输入「会议纪要」。",
+        "check": "search",
+        "why": "先筛出公开模板，方便直接在卡片上收藏。",
+        "success": "列表收窄到「会议纪要」了。",
+        "value": "会议纪要",
+        "observe": {
+          "target": "#home-library-view",
+          "message": "先筛选公开模板，以便练习直接在卡片上收藏。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:1",
+        "type": "click",
+        "target": "#home [data-favorite-card=\"PC-09-006\"]",
+        "instruction": "点击会议纪要卡片上的「☆ 收藏」。",
+        "check": "favorite-on:PC-09-006",
+        "why": "收藏只加快捷入口，不会打开工作台或复制正文。",
+        "success": "会议纪要卡片上点亮了☆。",
+        "observe": {
+          "target": "#home [data-favorite-card=\"PC-09-006\"]",
+          "message": "收藏只添加快捷入口，不会打开工作台或复制正文。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:2",
+        "type": "click",
+        "target": "#personalWorkspaceBtn",
+        "instruction": "点击顶部「我的工作区」。",
+        "check": "workspace",
+        "why": "收藏和历史都在工作区统一管理。",
+        "success": "工作区打开了，先看收藏栏。",
+        "observe": {
+          "target": "#personalWorkspaceTitle",
+          "message": "集中管理收藏与历史，确认刚才保存的位置。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:3",
+        "type": "click",
+        "target": "[data-pw-tab=\"favorites\"]",
+        "instruction": "点击工作区的「收藏」选项卡。",
+        "check": "tab:favorites",
+        "why": "收藏栏会列出刚加入的母模板。",
+        "success": "收藏栏里出现了会议纪要。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "收藏栏现在会列出刚刚加入的母模板。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:4",
+        "type": "click",
+        "target": "[data-pw-favorite-open=\"PC-09-006\"]",
+        "instruction": "点击会议纪要收藏记录的「打开」。",
+        "check": "card:PC-09-006",
+        "why": "这里打开的是原模板，收藏不留上次参数。",
+        "success": "原模板打开了。",
+        "observe": {
+          "target": "[data-pane=\"core-inputs\"]",
+          "message": "此处打开原模板；收藏不会保存你上一次填写的参数。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:5",
+        "type": "click",
+        "target": "#panel [data-favorite-card=\"PC-09-006\"]",
+        "instruction": "在详情顶部点击「★ 已收藏」取消收藏。",
+        "check": "favorite-off:PC-09-006",
+        "why": "已收藏按钮可直接取消，模板仍开着。",
+        "success": "详情顶部恢复成☆，收藏取消了。",
+        "observe": {
+          "target": "#panel [data-favorite-card=\"PC-09-006\"]",
+          "message": "已收藏按钮可直接取消；模板依旧打开且正文不受影响。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:6",
+        "type": "click",
+        "target": "#panel [data-action=\"close\"]",
+        "instruction": "点击「返回模板库」。",
+        "check": "card-closed",
+        "why": "先真实返回主页，再操作主页入口。",
+        "success": "回到主页了。",
+        "observe": {
+          "target": "#home-library-view",
+          "message": "先真实返回主页，再操作主页入口；手机上打开详情时主页不可点击。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:7",
+        "type": "click",
+        "target": "#home [data-favorite-card=\"PC-09-006\"]",
+        "instruction": "再次点击卡片上的「☆ 收藏」。",
+        "check": "favorite-on:PC-09-006",
+        "why": "重新收藏，接下来练习从列表删除。",
+        "success": "卡片上又亮起了☆。",
+        "observe": {
+          "target": "#home [data-favorite-card=\"PC-09-006\"]",
+          "message": "重新收藏，接下来练习从收藏列表删除关系。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:8",
+        "type": "click",
+        "target": "#personalWorkspaceBtn",
+        "instruction": "再次打开「我的工作区」。",
+        "check": "workspace",
+        "why": "收藏列表和主页按钮读同一份数据。",
+        "success": "工作区又打开了。",
+        "observe": {
+          "target": "#personalWorkspaceTitle",
+          "message": "收藏列表与主页按钮读取同一份数据。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:9",
+        "type": "click",
+        "target": "[data-pw-tab=\"favorites\"]",
+        "instruction": "再次进入「收藏」。",
+        "check": "tab:favorites",
+        "why": "分开管理收藏记录和原模板操作。",
+        "success": "回到收藏栏了。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "区分收藏记录的管理动作与原模板操作。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:10",
+        "type": "click",
+        "target": "[data-pw-unfavorite=\"PC-09-006\"]",
+        "instruction": "点击母模板收藏记录的「删除收藏」。",
+        "check": "favorite-off:PC-09-006",
+        "why": "这只移除收藏关系，母模板和最近使用都留着。",
+        "success": "会议纪要已从收藏栏移除。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "这只移除收藏关系，不删除母模板，也不清除最近使用。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:11",
+        "type": "click",
+        "target": "[data-personal-close]",
+        "instruction": "关闭工作区。",
+        "check": "workspace-closed",
+        "why": "回主页，接着练来源原文的收藏。",
+        "success": "工作区关上了，回到主页。",
+        "observe": {
+          "target": "#home-library-view",
+          "message": "返回主页，继续练习来源原文的收藏。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:12",
+        "type": "click",
+        "target": "#sourceCatalogBtn",
+        "instruction": "打开顶部「来源广场」。",
+        "check": "catalog-open",
+        "why": "广场保存原始发布记录，和母模板分开收藏。",
+        "success": "来源广场打开了，准备收藏一条。",
+        "observe": {
+          "target": "#sourceCatalogDetail",
+          "message": "广场保存原始发布记录，和母模板分开收藏。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:13",
+        "type": "click",
+        "target": "#sourceCatalogList [data-favorite-card=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+        "instruction": "点击来源广场第一条记录旁的「☆ 收藏」。",
+        "check": "favorite-on:source:4d98a939-3ff7-45a3-8f25-ab5d443df468",
+        "why": "直接收藏这条发布记录，原文和署名仍在广场。",
+        "success": "第一条来源记录了☆。",
+        "observe": {
+          "target": "#sourceCatalogList [data-favorite-card=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+          "message": "直接收藏这条发布记录，完整原文与署名仍在来源广场。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:14",
+        "type": "click",
+        "target": "#sourceCatalogClose",
+        "instruction": "关闭来源广场。",
+        "check": "catalog-closed",
+        "why": "接下来从工作区找回刚收藏的来源。",
+        "success": "来源广场关上了。",
+        "observe": {
+          "target": "#home-library-view",
+          "message": "练习通过工作区找回刚刚收藏的来源。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:15",
+        "type": "click",
+        "target": "#personalWorkspaceBtn",
+        "instruction": "打开「我的工作区」。",
+        "check": "workspace",
+        "why": "统一收藏栏同时放母模板、个人版和来源记录。",
+        "success": "工作区打开了，这次看来源收藏。",
+        "observe": {
+          "target": "#personalWorkspaceTitle",
+          "message": "统一收藏栏同时容纳母模板、个人模板与来源记录。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:16",
+        "type": "click",
+        "target": "[data-pw-tab=\"favorites\"]",
+        "instruction": "点击「收藏」，查看标记为来源原文的记录。",
+        "check": "tab:favorites",
+        "why": "类型标签说明这是原始记录，没变成母模板。",
+        "success": "看到标记为来源原文的收藏了。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "类型标签说明这是原始发布记录，没有变成母模板或我的提示词。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:17",
+        "type": "click",
+        "target": "[data-pw-favorite-open=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+        "instruction": "点击来源收藏记录的「打开」。",
+        "check": "catalog-1",
+        "why": "返回原始发布记录，核对标题、署名和全文。",
+        "success": "回到这条来源记录了。",
+        "observe": {
+          "target": "#sourceCatalogDetail",
+          "message": "返回原始发布记录，核对标题、署名和完整原文。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:18",
+        "type": "click",
+        "target": "#sourceCatalogDetail [data-favorite-card=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+        "instruction": "点击来源详情中的「★ 已收藏」。",
+        "check": "favorite-off:source:4d98a939-3ff7-45a3-8f25-ab5d443df468",
+        "why": "取消后，列表和详情的按钮一起恢复成☆。",
+        "success": "来源记录的收藏取消了。",
+        "observe": {
+          "target": "#sourceCatalogList [data-favorite-card=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+          "message": "取消后，列表和详情的收藏按钮会同时恢复为☆ 收藏。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:19",
+        "type": "click",
+        "target": "#sourceCatalogList [data-favorite-card=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+        "instruction": "再从列表收藏这条来源。",
+        "check": "favorite-on:source:4d98a939-3ff7-45a3-8f25-ab5d443df468",
+        "why": "列表和详情共用同一关系，不会多出一条。",
+        "success": "来源记录重新收藏好了。",
+        "observe": {
+          "target": "#sourceCatalogDetail [data-favorite-card=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+          "message": "来源列表与详情使用同一收藏关系，不产生两条重复收藏。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:20",
+        "type": "click",
+        "target": "#sourceCatalogClose",
+        "instruction": "关闭来源广场，回到主页。",
+        "check": "catalog-closed",
+        "why": "准备从收藏栏删掉这条来源关系。",
+        "success": "广场关上了，回主页。",
+        "observe": {
+          "target": "#home-library-view",
+          "message": "准备从收藏列表删除这条来源关系。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:21",
+        "type": "click",
+        "target": "#personalWorkspaceBtn",
+        "instruction": "打开「我的工作区」。",
+        "check": "workspace",
+        "why": "收藏删除和历史删除都在这里。",
+        "success": "工作区打开了，准备删来源收藏。",
+        "observe": {
+          "target": "#personalWorkspaceTitle",
+          "message": "收藏删除与历史删除都在这里进行。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:22",
+        "type": "click",
+        "target": "[data-pw-tab=\"favorites\"]",
+        "instruction": "进入「收藏」。",
+        "check": "tab:favorites",
+        "why": "找到来源原文记录的删除入口。",
+        "success": "又回到收藏栏了。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "找到来源原文记录的删除入口。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:23",
+        "type": "click",
+        "target": "[data-pw-unfavorite=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+        "instruction": "点击来源记录的「删除收藏」。",
+        "check": "favorite-off:source:4d98a939-3ff7-45a3-8f25-ab5d443df468",
+        "why": "来源原文仍在，只从收藏栏移除。",
+        "success": "来源记录已从收藏栏移除。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "来源原文仍保留，只从收藏栏移除。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:24",
+        "type": "click",
+        "target": "[data-pw-tab=\"recent\"]",
+        "instruction": "切换到「最近使用」。",
+        "check": "tab:recent",
+        "why": "前面打开母模板会留下访问记录，它只是访问历史。",
+        "success": "切到最近使用了。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "前面打开会议纪要模板留下访问记录；它不是参数备份。 请看高亮内容确认变化。"
+        }
+      },
+      {
+        "id": "collections:25",
+        "type": "click",
+        "target": "[data-pw-recent-delete=\"PC-09-006\"]",
+        "instruction": "点击会议纪要最近使用记录的「删除」。",
+        "check": "recent-removed:PC-09-006",
+        "why": "只删这条历史；再打开会重新记录。",
+        "success": "会议纪要的最近记录删掉了。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "只删除这条历史；以后再次打开模板会产生新的最近使用记录。 请看高亮内容确认变化。"
+        }
+      }
+    ],
+    "personal": [
+      {
+        "id": "personal:0",
+        "type": "click",
+        "target": "#personalWorkspaceBtn",
+        "instruction": "点击顶部「我的工作区」。",
+        "check": "workspace",
+        "success": "工作区打开了，准备新建一份方法。",
+        "why": "先找入口，之后才选具体工具。",
+        "observe": {
+          "target": "#personalWorkspaceTitle",
+          "message": "工作区已打开。 先找入口，之后才选择具体工具。"
+        }
+      },
+      {
+        "id": "personal:1",
+        "type": "click",
+        "target": "[data-pw-create]",
+        "instruction": "点击「新建个人 Prompt」。",
+        "check": "editor",
+        "success": "编辑窗口打开了。",
+        "why": "新建保存能复用的方法，用时再填当次材料。",
+        "observe": {
+          "target": "#lifecycleName",
+          "message": "个人编辑窗口已打开。 新建保存可复用的方法，使用时再填当次材料。"
+        }
+      },
+      {
+        "id": "personal:2",
+        "type": "input",
+        "target": "#lifecycleName",
+        "instruction": "填写名称「会议复盘练习」。",
+        "value": "会议复盘练习",
+        "check": "name",
+        "success": "名称「会议复盘练习」填好了。",
+        "why": "名称方便以后检索，练习按指定名字写。",
+        "observe": {
+          "target": "#lifecycleName",
+          "message": "输入已检查，内容符合本步条件。 名称用于以后检索，练习要求使用指定名称以核对保存结果。"
+        }
+      },
+      {
+        "id": "personal:3",
+        "type": "input",
+        "target": "#lifecycleDesc",
+        "instruction": "填写这份方法的用途说明。",
+        "value": "把会议记录整理成决定、待确认问题和行动责任",
+        "check": "description",
+        "success": "用途说明写好了。",
+        "why": "用途说明帮你判断何时选这份方法。",
+        "observe": {
+          "target": "#lifecycleDesc",
+          "message": "输入已检查，内容符合本步条件。 用途说明帮助你判断何时选这份方法，也供候选评审核对。"
+        }
+      },
+      {
+        "id": "personal:4",
+        "type": "input",
+        "target": "#lifecycleTags",
+        "instruction": "填写标签「会议,复盘」。",
+        "value": "会议,复盘",
+        "check": "tags",
+        "success": "标签「会议,复盘」填好了。",
+        "why": "标签用来整理和筛选；标签本身不提升效果。",
+        "observe": {
+          "target": "#lifecycleTags",
+          "message": "输入已检查，内容符合本步条件。 标签用于整理和筛选；标签本身不会提升模型效果。"
+        }
+      },
+      {
+        "id": "personal:5",
+        "type": "input",
+        "target": "#lifecyclePrompt",
+        "instruction": "填写练习区提供的带变量正文。",
+        "value": "根据 [会议记录]，为 [阅读对象] 整理决定、待确认问题和行动项。每项行动列出任务、负责人、截止时间与依据原句。未说明的信息写“待确认”，不补造事实。",
+        "check": "prompt",
+        "success": "带变量的正文填好了。",
+        "why": "保留 [会议记录] 这类变量，下次才能换材料复用。",
+        "observe": {
+          "target": "#lifecyclePrompt",
+          "message": "输入已检查，内容符合本步条件。 保留 [会议记录] 等变量，下次才能替换材料复用。"
+        }
+      },
+      {
+        "id": "personal:6",
+        "type": "click",
+        "target": "[data-lifecycle-save]",
+        "instruction": "点击「保存提示词」。",
+        "check": "personal-saved",
+        "success": "列表里出现了「会议复盘练习」。",
+        "why": "只有真的保存成功，才形成个人资产。",
+        "observe": {
+          "target": "#personalWorkspaceList .pw-item h3",
+          "message": "列表中已出现「会议复盘练习」。 只有实际保存成功，才形成个人资产。"
+        }
+      },
+      {
+        "id": "personal:7",
+        "type": "click",
+        "target": "[data-pw-edit]",
+        "instruction": "点击这条记录旁的「修改」。",
+        "check": "editor-existing",
+        "success": "刚保存的个人版打开了。",
+        "why": "改的是个人副本，保存后会留下修改前的版本。",
+        "observe": {
+          "target": "#lifecyclePrompt",
+          "message": "已打开刚保存的个人版。 编辑的是个人副本；保存后会留存编辑前的版本。"
+        }
+      },
+      {
+        "id": "personal:8",
+        "type": "input",
+        "target": "#lifecyclePrompt",
+        "instruction": "在正文末尾补上「请先列出待确认问题」。",
+        "value": "根据 [会议记录]，为 [阅读对象] 整理决定、待确认问题和行动项。每项行动列出任务、负责人、截止时间与依据原句。未说明的信息写“待确认”，不补造事实。\n请先列出待确认问题。",
+        "check": "revised",
+        "success": "正文末尾补上了「请先列出待确认问题」。",
+        "why": "这次明确加了输出顺序要求，稍后能在差异里看到。",
+        "observe": {
+          "target": "#lifecyclePrompt",
+          "message": "输入已检查，内容符合本步条件。 这次明确增加输出顺序要求，稍后可在版本差异中看到。"
+        }
+      },
+      {
+        "id": "personal:9",
+        "type": "click",
+        "target": "[data-lifecycle-save]",
+        "instruction": "点击「保存提示词」。",
+        "check": "version-saved",
+        "success": "旧正文进了历史，当前版也更新了。",
+        "why": "保存把新稿设为当前版，并自动存旧稿历史。",
+        "observe": {
+          "target": "#personalWorkspaceList [data-pw-versions]",
+          "message": "旧正文已进入历史，当前正文已更新。 保存把新稿设为当前版，并自动保存旧稿历史。"
+        }
+      },
+      {
+        "id": "personal:10",
+        "type": "click",
+        "target": "[data-pw-versions]",
+        "instruction": "点击这条记录的「旧版本」。",
+        "check": "versions",
+        "success": "版本窗口打开了。",
+        "why": "版本窗口让你先看历史，再决定要不要恢复。",
+        "observe": {
+          "target": "#versionInspectorBody",
+          "message": "版本窗口已打开。 版本窗口让你先检查历史，再决定是否恢复。"
+        }
+      },
+      {
+        "id": "personal:11",
+        "type": "click",
+        "target": "[data-version-index=\"0\"]",
+        "instruction": "点击左侧历史版本 v1。",
+        "check": "old-version",
+        "success": "选中的是修改前的旧正文。",
+        "why": "先选中旧稿，才会出现与当前比较的入口。",
+        "observe": {
+          "target": "#versionInspectorBody",
+          "message": "已选中编辑前的旧正文。 先选择旧稿，才会出现与当前正文比较的入口。"
+        }
+      },
+      {
+        "id": "personal:12",
+        "type": "click",
+        "target": "[data-version-diff]",
+        "instruction": "点击「与当前 内容差异」。",
+        "check": "diff",
+        "success": "差异模式打开了，增删都标出来了。",
+        "why": "版本是方法的迭代记录；恢复前先确认要哪一份。",
+        "observe": {
+          "target": ".diff-box",
+          "message": "版本差异模式已开启。 版本是方法的迭代记录；恢复旧版前先确认自己要恢复哪一份。"
+        }
+      }
+    ],
+    "sources": [
+      {
+        "type": "click",
+        "target": "#sourceCatalogBtn",
+        "instruction": "点击顶部「来源广场」。",
+        "check": "catalog-open",
+        "why": "浏览所有原始发布记录；系统不会替你升级成母模板。",
+        "success": "来源广场打开了。",
+        "id": "sources:0",
+        "observe": {
+          "target": "#sourceCatalogDetail .source-meta",
+          "message": "条目 ID、序号和原表位置用于回查；署名不自动证明唯一原创权属。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "[data-square-copy]",
+        "instruction": "点击「复制完整原文」。",
+        "check": "source-copy",
+        "why": "完整原文和母模板指令不同，用前仍要核对变量。",
+        "success": "完整原文已复制到练习区。",
+        "id": "sources:2",
+        "observe": {
+          "target": "#sourceCatalogDetail .source-actions",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 完整原文与母模板指令不同，使用前仍需核对变量和边界。"
+        }
+      },
+      {
+        "type": "input",
+        "target": "#sourceCatalogSearch",
+        "instruction": "在来源检索框输入「第一性破局者 (First-Principles Breaker)」，查找含作者说明的记录。",
+        "value": "第一性破局者 (First-Principles Breaker)",
+        "check": "source-search:第一性破局者 (First-Principles Breaker)",
+        "why": "从真实搜索结果里找作者说明，不跳预定条目。",
+        "success": "检索结果收窄到这条记录了。",
+        "observe": {
+          "target": "#sourceCatalogList",
+          "message": "搜索后检查标题与署名，接着亲手选择记录。"
+        },
+        "id": "sources:3"
+      },
+      {
+        "type": "click",
+        "target": "[data-square-id=\"47586631-41d8-4405-9ab6-394836c171d5\"]",
+        "instruction": "点击搜索结果中「第一性破局者 (First-Principles Breaker)」的标题。",
+        "check": "source-selected",
+        "why": "列表选择决定右侧显示哪条原文。",
+        "success": "对应的完整来源显示在右边了。",
+        "observe": {
+          "target": "#sourceCatalogDetail",
+          "message": "完整来源中出现了可展开的作者说明。"
+        },
+        "id": "sources:4"
+      },
+      {
+        "type": "click",
+        "target": "#sourceCatalogDetail details summary",
+        "instruction": "点击「作者说明」。",
+        "check": "source-author-note",
+        "why": "作者说明保留发布时的补充背景，供你判断。",
+        "success": "作者说明展开了。",
+        "observe": {
+          "target": "#sourceCatalogDetail .source-note",
+          "message": "这里是原始发布者的补充说明，正文仍独立保留。"
+        },
+        "id": "sources:5"
+      },
+      {
+        "type": "input",
+        "target": "#sourceCatalogSearch",
+        "instruction": "清空来源检索框，回到全部来源。",
+        "value": "",
+        "check": "source-search:",
+        "why": "清空检索会刷新列表，继续练同文回链。",
+        "success": "全部来源列表恢复了。",
+        "observe": {
+          "target": "#sourceCatalogList",
+          "message": "实际列表回到全部主题、原始序号排序，第一条是事实核查。"
+        },
+        "id": "sources:6"
+      },
+      {
+        "type": "click",
+        "target": "[data-square-seq=\"534\"]",
+        "instruction": "点击相同正文的其他发布记录「#534」。",
+        "check": "catalog-534",
+        "why": "同文会有不同发布者，回链只是记录跳转。",
+        "success": "切到了同文的 #534 记录。",
+        "id": "sources:7",
+        "observe": {
+          "target": "#sourceCatalogDetail",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 同文不同发布者会分别保留；这个按钮是记录回链，不是重复删除。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "[data-square-seq=\"1\"]",
+        "instruction": "在同文记录中点击「#1」，回到有母模板关联的原始记录。",
+        "check": "catalog-1",
+        "why": "回到有母模板关联的那条原始记录再继续。",
+        "success": "沿回链回到了记录 #1。",
+        "observe": {
+          "target": "#sourceCatalogDetail .source-links",
+          "message": "此记录确实显示已关联母模板；下一步亲手点关联按钮。"
+        },
+        "id": "sources:8"
+      },
+      {
+        "type": "click",
+        "target": "[data-square-card=\"PC-03-002\"]",
+        "instruction": "点击关联母模板「查看策展版本」。",
+        "check": "card:PC-03-002",
+        "why": "真实关联按钮把你带回整理过的核查方法。",
+        "success": "回到关联母模板了。",
+        "id": "sources:9",
+        "observe": {
+          "target": "#workspaceTitle",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 真实关联按钮把你带回已经整理的核查方法。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "#panel [data-action=\"close\"]",
+        "instruction": "点击工作台顶部「返回模板库」。",
+        "check": "card-closed",
+        "why": "先退出模板再操作主页入口，手机上也一样。",
+        "success": "模板关上了，主页入口可用。",
+        "observe": {
+          "target": "#home .home-library-tabs",
+          "message": "已真实回到主页；现在才可以点击顶部来源广场。"
+        },
+        "id": "sources:10"
+      },
+      {
+        "type": "click",
+        "target": "#sourceCatalogBtn",
+        "instruction": "再次点击顶部「来源广场」。",
+        "check": "catalog-open",
+        "why": "来源窗口记得先前选择；重开沿用原状态。",
+        "success": "来源广场又打开了。",
+        "id": "sources:11",
+        "observe": {
+          "target": "#sourceCatalogDetail",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 来源窗口记住先前选择；重新打开不代表重新搜索。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "#sourceCatalogClose",
+        "instruction": "点击来源广场右上角的关闭按钮。",
+        "check": "catalog-closed",
+        "why": "关闭只收起窗口，内容和已选记录都留着。",
+        "success": "来源窗口关上了。",
+        "observe": {
+          "target": "#home .home-library-tabs",
+          "message": "已返回刚才打开的策展模板；来源没有被删除。"
+        },
+        "id": "sources:12"
+      },
+      {
+        "type": "click",
+        "target": "#sourceCatalogBtn",
+        "instruction": "再点击「来源广场」，继续练检索与翻页。",
+        "check": "catalog-open",
+        "why": "重开继续用保留状态，不代替你检索或跳转。",
+        "success": "来源广场重新打开了。",
+        "observe": {
+          "target": "#sourceCatalogList",
+          "message": "窗口保留先前选中记录；接着设置真实筛选条件。"
+        },
+        "id": "sources:13"
+      },
+      {
+        "type": "input",
+        "target": "#sourceCatalogCategory",
+        "instruction": "将「主题分类」选为「工作与办公」。",
+        "value": "09",
+        "check": "source-category:09",
+        "why": "分类按标题和标签推断，只辅助浏览。",
+        "success": "主题筛到「工作与办公」了。",
+        "id": "sources:14",
+        "observe": {
+          "target": "#sourceCatalogSummary",
+          "message": "输入和本地状态已核对，请看高亮的实际结果。 分类根据标题与标签推断，只辅助浏览，不改写原发布标签。"
+        },
+        "inputKind": "select"
+      },
+      {
+        "type": "input",
+        "target": "#sourceCatalogSort",
+        "instruction": "将「排序」选为「原始序号 · 从大到小」。",
+        "value": "seq-desc",
+        "check": "source-sort:seq-desc",
+        "why": "排序改变展示次序，不动正文和署名。",
+        "success": "改成从大到小排了。",
+        "id": "sources:15",
+        "observe": {
+          "target": "#sourceCatalogSummary",
+          "message": "输入和本地状态已核对，请看高亮的实际结果。 改变展示顺序；不会改变来源正文或署名。"
+        },
+        "inputKind": "select"
+      },
+      {
+        "type": "input",
+        "target": "#sourceCatalogSearch",
+        "instruction": "在来源检索框输入「会议」。",
+        "value": "会议",
+        "check": "source-search:会议",
+        "why": "这次搜的是标题、发布者、标签和正文。",
+        "success": "搜「会议」的结果出来了。",
+        "id": "sources:16",
+        "observe": {
+          "target": "#sourceCatalogSummary",
+          "message": "输入和本地状态已核对，请看高亮的实际结果。 这次搜的是来源标题、发布者、标签与正文，不是主页母模板筛选。"
+        }
+      },
+      {
+        "type": "input",
+        "target": "#sourceCatalogSearch",
+        "instruction": "清空来源检索框。",
+        "value": "",
+        "check": "source-search:",
+        "why": "清空关键词后分类和排序仍保留。",
+        "success": "关键词清空了。",
+        "id": "sources:17",
+        "observe": {
+          "target": "#sourceCatalogSummary",
+          "message": "输入和本地状态已核对，请看高亮的实际结果。 清空关键词后仍保留分类和排序；想回全库还需切换全部主题。"
+        }
+      },
+      {
+        "type": "input",
+        "target": "#sourceCatalogCategory",
+        "instruction": "将主题分类切回「全部主题」。",
+        "value": "all",
+        "check": "source-category:all",
+        "why": "恢复所有来源记录，准备练翻页。",
+        "success": "回到全部主题了。",
+        "id": "sources:18",
+        "observe": {
+          "target": "#sourceCatalogSummary",
+          "message": "输入和本地状态已核对，请看高亮的实际结果。 恢复所有来源记录，准备练翻页。"
+        },
+        "inputKind": "select"
+      },
+      {
+        "type": "input",
+        "target": "#sourceCatalogSort",
+        "instruction": "将排序切回「原始序号 · 从小到大」。",
+        "value": "seq-asc",
+        "check": "source-sort:seq-asc",
+        "why": "翻页按稳定原始序号，便于核对内容。",
+        "success": "改回从小到大排了。",
+        "id": "sources:19",
+        "observe": {
+          "target": "#sourceCatalogSummary",
+          "message": "输入和本地状态已核对，请看高亮的实际结果。 页码练习按照稳定原始序号，便于核对具体内容。"
+        },
+        "inputKind": "select"
+      },
+      {
+        "type": "click",
+        "target": "[data-square-page=\"next\"]",
+        "instruction": "点击「下一页」。",
+        "check": "source-page:1",
+        "why": "从第 1 页翻到第 2 页，列表和原文一起变。",
+        "success": "翻到第 2 页了。",
+        "id": "sources:20",
+        "observe": {
+          "target": "#sourceCatalogList",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 从第 1 页翻到第 2 页，左侧来源列表和选中原文都会改变。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "[data-square-page=\"prev\"]",
+        "instruction": "点击「上一页」。",
+        "check": "source-page:0",
+        "why": "回到第 1 页；上一页禁用表示已在首屏。",
+        "success": "回到第 1 页了。",
+        "id": "sources:21",
+        "observe": {
+          "target": "#sourceCatalogList",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 回到第 1 页；禁用的上一页表示已经在首屏，不是程序没反应。"
+        }
+      },
+      {
+        "type": "input",
+        "target": "#sourcePageInput",
+        "instruction": "把当前页码输入框改为 2。",
+        "value": "2",
+        "check": "source-page-input",
+        "why": "输入数字本身不跳页，下一步要按回车。",
+        "success": "页码框里填了 2。",
+        "id": "sources:22",
+        "observe": {
+          "target": "#sourcePageInput",
+          "message": "输入和本地状态已核对，请看高亮的实际结果。 输入数字本身不会跳页，下一步须按回车。"
+        }
+      },
+      {
+        "type": "key",
+        "key": "Enter",
+        "target": "#sourcePageInput",
+        "instruction": "在页码框按回车提交。",
+        "check": "source-page:1",
+        "why": "只有回车提交真实表单才会跳页。",
+        "success": "回车生效，页面翻到了第 2 页。",
+        "id": "sources:23",
+        "observe": {
+          "target": "#sourceCatalogList",
+          "message": "回车已提交，并出现了指定页码的内容。 只有回车提交真实表单才会跳页，教程不会在输入时偷偷切页。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "#sourceCatalogList [data-square-id]",
+        "instruction": "点击第 2 页的一条来源标题。",
+        "check": "source-selected",
+        "why": "选中条目后右侧显示完整原文和署名。",
+        "success": "这条来源的全文显示出来了。",
+        "id": "sources:24",
+        "observe": {
+          "target": "#sourceCatalogDetail",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 选中条目后右侧展示完整原文和署名；列表和正文是关联视图。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "[data-retired-id=\"PC-13-005\"]",
+        "instruction": "点击「旧母模板档案」中的 PC-13-005。",
+        "check": "retired-open",
+        "why": "退役只退出首页策展库，正文和来源仍可回查。",
+        "success": "旧母模板档案打开了。",
+        "id": "sources:25",
+        "observe": {
+          "target": "#sourceCatalogDetail",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 退役只退出首页策展库，正文与来源仍可回查。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "[data-retired-copy=\"PC-13-005\"]",
+        "instruction": "点击「复制旧模板」。",
+        "check": "retired-copy",
+        "why": "复制旧稿供对照，档案仍保持退役。",
+        "success": "旧模板正文已复制。",
+        "id": "sources:26",
+        "observe": {
+          "target": "#sourceCatalogDetail",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 复制旧稿供对照，不会重新启用它。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "#sourceCatalogList [data-square-id]",
+        "instruction": "点击列表标题返回原始来源。",
+        "check": "source-selected",
+        "why": "选中来源就退出旧档案视图。",
+        "success": "回到普通来源视图了。",
+        "id": "sources:27",
+        "observe": {
+          "target": "#sourceCatalogDetail",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 选择来源退出旧档案视图，恢复正常来源操作。"
+        }
+      },
+      {
+        "type": "click",
+        "target": "[data-square-save]",
+        "instruction": "点击「存成我的提示词」。",
+        "check": "source-saved",
+        "why": "真实保存会新建个人记录并打开个人模板。",
+        "success": "已存成你的个人提示词。",
+        "id": "sources:28",
+        "observe": {
+          "target": "#workspaceTitle",
+          "message": "已完成操作，接下来核对界面中实际出现的变化。 真实保存会新建个人记录，并打开个人模板；它不会直接覆盖官方母模板。"
+        }
+      }
+    ],
+    "local-check": [
+      {
+        "id": "local-check:0",
+        "type": "click",
+        "target": "#personalWorkspaceBtn",
+        "instruction": "打开顶部「我的工作区」。",
+        "check": "workspace",
+        "why": "先找到自己的资产和辅助操作入口。",
+        "success": "工作区打开了，去找辅助里的检查。",
+        "observe": {
+          "target": "#personalWorkspaceTitle",
+          "message": "先找到自己的资产与辅助操作入口。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-check:1",
+        "type": "click",
+        "target": "[data-pw-tab=\"check\"]",
+        "instruction": "点击「检查提示词」。",
+        "check": "tab:check",
+        "why": "这个页面只检查正文文字，先读用途和目的。",
+        "success": "切到检查提示词了。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "这个页面只检查提示词文字，先读作用和目的。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-check:2",
+        "type": "input",
+        "target": "#localCheckSelect",
+        "instruction": "选择「练习素材 · 会议复盘方法」。",
+        "check": "local-check-selected",
+        "why": "把这条提示词载入检查框，还没改或保存原记录。",
+        "success": "练习素材已载入检查框。",
+        "inputKind": "select",
+        "value": "USR-09-LAB",
+        "observe": {
+          "target": "#localCheckText",
+          "message": "把这条自己的提示词载入检查框；尚未修改或保存原记录。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-check:3",
+        "type": "click",
+        "target": "[data-local-check-run]",
+        "instruction": "点击「开始检查」。",
+        "check": "local-check-result",
+        "why": "得到五项文字线索，每项都写清下一步。",
+        "success": "五项检查线索出来了。",
+        "observe": {
+          "target": "#localCheckResults",
+          "message": "得到五项文字检查线索，每项都说明下一步如何处理；它不是效果评分。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-check:4",
+        "type": "input",
+        "target": "#localCheckText",
+        "instruction": "用示例正文补充输出形式与缺失信息处理。",
+        "check": "local-check-edited",
+        "why": "亲手改正文，旧清单消失，原记录仍未动。",
+        "success": "正文补上了输出形式和缺失信息处理。",
+        "value": "请根据 [会议记录]，先列出待确认问题，再输出决策与待办表格。每项写负责人、动作和期限。材料未提供的信息标为待确认，不要编造。",
+        "observe": {
+          "target": "#localCheckStatus",
+          "message": "亲手修改正文，旧检查清单会消失，原记录仍未被改动。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-check:5",
+        "type": "click",
+        "target": "[data-local-check-run]",
+        "instruction": "再次点击「开始检查」。",
+        "check": "local-check-result",
+        "why": "重新检查新正文，旧清单代表不了改后内容。",
+        "success": "按新正文重新出了清单。",
+        "observe": {
+          "target": "#localCheckResults",
+          "message": "重新检查刚才的新正文，旧清单不能代表修改后的内容。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-check:6",
+        "type": "click",
+        "target": "[data-local-check-copy]",
+        "instruction": "点击「复制检查清单」。",
+        "check": "local-check-copy",
+        "why": "复制的是修改线索，方便复核，不发给 AI。",
+        "success": "检查清单复制好了。",
+        "observe": {
+          "target": "#localCheckResults",
+          "message": "复制的是修改线索，方便复核；不是把正文发送给AI。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-check:7",
+        "type": "click",
+        "target": "[data-local-check-save]",
+        "instruction": "点击「保存修改」。",
+        "check": "editor-existing",
+        "why": "检查不自动保存，这一步进入原记录的编辑器。",
+        "success": "编辑器打开，改动已带进来。",
+        "observe": {
+          "target": "#lifecyclePrompt",
+          "message": "确认改动已带入；保存前仍可以取消，原版本尚未被替换。"
+        }
+      },
+      {
+        "id": "local-check:9",
+        "type": "click",
+        "target": "[data-lifecycle-save]",
+        "instruction": "点击「保存提示词」。",
+        "check": "local-check-saved",
+        "why": "真正保存修改，同时保留旧版本。",
+        "success": "修改已保存，旧版本留着了。",
+        "observe": {
+          "target": "#localCheckStatus",
+          "message": "真正保存修改，同时保留旧版本，以便以后比较或恢复。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-check:10",
+        "type": "click",
+        "target": "[data-pw-tab=\"prompts\"]",
+        "instruction": "返回「我的提示词」。",
+        "check": "tab:prompts",
+        "why": "检查后的记录仍是你的，不进发布流程。",
+        "success": "回到我的提示词了。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "检查后的记录仍属于自己，不进入发布审批流程。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-check:11",
+        "type": "click",
+        "target": "[data-pw-versions=\"USR-09-LAB\"]",
+        "instruction": "点击这条记录的「旧版本」。",
+        "check": "versions",
+        "why": "查看保存之前的版本，确认旧正文没丢。",
+        "success": "这条记录的版本窗口打开了。",
+        "observe": {
+          "target": "#versionInspectorBody",
+          "message": "查看保存之前的版本，确认旧正文没有丢失。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-check:12",
+        "type": "click",
+        "target": "[data-version-index=\"0\"]",
+        "instruction": "点击最早的旧版本。",
+        "check": "old-version",
+        "why": "选中历史记录后才能比较。",
+        "success": "选中的是最早的旧版本。",
+        "observe": {
+          "target": "#versionInspectorBody",
+          "message": "选择历史记录后才可以比较；当前版本不需要和自己比较。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-check:13",
+        "type": "click",
+        "target": "[data-version-diff]",
+        "instruction": "点击「与当前比较」。",
+        "check": "diff",
+        "why": "高亮增删文字，核对你到底改了什么。",
+        "success": "差异高亮出来了。",
+        "observe": {
+          "target": ".diff-box",
+          "message": "高亮增删文字，核对你到底修改了什么。 请看高亮位置核对结果。"
+        }
+      }
+    ],
+    "local-backup": [
+      {
+        "id": "local-backup:0",
+        "type": "click",
+        "target": "#personalWorkspaceBtn",
+        "instruction": "打开「我的工作区」。",
+        "check": "workspace",
+        "why": "备份针对的是整个个人工作区。",
+        "success": "工作区打开了，去找辅助里的备份。",
+        "observe": {
+          "target": "#personalWorkspaceTitle",
+          "message": "备份针对自己的整个工作区。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-backup:1",
+        "type": "click",
+        "target": "[data-pw-tab=\"backup\"]",
+        "instruction": "点击「备份与恢复」。",
+        "check": "tab:backup",
+        "why": "先看备份和恢复的区别，以及当前记录数量。",
+        "success": "切到备份与恢复了。",
+        "observe": {
+          "target": ".local-backup-current",
+          "message": "先看备份与恢复的区别，以及当前记录数量。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-backup:2",
+        "type": "click",
+        "target": "[data-workspace-export]",
+        "instruction": "点击「下载完整备份」。",
+        "check": "local-backup-export",
+        "why": "练习场在虚拟文件区生成完整 JSON。",
+        "success": "完整备份已生成，记录数是一条。",
+        "observe": {
+          "target": "#localBackupStatus",
+          "message": "训练场在虚拟文件区生成完整JSON；正式使用会下载文件，需要自己保留。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-backup:3",
+        "type": "click",
+        "target": "[data-import-export]",
+        "instruction": "点击「导出我的提示词」。",
+        "check": "local-backup-prompts",
+        "why": "这份文件只含提示词，适合单独导入。",
+        "success": "提示词文件已导出。",
+        "observe": {
+          "target": ".local-backup-extra",
+          "message": "这份文件只含提示词，适合单独导入；完整工作区恢复要用上一份备份。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-backup:4",
+        "type": "observe",
+        "target": "[data-workspace-import]",
+        "instruction": "观察正式页面的「选择备份文件」入口。 需要停下来阅读时，在右侧暂停，读完按继续。",
+        "check": "visible",
+        "why": "正式用时点它选完整 JSON，再看预览。",
+        "success": "这就是正式页面的选择备份文件入口。"
+      },
+      {
+        "id": "local-backup:5",
+        "type": "click",
+        "target": "[data-pw-tab=\"prompts\"]",
+        "instruction": "返回「我的提示词」。",
+        "check": "tab:prompts",
+        "why": "用虚构记录练误删恢复，不影响正式资料。",
+        "success": "切回我的提示词列表。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "用隔离的虚构记录练习误删后恢复；不会影响正式资料。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-backup:6",
+        "type": "click",
+        "target": "#personalWorkspaceList .pw-more summary",
+        "instruction": "展开练习记录的「更多」。",
+        "check": "local-more-open",
+        "why": "复制、收起和删除这些次要动作集中在这。",
+        "success": "更多展开了。",
+        "observe": {
+          "target": "#personalWorkspaceList .pw-more",
+          "message": "复制、收起和删除等次要动作集中在这里，日常不用一次看见全部。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-backup:7",
+        "type": "click",
+        "target": "[data-pw-trash=\"USR-09-LAB\"]",
+        "instruction": "点击「删除到回收站」。",
+        "check": "local-trashed",
+        "why": "删的是训练记录，仍能从回收站找回。",
+        "success": "练习记录进回收站了。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "删除的是训练记录，仍可在回收站找回；接下来练习用完整备份恢复。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-backup:8",
+        "type": "click",
+        "target": "[data-pw-tab=\"backup\"]",
+        "instruction": "返回「备份与恢复」。",
+        "check": "tab:backup",
+        "why": "现在我的提示词是零条，刚才的完整备份仍有一条。",
+        "success": "回到备份与恢复了。",
+        "observe": {
+          "target": ".local-backup-current",
+          "message": "当前我的提示词已变成零条，但刚才的完整备份仍有一条。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-backup:9",
+        "type": "click",
+        "target": "[data-training-backup-load]",
+        "instruction": "点击「练习：载入刚才的虚拟备份」。",
+        "check": "local-restore-preview",
+        "why": "载入即刷新恢复区，此时只预览不替换。",
+        "success": "恢复区显示预览，数量对照一条。",
+        "observe": {
+          "target": "#localRestorePreview",
+          "message": "载入完成即刷新恢复区；文件名、时间、数量对照与确认按钮在一起。此时只预览，当前资料未替换。"
+        }
+      },
+      {
+        "id": "local-backup:11",
+        "type": "click",
+        "target": "[data-workspace-restore-cancel]",
+        "instruction": "点击「取消，不恢复」。",
+        "check": "local-restore-cancelled",
+        "why": "取消预览不会恢复或清空任何内容。",
+        "success": "取消好了，资料没动。",
+        "observe": {
+          "target": "#localBackupStatus",
+          "message": "取消预览不会恢复或清空任何内容，当前仍没有那条已删除记录。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-backup:12",
+        "type": "click",
+        "target": "[data-training-backup-load]",
+        "instruction": "再次载入刚才的虚拟完整备份。",
+        "check": "local-restore-preview",
+        "why": "再载入一次，准备真正确认恢复。",
+        "success": "预览又出来了。",
+        "observe": {
+          "target": "#localRestorePreview",
+          "message": "载入完成即刷新恢复区；文件名、时间、数量对照与确认按钮在一起。此时只预览，当前资料未替换。"
+        }
+      },
+      {
+        "id": "local-backup:13",
+        "type": "click",
+        "target": "[data-workspace-restore-confirm]",
+        "instruction": "点击「确认恢复，替换当前工作区」。",
+        "check": "local-restore-done",
+        "why": "现在才真正写入备份，记录回到工作区。",
+        "success": "恢复完成，记录回到了工作区。",
+        "observe": {
+          "target": ".local-backup-current",
+          "message": "现在才真正写入备份。一条提示词回到工作区，回收站也回到备份时的状态。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-backup:14",
+        "type": "click",
+        "target": "[data-pw-tab=\"prompts\"]",
+        "instruction": "返回「我的提示词」，核对找回的记录。",
+        "check": "local-backup-found",
+        "why": "确认恢复结果，正式用时还会重新载入显示设置。",
+        "success": "找回的记录出现在列表里。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "确认恢复结果，正式使用还会重新载入以应用备份中的显示设置。 请看高亮位置核对结果。"
+        }
+      }
+    ],
+    "local-organize": [
+      {
+        "id": "local-organize:0",
+        "type": "click",
+        "target": "#personalWorkspaceBtn",
+        "instruction": "打开「我的工作区」。",
+        "check": "workspace",
+        "why": "整理自己的记录，用不到模板库的发布工具。",
+        "success": "工作区打开了，准备整理一条记录。",
+        "observe": {
+          "target": "#personalWorkspaceTitle",
+          "message": "整理自己的记录不需要模板库发布工具。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-organize:1",
+        "type": "click",
+        "target": "#personalWorkspaceList .pw-more summary",
+        "instruction": "展开练习记录的「更多」。",
+        "check": "local-more-open",
+        "why": "次要动作集中显示，先读名称再操作。",
+        "success": "更多展开了，先读名称。",
+        "observe": {
+          "target": "#personalWorkspaceList .pw-more",
+          "message": "次要动作集中显示，先读名称再操作。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-organize:2",
+        "type": "click",
+        "target": "[data-pw-archive=\"USR-09-LAB\"]",
+        "instruction": "点击「收起暂不用的」。",
+        "check": "local-archived",
+        "why": "记录从可用列表收起，正文和旧版本都还在。",
+        "success": "这条记录已收起。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "记录从默认可用列表收起，没有删除正文或旧版本。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-organize:3",
+        "type": "input",
+        "target": "#personalWorkspaceStatus",
+        "instruction": "在状态筛选选择「已收起」。",
+        "check": "local-filter-archived",
+        "why": "收起的记录仍保留，用筛选就能找回。",
+        "success": "筛到「已收起」了。",
+        "inputKind": "select",
+        "value": "archived",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "收起的记录仍保留，通过筛选即可找回。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-organize:4",
+        "type": "click",
+        "target": "#personalWorkspaceList .pw-more summary",
+        "instruction": "再展开这条记录的「更多」。",
+        "check": "local-more-open",
+        "why": "已收起状态下会给出重新启用。",
+        "success": "更多又展开了。",
+        "observe": {
+          "target": "#personalWorkspaceList .pw-more",
+          "message": "已收起状态下提供重新启用。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-organize:5",
+        "type": "click",
+        "target": "[data-pw-archive=\"USR-09-LAB\"]",
+        "instruction": "点击「重新启用」。",
+        "check": "local-active",
+        "why": "恢复可用状态；当前筛选只看已收起，它会暂时离开列表。",
+        "success": "这条记录重新启用了。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "恢复可用状态；当前筛选只看已收起，所以记录暂时离开这个列表。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-organize:6",
+        "type": "input",
+        "target": "#personalWorkspaceStatus",
+        "instruction": "把状态筛选改回「可用和草稿」。",
+        "check": "local-filter-usable",
+        "why": "回到日常列表，核对记录还在。",
+        "success": "回到可用和草稿了。",
+        "inputKind": "select",
+        "value": "usable",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "回到日常列表，核对记录仍在。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-organize:7",
+        "type": "click",
+        "target": "#personalWorkspaceList .pw-more summary",
+        "instruction": "展开「更多」，准备练习删除。",
+        "check": "local-more-open",
+        "why": "删除会进回收站，和暂时收起不一样。",
+        "success": "更多又展开了，准备删除。",
+        "observe": {
+          "target": "#personalWorkspaceList .pw-more",
+          "message": "删除进入回收站，和暂时收起不同。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-organize:8",
+        "type": "click",
+        "target": "[data-pw-trash=\"USR-09-LAB\"]",
+        "instruction": "点击「删除到回收站」。",
+        "check": "local-trashed",
+        "why": "记录连同旧版本一起进回收站，可以找回。",
+        "success": "记录进回收站了。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "记录连同旧版本进入回收站，可以恢复。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-organize:9",
+        "type": "click",
+        "target": "[data-pw-tab=\"trash\"]",
+        "instruction": "切换到「回收站」。",
+        "check": "tab:trash",
+        "why": "核对记录，分清恢复和永久删除。",
+        "success": "切到回收站了。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "核对记录，并区分恢复与永久删除。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-organize:10",
+        "type": "observe",
+        "target": "[data-trash-purge=\"USR-09-LAB\"]",
+        "instruction": "观察「永久删除」按钮，不点击。 需要停下来阅读时，在右侧暂停，读完按继续。",
+        "check": "visible",
+        "why": "真点会要求确认，确认后无法从回收站恢复。",
+        "success": "这就是永久删除入口，本课只看不点。"
+      },
+      {
+        "id": "local-organize:11",
+        "type": "click",
+        "target": "[data-trash-restore=\"USR-09-LAB\"]",
+        "instruction": "点击这条记录的「恢复」。",
+        "check": "local-restored",
+        "why": "找回整条提示词和保存过的版本，回收站会移除它。",
+        "success": "记录恢复回来了。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "找回整条提示词与保存过的版本，回收站移除它。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-organize:12",
+        "type": "click",
+        "target": "[data-pw-tab=\"prompts\"]",
+        "instruction": "返回「我的提示词」。",
+        "check": "tab:prompts",
+        "why": "找回的记录可以继续使用。",
+        "success": "回到我的提示词列表了。",
+        "observe": {
+          "target": "#personalWorkspaceList",
+          "message": "找回的记录可以继续使用。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-organize:13",
+        "type": "click",
+        "target": "[data-pw-versions=\"USR-09-LAB\"]",
+        "instruction": "点击这条记录的「旧版本」。",
+        "check": "versions",
+        "why": "改错内容时，只恢复这一条的旧版本就够。",
+        "success": "版本窗口也打开了。",
+        "observe": {
+          "target": "#versionInspectorBody",
+          "message": "内容改错时，不必恢复整个工作区，只需选择这一条的旧版本。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-organize:14",
+        "type": "click",
+        "target": "[data-version-index=\"0\"]",
+        "instruction": "选最早的旧版本。",
+        "check": "old-version",
+        "why": "先核对版本日期和正文，再决定恢复。",
+        "success": "选好了最早的旧版本。",
+        "observe": {
+          "target": "#versionInspectorBody",
+          "message": "先核对版本日期和正文，再决定是否恢复。 请看高亮位置核对结果。"
+        }
+      },
+      {
+        "id": "local-organize:15",
+        "type": "click",
+        "target": "[data-version-restore]",
+        "instruction": "点击「恢复此版本」。",
+        "check": "local-version-restored",
+        "why": "换回这条的旧正文，并留下恢复前的版本。",
+        "success": "这条正文换回旧版本了。",
+        "observe": {
+          "target": "#versionInspectorBody",
+          "message": "恢复这一条的旧正文，并留下恢复前的版本；其他模板、收藏与随手记不会被覆盖。 请看高亮位置核对结果。"
+        }
+      }
+    ]
+  },
+  "courses": [
+    {
+      "id": "search",
+      "group": "日常操作",
+      "title": "关键词筛选 → 从主页打开卡片",
+      "fixture": "empty",
+      "goal": "走完只输入关键词、不点击匹配按钮的主页筛选路径。",
+      "steps": [
+        {
+          "id": "search:0",
+          "type": "input",
+          "target": "#q",
+          "instruction": "在主页长搜索框输入「会议纪要」。",
+          "value": "会议纪要",
+          "check": "search",
+          "success": "关键词输好了，卡片已经按它收窄。",
+          "why": "搜索按本地文字筛选，这一步还没生成 AI 回答。",
+          "observe": {
+            "target": "#home-library-view",
+            "message": "输入已检查，内容符合本步条件。 搜索是按本地文字筛选；还没有生成 AI 回答。"
+          }
+        },
+        {
+          "id": "search:1",
+          "type": "click",
+          "target": ".card[data-id=\"PC-09-006\"]",
+          "instruction": "点击「会议纪要与行动责任」卡片。",
+          "check": "card",
+          "success": "工作台打开了，可以开始填材料。",
+          "why": "点开就能看它的用途，下一步直接填材料。",
+          "observe": {
+            "target": "[data-view=\"core-inputs\"]",
+            "message": "选中状态表示当前页。下一环节直接填写材料，不把重复点击当作必要操作。"
+          }
+        }
+      ],
+      "principle": "输入文字实时筛选主页卡片；无需进入需求导航。教程要求亲手点击筛选后的卡片，不自动打开。",
+      "revision": 6,
+      "overview": {
+        "purpose": "走一遍只输关键词、不点匹配的主页筛选路径。",
+        "when": "你已经知道关键词，想直接在主页挑卡片。",
+        "result": "看见筛选结果并亲手点开卡片，认出它和匹配对话的区别。",
+        "prerequisites": "不用点匹配模板；练习从空工作区开始。",
+        "mechanism": "输入文字会实时筛选主页卡片，无需进入需求导航；卡片要你亲手点开。",
+        "boundary": "练习和正式工作区分开；先做真实动作，再看实际变化。"
+      },
+      "hook": "这门课教你用关键词直接在主页挑到卡片。",
+      "completionNote": "筛选和打开你都学会了，找卡片更顺手了吧。"
+    },
+    {
+      "id": "daily-match",
+      "group": "日常操作",
+      "title": "输入需求并匹配模板",
+      "fixture": "empty",
+      "goal": "用一句需求描述，让本地匹配给你推荐合适的模板。",
+      "steps": [
+        {
+          "type": "input",
+          "target": "#q",
+          "instruction": "在主页长搜索框输入「会议纪要」。",
+          "value": "会议纪要",
+          "check": "search",
+          "why": "先看下面的筛选结果，这一步还没进需求导航。",
+          "success": "「会议纪要」已输入，下面的卡片跟着收窄了。",
+          "id": "daily:0@daily-match",
+          "observe": {
+            "target": "#home-library-view",
+            "message": "输入和本地状态已核对，请看高亮的实际结果。 先看下面的筛选结果；还没有进入需求导航，也没有生成 AI 回答。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "#needGatewayForm button[type=\"submit\"]",
+          "instruction": "点击搜索框右侧「匹配模板 →」。",
+          "check": "need-results",
+          "why": "点它会带着你的需求打开推荐列表；匹配按本地关键词算。",
+          "success": "推荐列表打开了，先看前三张卡片。",
+          "id": "daily:1@daily-match",
+          "observe": {
+            "target": "#needThread .need-result",
+            "message": "匹配是本地关键词规则；较匹配不是模型准确率，核对模板用途后再选择。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "#needThread .need-prompt summary",
+          "instruction": "点击「查看已适配的提示词」。",
+          "check": "need-expanded",
+          "why": "展开的是模板加本次需求的预填指令，还没调用 AI。",
+          "success": "适配稿展开了，看到的是预填指令。",
+          "id": "daily:3@daily-match",
+          "observe": {
+            "target": "#needThread .need-prompt pre",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 展开的是模板加本次需求的预填指令；它没有调用 AI，也不是会议纪要答案。"
+          }
+        }
+      ],
+      "principle": "输入的文字会与模板的用途、标签做本地关键词比对，点「匹配模板」打开推荐列表，前三张最相关。",
+      "revision": 1,
+      "overview": {
+        "purpose": "输入一句需求并获得匹配的模板推荐。",
+        "when": "不知道该用哪个模板，只有一句需求时。",
+        "mechanism": "输入的文字会与模板的用途、标签做本地关键词比对，点「匹配模板」打开推荐列表，前三张最相关。",
+        "prerequisites": "练习从隔离的虚构工作区开始，跟着做就能到位。",
+        "result": "你能从一句需求走到匹配推荐列表。",
+        "boundary": "练习和正式工作区分开；先做真实动作，再看实际变化。不写系统剪贴板，不产生真实下载。"
+      },
+      "hook": "这一课只到推荐列表，选卡和填写在后面几课。",
+      "completionNote": "匹配路径走通了，不知道模板名也不怕。",
+      "from": "daily",
+      "base": 0,
+      "chainMap": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "daily-fill",
+      "group": "日常操作",
+      "title": "把模板填成完整提示词",
+      "fixture": "empty",
+      "goal": "从匹配结果进入模板，把材料填进变量区。",
+      "steps": [
+        {
+          "type": "click",
+          "target": "[data-need-copy=\"PC-09-006\"]",
+          "instruction": "点击第一候选的「复制自动生成提示词」。",
+          "check": "need-copy",
+          "why": "可以直接带走需求适配稿；真实使用还要补齐材料。",
+          "success": "适配稿已复制到练习区。",
+          "id": "daily:4@daily-fill",
+          "observe": {
+            "target": "[data-need-copy=\"PC-09-006\"]",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 可直接带走需求适配稿，但当前只输入任务名，真实使用还需补齐材料；训练只核对内部复制内容。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "[data-need-use=\"PC-09-006\"]",
+          "instruction": "点击会议纪要模板的「进入模板继续填写」。",
+          "check": "card",
+          "why": "真实处理器会关掉需求导航、打开模板，并把需求带进一个参数。",
+          "success": "模板打开了，「会议纪要」已带进参数。",
+          "id": "daily:5@daily-fill",
+          "observe": {
+            "target": "textarea[data-field=\"[会议记录]\"]",
+            "message": "这里被带入的是「会议纪要」这句需求，不是完整记录。把它换成真实材料，避免把任务名当成输入事实。 选中状态表示当前页。下一环节直接填写材料，不把重复点击当作必要操作。"
+          }
+        },
+        {
+          "id": "daily:8@daily-fill",
+          "type": "input",
+          "target": "textarea[data-field=\"[会议记录]\"]",
+          "instruction": "把练习区提供的虚构会议记录填进「会议记录」。",
+          "value": "周会决定先校对访谈字幕。小林负责核对人名，周二交付；小周负责整理标题，截止时间尚未确认。短视频方案仍待讨论。",
+          "check": "material",
+          "success": "会议记录填好了，和这次材料对得上。",
+          "why": "占位符代表每次会变的材料，换成你这次的真实记录。",
+          "observe": {
+            "target": "#panel [data-completion-text]",
+            "message": "输入已检查，内容符合本步条件。 占位符表示每次会变化的材料，不是模板正文的一部分。"
+          }
+        },
+        {
+          "type": "input",
+          "target": "textarea[data-field=\"[会议日期]\"]",
+          "instruction": "在可选的「会议日期」填写材料中缺失的信息状态。",
+          "value": "材料未提供会议日期或时区；周二对应的具体日期待确认。",
+          "check": "meeting-date",
+          "why": "材料缺日期就明确写待确认，别补造。",
+          "success": "两项参数都填齐，缺的日期标成待确认。",
+          "observe": {
+            "target": "#panel [data-completion-text]",
+            "message": "这里应显示 2/2。日期与时区没有从无依据的信息推造，下一步预览完整指令。"
+          },
+          "id": "daily:9@daily-fill"
+        }
+      ],
+      "principle": "匹配后可先复制自动生成的提示词；进入模板后在练习区填材料，变量补齐后工作台给出完整指令。",
+      "revision": 1,
+      "overview": {
+        "purpose": "从匹配结果进入模板，把材料填进变量区。",
+        "when": "已经选好模板，准备正式填写时。",
+        "mechanism": "匹配后可先复制自动生成的提示词；进入模板后在练习区填材料，变量补齐后工作台给出完整指令。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你能独立把一份模板填成可直接复制的完整提示词。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后会自动先匹配好模板，你从复制与填写开始。",
+      "completionNote": "从匹配到填好整条链你都走过了，这是最常用的一段。",
+      "from": "daily",
+      "base": 3,
+      "chainMap": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "daily-copy",
+      "group": "日常操作",
+      "title": "复制完整提示词",
+      "fixture": "empty",
+      "goal": "在工作台复制拼装好的完整提示词，拿去外部 AI 使用。",
+      "steps": [
+        {
+          "id": "daily:10@daily-copy",
+          "type": "click",
+          "target": "[data-view=\"core-prompt\"]",
+          "instruction": "点击工作台「03 提示词」。",
+          "check": "pane:core-prompt",
+          "success": "切到提示词页，看到组装后的指令。",
+          "why": "同一工作台按概览、参数、提示词、来源分步组织。",
+          "observe": {
+            "target": "#panel [data-pane=\"core-prompt\"]",
+            "message": "已切到组装后的提示词。 同一工作台按概览、参数、提示词、来源分步组织；切页不会生成 AI 回答。"
+          }
+        },
+        {
+          "id": "daily:11@daily-copy",
+          "type": "click",
+          "target": "[data-action=\"copy\"]",
+          "instruction": "点击「复制完整提示词」。",
+          "check": "copy",
+          "success": "指令复制好了，没有留下占位符。",
+          "why": "正式用时把指令粘到自己的 AI 工具，逐项核对输出。",
+          "observe": {
+            "target": "#panel [data-action=\"copy\"]",
+            "message": "练习复制区已收到包含会议记录的指令。 正式使用时将指令粘贴到自己的 AI 工具，逐项核对输出。练习复制只在训练场内记录。"
+          }
+        }
+      ],
+      "principle": "工作台「03 提示词」页实时拼装变量与材料，复制按钮把完整指令收进练习剪贴板。",
+      "revision": 1,
+      "overview": {
+        "purpose": "从工作台复制完整提示词。",
+        "when": "材料已填好，要拿去用的时候。",
+        "mechanism": "工作台「03 提示词」页实时拼装变量与材料，复制按钮把完整指令收进练习剪贴板。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你能拿到一份可直接粘贴使用的完整提示词。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在材料已填好的状态。",
+      "completionNote": "复制这步你会了，模板的价值从这生效。",
+      "from": "daily",
+      "base": 7,
+      "chainMap": [
+        7,
+        8
+      ]
+    },
+    {
+      "id": "daily-source-first",
+      "group": "日常操作",
+      "title": "回查第一条来源摘录",
+      "fixture": "empty",
+      "goal": "从工作台打开第一条来源，查看并复制它的摘录。",
+      "steps": [
+        {
+          "id": "daily:12@daily-source-first",
+          "type": "click",
+          "target": "[data-view=\"core-source\"]",
+          "instruction": "点击工作台「04 来源」。",
+          "check": "pane:core-source",
+          "success": "来源和整理说明都显示出来了。",
+          "why": "来源用来回查依据；整理说明讲模板怎么形成。",
+          "observe": {
+            "target": "#panel [data-pane=\"core-source\"] .meta-content",
+            "message": "整理说明解释模板怎样形成；署名发布者不自动等于原创作者，评分不能代替试用。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "#panel [data-source=\"0\"]",
+          "instruction": "点击第一条来源的「查看摘录 ↗」。",
+          "check": "excerpt-open",
+          "why": "摘录让你对照改写前的原文和发布者。",
+          "success": "第一条摘录打开了，能看到原文。",
+          "id": "daily:14@daily-source-first",
+          "observe": {
+            "target": "#srcview .source-attribution",
+            "message": "核对署名与条目编号；完整原文仍要结合来源说明判断，不能据此自动认定原创权属。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "#srcCopy",
+          "instruction": "点击「复制摘录」。",
+          "check": "excerpt-copy",
+          "why": "复制的是原始摘录，母模板指令另在提示词页。",
+          "success": "摘录已复制到练习区。",
+          "id": "daily:16@daily-source-first",
+          "observe": {
+            "target": "#srcCopy",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 复制的是原始摘录，不是已经填好参数的母模板指令。"
+          }
+        }
+      ],
+      "principle": "「04 来源」列出模板引用的来源；摘录窗口展示原句，可一键复制。",
+      "revision": 1,
+      "overview": {
+        "purpose": "从工作台进入来源页并查看第一条摘录。",
+        "when": "想知道模板里引用的内容出自哪里时。",
+        "mechanism": "「04 来源」列出模板引用的来源；摘录窗口展示原句，可一键复制。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你能打开来源摘录并复制原句。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在模板已打开的状态。",
+      "completionNote": "第一次来源回查走通了，用模板更有底。",
+      "from": "daily",
+      "base": 9,
+      "chainMap": [
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "id": "daily-source-origin",
+      "group": "日常操作",
+      "title": "追到原文与母模板",
+      "fixture": "empty",
+      "goal": "顺着来源追到广场记录，复制完整原文并查看母模板。",
+      "steps": [
+        {
+          "type": "click",
+          "target": "#srcview [data-source-catalog-entry]",
+          "instruction": "点击「查看广场记录」。",
+          "check": "catalog-274",
+          "why": "回链会定位来源记录，看完整正文和条目 ID。",
+          "success": "广场记录 #274 打开了，正文和 ID 都在。",
+          "id": "daily:17@daily-source-origin",
+          "observe": {
+            "target": "#sourceCatalogDetail .source-meta",
+            "message": "这一页是发布记录；不要把发布署名、推断分类和策展评分混为同一件事。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "[data-square-copy]",
+          "instruction": "点击「复制完整原文」。",
+          "check": "source-copy",
+          "why": "这里复制来源原文，母模板指令在提示词页复制。",
+          "success": "原文复制好了，正文完整。",
+          "id": "daily:19@daily-source-origin",
+          "observe": {
+            "target": "#sourceCatalogDetail .source-actions",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 这里复制来源原文；个人保存、分类、排序和同文记录另有来源广场专项训练。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "[data-square-card=\"PC-09-006\"]",
+          "instruction": "点击关联母模板「查看策展版本」。",
+          "check": "card",
+          "why": "顺着真实关联按钮回到母模板，原文和方法是两种内容。",
+          "success": "回到母模板了，能看到策展后的方法。",
+          "id": "daily:20@daily-source-origin",
+          "observe": {
+            "target": "#workspaceTitle",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 沿真实关联按钮返回母模板；原文与策展后的方法是两种内容。"
+          }
+        }
+      ],
+      "principle": "摘录窗口提供「查看广场记录」与「复制完整原文」；关联母模板可查看策展版本。",
+      "revision": 1,
+      "overview": {
+        "purpose": "从摘录追到广场记录与母模板。",
+        "when": "摘录不够，想看完整原文或模板出处时。",
+        "mechanism": "摘录窗口提供「查看广场记录」与「复制完整原文」；关联母模板可查看策展版本。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你能从摘录一路追到原文与母模板。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在摘录已打开的状态。",
+      "completionNote": "出处链走通了，任何一句话都能溯源。",
+      "from": "daily",
+      "base": 12,
+      "chainMap": [
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "id": "daily-source-more",
+      "group": "日常操作",
+      "title": "逐条核对更多来源",
+      "fixture": "empty",
+      "goal": "回到来源列表，逐条打开其余来源核对。",
+      "steps": [
+        {
+          "type": "click",
+          "target": "[data-view=\"core-source\"]",
+          "instruction": "再次点击「04 来源」。",
+          "check": "pane:core-source",
+          "why": "返回来源页继续看其余来源，别漏了可互动摘录。",
+          "success": "回到来源页，接着看其余来源。",
+          "id": "daily:21@daily-source-more",
+          "observe": {
+            "target": "#panel [data-pane=\"core-source\"]",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 返回来源页，继续查看其余来源，不能遗漏可互动摘录。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "#panel [data-source=\"1\"]",
+          "instruction": "点击第二条来源的「查看摘录 ↗」。",
+          "check": "excerpt-open",
+          "why": "同一母模板可能融合多条原文，逐条核对更稳。",
+          "success": "第二条摘录打开了。",
+          "id": "daily:22@daily-source-more",
+          "observe": {
+            "target": "#srcText",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 同一母模板可能融合多条原文；逐条核对而不是只看第一条。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "#srcClose",
+          "instruction": "关闭第二条摘录窗口。",
+          "check": "excerpt-closed",
+          "why": "关闭只返回来源页，来源记录还在。",
+          "success": "第二条摘录关上了，来源没删。",
+          "id": "daily:23@daily-source-more",
+          "observe": {
+            "target": "#panel [data-pane=\"core-source\"]",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 关闭只返回模板来源页，不删除来源。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "#panel [data-source=\"2\"]",
+          "instruction": "点击第三条来源的「查看摘录 ↗」。",
+          "check": "excerpt-open",
+          "why": "第三条原文和发布者独立保留，值得单独回查。",
+          "success": "第三条摘录打开了。",
+          "id": "daily:24@daily-source-more",
+          "observe": {
+            "target": "#srcText",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 第三条仍保留自己的原文与发布者，需要独立回查。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "#srcClose",
+          "instruction": "关闭第三条摘录窗口。",
+          "check": "excerpt-closed",
+          "why": "三个摘录入口都用过了，课后仍可回查。",
+          "success": "第三条也关上了，来源回查到此完成。",
+          "id": "daily:25@daily-source-more",
+          "observe": {
+            "target": "#panel [data-pane=\"core-source\"]",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 三个互动摘录入口都已实际使用；课程结束后仍可在正式页面回查。"
+          }
+        }
+      ],
+      "principle": "回到「04 来源」列表，逐条打开摘录窗口，看完关闭再下一条。",
+      "revision": 1,
+      "overview": {
+        "purpose": "逐条打开其余来源摘录并关闭。",
+        "when": "模板引用多条来源，想全部核对时。",
+        "mechanism": "回到「04 来源」列表，逐条打开摘录窗口，看完关闭再下一条。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你能独立核对模板引用的每一条来源。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在来源列表页。",
+      "completionNote": "所有来源你都过了一遍，核对变成习惯。",
+      "from": "daily",
+      "base": 15,
+      "chainMap": [
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "id": "collect-card",
+      "group": "日常操作",
+      "title": "收藏一张模板",
+      "fixture": "empty",
+      "goal": "在卡片上点一下收藏，把模板存进我的工作区。",
+      "steps": [
+        {
+          "id": "collections:0@collect-card",
+          "type": "input",
+          "target": "#q",
+          "instruction": "在主页长搜索框输入「会议纪要」。",
+          "check": "search",
+          "why": "先筛出公开模板，方便直接在卡片上收藏。",
+          "success": "列表收窄到「会议纪要」了。",
+          "value": "会议纪要",
+          "observe": {
+            "target": "#home-library-view",
+            "message": "先筛选公开模板，以便练习直接在卡片上收藏。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:1@collect-card",
+          "type": "click",
+          "target": "#home [data-favorite-card=\"PC-09-006\"]",
+          "instruction": "点击会议纪要卡片上的「☆ 收藏」。",
+          "check": "favorite-on:PC-09-006",
+          "why": "收藏只加快捷入口，不会打开工作台或复制正文。",
+          "success": "会议纪要卡片上点亮了☆。",
+          "observe": {
+            "target": "#home [data-favorite-card=\"PC-09-006\"]",
+            "message": "收藏只添加快捷入口，不会打开工作台或复制正文。 请看高亮内容确认变化。"
+          }
+        }
+      ],
+      "principle": "卡片上的 ☆ 是收藏开关；收藏只存关系，不动模板本身。",
+      "revision": 1,
+      "overview": {
+        "purpose": "把一张好用的模板加入收藏。",
+        "when": "遇到想长期用的模板时。",
+        "mechanism": "卡片上的 ☆ 是收藏开关；收藏只存关系，不动模板本身。",
+        "prerequisites": "练习从隔离的虚构工作区开始，跟着做就能到位。",
+        "result": "你会收藏模板，并知道它出现在工作区的收藏页。",
+        "boundary": "练习和正式工作区分开；先做真实动作，再看实际变化。不写系统剪贴板，不产生真实下载。"
+      },
+      "hook": "这一课只有两个动作，先建立收藏的手感。",
+      "completionNote": "第一颗星点亮了，好模板从此不丢。",
+      "from": "collections",
+      "base": 0,
+      "chainMap": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "collect-open",
+      "group": "日常操作",
+      "title": "从收藏打开并取消收藏",
+      "fixture": "empty",
+      "goal": "从工作区收藏页打开模板，再在详情里取消收藏。",
+      "steps": [
+        {
+          "id": "collections:2@collect-open",
+          "type": "click",
+          "target": "#personalWorkspaceBtn",
+          "instruction": "点击顶部「我的工作区」。",
+          "check": "workspace",
+          "why": "收藏和历史都在工作区统一管理。",
+          "success": "工作区打开了，先看收藏栏。",
+          "observe": {
+            "target": "#personalWorkspaceTitle",
+            "message": "集中管理收藏与历史，确认刚才保存的位置。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:3@collect-open",
+          "type": "click",
+          "target": "[data-pw-tab=\"favorites\"]",
+          "instruction": "点击工作区的「收藏」选项卡。",
+          "check": "tab:favorites",
+          "why": "收藏栏会列出刚加入的母模板。",
+          "success": "收藏栏里出现了会议纪要。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "收藏栏现在会列出刚刚加入的母模板。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:4@collect-open",
+          "type": "click",
+          "target": "[data-pw-favorite-open=\"PC-09-006\"]",
+          "instruction": "点击会议纪要收藏记录的「打开」。",
+          "check": "card:PC-09-006",
+          "why": "这里打开的是原模板，收藏不留上次参数。",
+          "success": "原模板打开了。",
+          "observe": {
+            "target": "[data-pane=\"core-inputs\"]",
+            "message": "此处打开原模板；收藏不会保存你上一次填写的参数。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:5@collect-open",
+          "type": "click",
+          "target": "#panel [data-favorite-card=\"PC-09-006\"]",
+          "instruction": "在详情顶部点击「★ 已收藏」取消收藏。",
+          "check": "favorite-off:PC-09-006",
+          "why": "已收藏按钮可直接取消，模板仍开着。",
+          "success": "详情顶部恢复成☆，收藏取消了。",
+          "observe": {
+            "target": "#panel [data-favorite-card=\"PC-09-006\"]",
+            "message": "已收藏按钮可直接取消；模板依旧打开且正文不受影响。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:6@collect-open",
+          "type": "click",
+          "target": "#panel [data-action=\"close\"]",
+          "instruction": "点击「返回模板库」。",
+          "check": "card-closed",
+          "why": "先真实返回主页，再操作主页入口。",
+          "success": "回到主页了。",
+          "observe": {
+            "target": "#home-library-view",
+            "message": "先真实返回主页，再操作主页入口；手机上打开详情时主页不可点击。 请看高亮内容确认变化。"
+          }
+        }
+      ],
+      "principle": "收藏记录的「打开」直达原对象；详情顶部的 ★ 再点一次就取消收藏。",
+      "revision": 1,
+      "overview": {
+        "purpose": "从收藏页打开模板，并练习取消收藏。",
+        "when": "想确认收藏的东西还在不在、好不好用时。",
+        "mechanism": "收藏记录的「打开」直达原对象；详情顶部的 ★ 再点一次就取消收藏。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会从收藏进入模板，也会取消收藏。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在已收藏的状态。",
+      "completionNote": "打开与取消都会了，收藏是可进可退的。",
+      "from": "collections",
+      "base": 2,
+      "chainMap": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "collect-remove",
+      "group": "日常操作",
+      "title": "删除收藏关系",
+      "fixture": "empty",
+      "goal": "在工作区里删除一条收藏关系，模板本身不受影响。",
+      "steps": [
+        {
+          "id": "collections:7@collect-remove",
+          "type": "click",
+          "target": "#home [data-favorite-card=\"PC-09-006\"]",
+          "instruction": "再次点击卡片上的「☆ 收藏」。",
+          "check": "favorite-on:PC-09-006",
+          "why": "重新收藏，接下来练习从列表删除。",
+          "success": "卡片上又亮起了☆。",
+          "observe": {
+            "target": "#home [data-favorite-card=\"PC-09-006\"]",
+            "message": "重新收藏，接下来练习从收藏列表删除关系。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:8@collect-remove",
+          "type": "click",
+          "target": "#personalWorkspaceBtn",
+          "instruction": "再次打开「我的工作区」。",
+          "check": "workspace",
+          "why": "收藏列表和主页按钮读同一份数据。",
+          "success": "工作区又打开了。",
+          "observe": {
+            "target": "#personalWorkspaceTitle",
+            "message": "收藏列表与主页按钮读取同一份数据。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:9@collect-remove",
+          "type": "click",
+          "target": "[data-pw-tab=\"favorites\"]",
+          "instruction": "再次进入「收藏」。",
+          "check": "tab:favorites",
+          "why": "分开管理收藏记录和原模板操作。",
+          "success": "回到收藏栏了。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "区分收藏记录的管理动作与原模板操作。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:10@collect-remove",
+          "type": "click",
+          "target": "[data-pw-unfavorite=\"PC-09-006\"]",
+          "instruction": "点击母模板收藏记录的「删除收藏」。",
+          "check": "favorite-off:PC-09-006",
+          "why": "这只移除收藏关系，母模板和最近使用都留着。",
+          "success": "会议纪要已从收藏栏移除。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "这只移除收藏关系，不删除母模板，也不清除最近使用。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:11@collect-remove",
+          "type": "click",
+          "target": "[data-personal-close]",
+          "instruction": "关闭工作区。",
+          "check": "workspace-closed",
+          "why": "回主页，接着练来源原文的收藏。",
+          "success": "工作区关上了，回到主页。",
+          "observe": {
+            "target": "#home-library-view",
+            "message": "返回主页，继续练习来源原文的收藏。 请看高亮内容确认变化。"
+          }
+        }
+      ],
+      "principle": "删除收藏只移除这条关系，模板仍在库里可用。",
+      "revision": 1,
+      "overview": {
+        "purpose": "从收藏列表删除一条收藏关系。",
+        "when": "收藏太多、想清理列表时。",
+        "mechanism": "删除收藏只移除这条关系，模板仍在库里可用。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会清理收藏列表，且不误删模板。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在已收藏的状态。",
+      "completionNote": "收藏清理干净了，列表只留真正要用的。",
+      "from": "collections",
+      "base": 7,
+      "chainMap": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "id": "collect-source-add",
+      "group": "日常操作",
+      "title": "收藏一条来源原文",
+      "fixture": "empty",
+      "goal": "在提示词广场给一条原始记录点收藏。",
+      "steps": [
+        {
+          "id": "collections:12@collect-source-add",
+          "type": "click",
+          "target": "#sourceCatalogBtn",
+          "instruction": "打开顶部「来源广场」。",
+          "check": "catalog-open",
+          "why": "广场保存原始发布记录，和母模板分开收藏。",
+          "success": "来源广场打开了，准备收藏一条。",
+          "observe": {
+            "target": "#sourceCatalogDetail",
+            "message": "广场保存原始发布记录，和母模板分开收藏。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:13@collect-source-add",
+          "type": "click",
+          "target": "#sourceCatalogList [data-favorite-card=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+          "instruction": "点击来源广场第一条记录旁的「☆ 收藏」。",
+          "check": "favorite-on:source:4d98a939-3ff7-45a3-8f25-ab5d443df468",
+          "why": "直接收藏这条发布记录，原文和署名仍在广场。",
+          "success": "第一条来源记录了☆。",
+          "observe": {
+            "target": "#sourceCatalogList [data-favorite-card=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+            "message": "直接收藏这条发布记录，完整原文与署名仍在来源广场。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:14@collect-source-add",
+          "type": "click",
+          "target": "#sourceCatalogClose",
+          "instruction": "关闭来源广场。",
+          "check": "catalog-closed",
+          "why": "接下来从工作区找回刚收藏的来源。",
+          "success": "来源广场关上了。",
+          "observe": {
+            "target": "#home-library-view",
+            "message": "练习通过工作区找回刚刚收藏的来源。 请看高亮内容确认变化。"
+          }
+        }
+      ],
+      "principle": "提示词广场每条记录都有 ☆；来源收藏在列表里单独标注为来源原文。",
+      "revision": 1,
+      "overview": {
+        "purpose": "把一条来源原文加入收藏。",
+        "when": "来源比模板更值得留档时。",
+        "mechanism": "提示词广场每条记录都有 ☆；来源收藏在列表里单独标注为来源原文。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会收藏来源原文，并知道它和模板收藏分开标注。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动打开提示词广场。",
+      "completionNote": "来源也能收藏了，出处一键找回。",
+      "from": "collections",
+      "base": 12,
+      "chainMap": [
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "id": "collect-source-manage",
+      "group": "日常操作",
+      "title": "来源收藏的打开与取消",
+      "fixture": "empty",
+      "goal": "从工作区打开来源收藏，练习取消与再收藏。",
+      "steps": [
+        {
+          "id": "collections:15@collect-source-manage",
+          "type": "click",
+          "target": "#personalWorkspaceBtn",
+          "instruction": "打开「我的工作区」。",
+          "check": "workspace",
+          "why": "统一收藏栏同时放母模板、个人版和来源记录。",
+          "success": "工作区打开了，这次看来源收藏。",
+          "observe": {
+            "target": "#personalWorkspaceTitle",
+            "message": "统一收藏栏同时容纳母模板、个人模板与来源记录。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:16@collect-source-manage",
+          "type": "click",
+          "target": "[data-pw-tab=\"favorites\"]",
+          "instruction": "点击「收藏」，查看标记为来源原文的记录。",
+          "check": "tab:favorites",
+          "why": "类型标签说明这是原始记录，没变成母模板。",
+          "success": "看到标记为来源原文的收藏了。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "类型标签说明这是原始发布记录，没有变成母模板或我的提示词。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:17@collect-source-manage",
+          "type": "click",
+          "target": "[data-pw-favorite-open=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+          "instruction": "点击来源收藏记录的「打开」。",
+          "check": "catalog-1",
+          "why": "返回原始发布记录，核对标题、署名和全文。",
+          "success": "回到这条来源记录了。",
+          "observe": {
+            "target": "#sourceCatalogDetail",
+            "message": "返回原始发布记录，核对标题、署名和完整原文。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:18@collect-source-manage",
+          "type": "click",
+          "target": "#sourceCatalogDetail [data-favorite-card=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+          "instruction": "点击来源详情中的「★ 已收藏」。",
+          "check": "favorite-off:source:4d98a939-3ff7-45a3-8f25-ab5d443df468",
+          "why": "取消后，列表和详情的按钮一起恢复成☆。",
+          "success": "来源记录的收藏取消了。",
+          "observe": {
+            "target": "#sourceCatalogList [data-favorite-card=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+            "message": "取消后，列表和详情的收藏按钮会同时恢复为☆ 收藏。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:19@collect-source-manage",
+          "type": "click",
+          "target": "#sourceCatalogList [data-favorite-card=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+          "instruction": "再从列表收藏这条来源。",
+          "check": "favorite-on:source:4d98a939-3ff7-45a3-8f25-ab5d443df468",
+          "why": "列表和详情共用同一关系，不会多出一条。",
+          "success": "来源记录重新收藏好了。",
+          "observe": {
+            "target": "#sourceCatalogDetail [data-favorite-card=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+            "message": "来源列表与详情使用同一收藏关系，不产生两条重复收藏。 请看高亮内容确认变化。"
+          }
+        }
+      ],
+      "principle": "来源收藏的「打开」直达来源详情；★ 再点一次取消，可再收藏回来。",
+      "revision": 1,
+      "overview": {
+        "purpose": "打开来源收藏，练习取消与再次收藏。",
+        "when": "想核对收藏的来源内容时。",
+        "mechanism": "来源收藏的「打开」直达来源详情；★ 再点一次取消，可再收藏回来。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会打开、取消、恢复来源收藏。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在工作区收藏页。",
+      "completionNote": "来源收藏的进退你都掌握了。",
+      "from": "collections",
+      "base": 15,
+      "chainMap": [
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "id": "collect-source-cleanup",
+      "group": "日常操作",
+      "title": "删除来源收藏",
+      "fixture": "empty",
+      "goal": "把不要的来源收藏从列表里删除，原来源不受影响。",
+      "steps": [
+        {
+          "id": "collections:20@collect-source-cleanup",
+          "type": "click",
+          "target": "#sourceCatalogClose",
+          "instruction": "关闭来源广场，回到主页。",
+          "check": "catalog-closed",
+          "why": "准备从收藏栏删掉这条来源关系。",
+          "success": "广场关上了，回主页。",
+          "observe": {
+            "target": "#home-library-view",
+            "message": "准备从收藏列表删除这条来源关系。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:21@collect-source-cleanup",
+          "type": "click",
+          "target": "#personalWorkspaceBtn",
+          "instruction": "打开「我的工作区」。",
+          "check": "workspace",
+          "why": "收藏删除和历史删除都在这里。",
+          "success": "工作区打开了，准备删来源收藏。",
+          "observe": {
+            "target": "#personalWorkspaceTitle",
+            "message": "收藏删除与历史删除都在这里进行。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:22@collect-source-cleanup",
+          "type": "click",
+          "target": "[data-pw-tab=\"favorites\"]",
+          "instruction": "进入「收藏」。",
+          "check": "tab:favorites",
+          "why": "找到来源原文记录的删除入口。",
+          "success": "又回到收藏栏了。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "找到来源原文记录的删除入口。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:23@collect-source-cleanup",
+          "type": "click",
+          "target": "[data-pw-unfavorite=\"source:4d98a939-3ff7-45a3-8f25-ab5d443df468\"]",
+          "instruction": "点击来源记录的「删除收藏」。",
+          "check": "favorite-off:source:4d98a939-3ff7-45a3-8f25-ab5d443df468",
+          "why": "来源原文仍在，只从收藏栏移除。",
+          "success": "来源记录已从收藏栏移除。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "来源原文仍保留，只从收藏栏移除。 请看高亮内容确认变化。"
+          }
+        }
+      ],
+      "principle": "删除收藏只移除这条关系，来源原文仍在广场可用。",
+      "revision": 1,
+      "overview": {
+        "purpose": "删除一条来源收藏关系。",
+        "when": "收藏太多、想清理列表时。",
+        "mechanism": "删除收藏只移除这条关系，来源原文仍在广场可用。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会清理来源收藏，且不误删来源本身。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在工作区收藏页。",
+      "completionNote": "来源收藏清理干净了，列表只留真正要用的。",
+      "from": "collections",
+      "base": 20,
+      "chainMap": [
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    {
+      "id": "collect-recent-clear",
+      "group": "日常操作",
+      "title": "清理最近使用记录",
+      "fixture": "empty",
+      "goal": "删除最近使用里的历史记录；删除收藏与此互不影响。",
+      "steps": [
+        {
+          "id": "collections:24@collect-recent-clear",
+          "type": "click",
+          "target": "[data-pw-tab=\"recent\"]",
+          "instruction": "切换到「最近使用」。",
+          "check": "tab:recent",
+          "why": "前面打开母模板会留下访问记录，它只是访问历史。",
+          "success": "切到最近使用了。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "前面打开会议纪要模板留下访问记录；它不是参数备份。 请看高亮内容确认变化。"
+          }
+        },
+        {
+          "id": "collections:25@collect-recent-clear",
+          "type": "click",
+          "target": "[data-pw-recent-delete=\"PC-09-006\"]",
+          "instruction": "点击会议纪要最近使用记录的「删除」。",
+          "check": "recent-removed:PC-09-006",
+          "why": "只删这条历史；再打开会重新记录。",
+          "success": "会议纪要的最近记录删掉了。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "只删除这条历史；以后再次打开模板会产生新的最近使用记录。 请看高亮内容确认变化。"
+          }
+        }
+      ],
+      "principle": "最近使用只记打开历史；删除记录不影响收藏，也不删除模板本身。",
+      "revision": 1,
+      "overview": {
+        "purpose": "删除一条最近使用记录。",
+        "when": "想清空「最近使用」的历史时。",
+        "mechanism": "最近使用只记打开历史；删除记录不影响收藏，也不删除模板本身。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会清理最近使用，并知道它与收藏互不相干。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在最近使用页。",
+      "completionNote": "最近使用清清爽爽，收藏原样保留。",
+      "from": "collections",
+      "base": 24,
+      "chainMap": [
+        24,
+        25
+      ]
+    },
+    {
+      "id": "personal-create",
+      "group": "日常操作",
+      "title": "新建一条个人提示词",
+      "fixture": "empty",
+      "goal": "在工作区新建个人 Prompt，填齐名称、用途、标签和正文并保存。",
+      "steps": [
+        {
+          "id": "personal:0@personal-create",
+          "type": "click",
+          "target": "#personalWorkspaceBtn",
+          "instruction": "点击顶部「我的工作区」。",
+          "check": "workspace",
+          "success": "工作区打开了，准备新建一份方法。",
+          "why": "先找入口，之后才选具体工具。",
+          "observe": {
+            "target": "#personalWorkspaceTitle",
+            "message": "工作区已打开。 先找入口，之后才选择具体工具。"
+          }
+        },
+        {
+          "id": "personal:1@personal-create",
+          "type": "click",
+          "target": "[data-pw-create]",
+          "instruction": "点击「新建个人 Prompt」。",
+          "check": "editor",
+          "success": "编辑窗口打开了。",
+          "why": "新建保存能复用的方法，用时再填当次材料。",
+          "observe": {
+            "target": "#lifecycleName",
+            "message": "个人编辑窗口已打开。 新建保存可复用的方法，使用时再填当次材料。"
+          }
+        },
+        {
+          "id": "personal:2@personal-create",
+          "type": "input",
+          "target": "#lifecycleName",
+          "instruction": "填写名称「会议复盘练习」。",
+          "value": "会议复盘练习",
+          "check": "name",
+          "success": "名称「会议复盘练习」填好了。",
+          "why": "名称方便以后检索，练习按指定名字写。",
+          "observe": {
+            "target": "#lifecycleName",
+            "message": "输入已检查，内容符合本步条件。 名称用于以后检索，练习要求使用指定名称以核对保存结果。"
+          }
+        },
+        {
+          "id": "personal:3@personal-create",
+          "type": "input",
+          "target": "#lifecycleDesc",
+          "instruction": "填写这份方法的用途说明。",
+          "value": "把会议记录整理成决定、待确认问题和行动责任",
+          "check": "description",
+          "success": "用途说明写好了。",
+          "why": "用途说明帮你判断何时选这份方法。",
+          "observe": {
+            "target": "#lifecycleDesc",
+            "message": "输入已检查，内容符合本步条件。 用途说明帮助你判断何时选这份方法，也供候选评审核对。"
+          }
+        },
+        {
+          "id": "personal:4@personal-create",
+          "type": "input",
+          "target": "#lifecycleTags",
+          "instruction": "填写标签「会议,复盘」。",
+          "value": "会议,复盘",
+          "check": "tags",
+          "success": "标签「会议,复盘」填好了。",
+          "why": "标签用来整理和筛选；标签本身不提升效果。",
+          "observe": {
+            "target": "#lifecycleTags",
+            "message": "输入已检查，内容符合本步条件。 标签用于整理和筛选；标签本身不会提升模型效果。"
+          }
+        },
+        {
+          "id": "personal:5@personal-create",
+          "type": "input",
+          "target": "#lifecyclePrompt",
+          "instruction": "填写练习区提供的带变量正文。",
+          "value": "根据 [会议记录]，为 [阅读对象] 整理决定、待确认问题和行动项。每项行动列出任务、负责人、截止时间与依据原句。未说明的信息写“待确认”，不补造事实。",
+          "check": "prompt",
+          "success": "带变量的正文填好了。",
+          "why": "保留 [会议记录] 这类变量，下次才能换材料复用。",
+          "observe": {
+            "target": "#lifecyclePrompt",
+            "message": "输入已检查，内容符合本步条件。 保留 [会议记录] 等变量，下次才能替换材料复用。"
+          }
+        },
+        {
+          "id": "personal:6@personal-create",
+          "type": "click",
+          "target": "[data-lifecycle-save]",
+          "instruction": "点击「保存提示词」。",
+          "check": "personal-saved",
+          "success": "列表里出现了「会议复盘练习」。",
+          "why": "只有真的保存成功，才形成个人资产。",
+          "observe": {
+            "target": "#personalWorkspaceList .pw-item h3",
+            "message": "列表中已出现「会议复盘练习」。 只有实际保存成功，才形成个人资产。"
+          }
+        }
+      ],
+      "principle": "新建后填写名称、用途、标签与带变量正文，点保存才进入记录；保存前不会新增任何东西。",
+      "revision": 1,
+      "overview": {
+        "purpose": "从零新建并保存一条个人提示词。",
+        "when": "有自己写法想长期保存时。",
+        "mechanism": "新建后填写名称、用途、标签与带变量正文，点保存才进入记录；保存前不会新增任何东西。",
+        "prerequisites": "练习从隔离的虚构工作区开始，跟着做就能到位。",
+        "result": "你能独立新建一条结构完整的个人提示词。",
+        "boundary": "练习和正式工作区分开；先做真实动作，再看实际变化。不写系统剪贴板，不产生真实下载。"
+      },
+      "hook": "进入后自动停在工作区，正文用练习区提供的示例。",
+      "completionNote": "第一条个人提示词保存成功，库里有了你的东西。",
+      "from": "personal",
+      "base": 0,
+      "chainMap": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "personal-edit",
+      "group": "日常操作",
+      "title": "修改并自动保留旧版本",
+      "fixture": "empty",
+      "goal": "修改已保存的提示词，确认旧版本被自动保留。",
+      "steps": [
+        {
+          "id": "personal:7@personal-edit",
+          "type": "click",
+          "target": "[data-pw-edit]",
+          "instruction": "点击这条记录旁的「修改」。",
+          "check": "editor-existing",
+          "success": "刚保存的个人版打开了。",
+          "why": "改的是个人副本，保存后会留下修改前的版本。",
+          "observe": {
+            "target": "#lifecyclePrompt",
+            "message": "已打开刚保存的个人版。 编辑的是个人副本；保存后会留存编辑前的版本。"
+          }
+        },
+        {
+          "id": "personal:8@personal-edit",
+          "type": "input",
+          "target": "#lifecyclePrompt",
+          "instruction": "在正文末尾补上「请先列出待确认问题」。",
+          "value": "根据 [会议记录]，为 [阅读对象] 整理决定、待确认问题和行动项。每项行动列出任务、负责人、截止时间与依据原句。未说明的信息写“待确认”，不补造事实。\n请先列出待确认问题。",
+          "check": "revised",
+          "success": "正文末尾补上了「请先列出待确认问题」。",
+          "why": "这次明确加了输出顺序要求，稍后能在差异里看到。",
+          "observe": {
+            "target": "#lifecyclePrompt",
+            "message": "输入已检查，内容符合本步条件。 这次明确增加输出顺序要求，稍后可在版本差异中看到。"
+          }
+        },
+        {
+          "id": "personal:9@personal-edit",
+          "type": "click",
+          "target": "[data-lifecycle-save]",
+          "instruction": "点击「保存提示词」。",
+          "check": "version-saved",
+          "success": "旧正文进了历史，当前版也更新了。",
+          "why": "保存把新稿设为当前版，并自动存旧稿历史。",
+          "observe": {
+            "target": "#personalWorkspaceList [data-pw-versions]",
+            "message": "旧正文已进入历史，当前正文已更新。 保存把新稿设为当前版，并自动保存旧稿历史。"
+          }
+        }
+      ],
+      "principle": "每次保存都会把修改前的内容存为旧版本，可随时回看。",
+      "revision": 1,
+      "overview": {
+        "purpose": "修改个人提示词并确认旧版本保留。",
+        "when": "想改进已有写法又怕丢旧稿时。",
+        "mechanism": "每次保存都会把修改前的内容存为旧版本，可随时回看。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你敢放心改稿，因为旧版本一直在。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在记录已就绪的状态。",
+      "completionNote": "改稿不慌了，旧版本替你兜底。",
+      "from": "personal",
+      "base": 7,
+      "chainMap": [
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "personal-versions",
+      "group": "日常操作",
+      "title": "比较历史版本差异",
+      "fixture": "empty",
+      "goal": "打开旧版本列表，查看历史版本与当前的差异。",
+      "steps": [
+        {
+          "id": "personal:10@personal-versions",
+          "type": "click",
+          "target": "[data-pw-versions]",
+          "instruction": "点击这条记录的「旧版本」。",
+          "check": "versions",
+          "success": "版本窗口打开了。",
+          "why": "版本窗口让你先看历史，再决定要不要恢复。",
+          "observe": {
+            "target": "#versionInspectorBody",
+            "message": "版本窗口已打开。 版本窗口让你先检查历史，再决定是否恢复。"
+          }
+        },
+        {
+          "id": "personal:11@personal-versions",
+          "type": "click",
+          "target": "[data-version-index=\"0\"]",
+          "instruction": "点击左侧历史版本 v1。",
+          "check": "old-version",
+          "success": "选中的是修改前的旧正文。",
+          "why": "先选中旧稿，才会出现与当前比较的入口。",
+          "observe": {
+            "target": "#versionInspectorBody",
+            "message": "已选中编辑前的旧正文。 先选择旧稿，才会出现与当前正文比较的入口。"
+          }
+        },
+        {
+          "id": "personal:12@personal-versions",
+          "type": "click",
+          "target": "[data-version-diff]",
+          "instruction": "点击「与当前 内容差异」。",
+          "check": "diff",
+          "success": "差异模式打开了，增删都标出来了。",
+          "why": "版本是方法的迭代记录；恢复前先确认要哪一份。",
+          "observe": {
+            "target": ".diff-box",
+            "message": "版本差异模式已开启。 版本是方法的迭代记录；恢复旧版前先确认自己要恢复哪一份。"
+          }
+        }
+      ],
+      "principle": "旧版本列表可选任一历史版本，与当前做差异对比，只看不改。",
+      "revision": 1,
+      "overview": {
+        "purpose": "查看历史版本与当前内容的差异。",
+        "when": "想确认两个版本差在哪时。",
+        "mechanism": "旧版本列表可选任一历史版本，与当前做差异对比，只看不改。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会用差异对比看清楚每次改动。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在旧版本列表。",
+      "completionNote": "版本差异一目了然，改动了然于心。",
+      "from": "personal",
+      "base": 10,
+      "chainMap": [
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "id": "source-open",
+      "group": "日常操作",
+      "title": "打开提示词广场并复制原文",
+      "fixture": "empty",
+      "goal": "打开提示词广场，直接复制一条记录的完整原文。",
+      "steps": [
+        {
+          "type": "click",
+          "target": "#sourceCatalogBtn",
+          "instruction": "点击顶部「来源广场」。",
+          "check": "catalog-open",
+          "why": "浏览所有原始发布记录；系统不会替你升级成母模板。",
+          "success": "来源广场打开了。",
+          "id": "sources:0@source-open",
+          "observe": {
+            "target": "#sourceCatalogDetail .source-meta",
+            "message": "条目 ID、序号和原表位置用于回查；署名不自动证明唯一原创权属。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "[data-square-copy]",
+          "instruction": "点击「复制完整原文」。",
+          "check": "source-copy",
+          "why": "完整原文和母模板指令不同，用前仍要核对变量。",
+          "success": "完整原文已复制到练习区。",
+          "id": "sources:2@source-open",
+          "observe": {
+            "target": "#sourceCatalogDetail .source-actions",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 完整原文与母模板指令不同，使用前仍需核对变量和边界。"
+          }
+        }
+      ],
+      "principle": "提示词广场收录原始发布记录，每条都可一键复制完整原文；复制进练习剪贴板。",
+      "revision": 1,
+      "overview": {
+        "purpose": "打开提示词广场并复制一条原文。",
+        "when": "想直接取用某条来源的完整文字时。",
+        "mechanism": "提示词广场收录原始发布记录，每条都可一键复制完整原文；复制进练习剪贴板。",
+        "prerequisites": "练习从隔离的虚构工作区开始，跟着做就能到位。",
+        "result": "你会打开广场并取走一条完整原文。",
+        "boundary": "练习和正式工作区分开；先做真实动作，再看实际变化。不写系统剪贴板，不产生真实下载。"
+      },
+      "hook": "这一课两个动作，先认识广场的入口。",
+      "completionNote": "原文到手了，提示词广场就是你的素材库。",
+      "from": "sources",
+      "base": 0,
+      "chainMap": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "source-search",
+      "group": "日常操作",
+      "title": "检索并打开一条来源",
+      "fixture": "empty",
+      "goal": "在提示词广场按标题检索并打开详情。",
+      "steps": [
+        {
+          "type": "input",
+          "target": "#sourceCatalogSearch",
+          "instruction": "在来源检索框输入「第一性破局者 (First-Principles Breaker)」，查找含作者说明的记录。",
+          "value": "第一性破局者 (First-Principles Breaker)",
+          "check": "source-search:第一性破局者 (First-Principles Breaker)",
+          "why": "从真实搜索结果里找作者说明，不跳预定条目。",
+          "success": "检索结果收窄到这条记录了。",
+          "observe": {
+            "target": "#sourceCatalogList",
+            "message": "搜索后检查标题与署名，接着亲手选择记录。"
+          },
+          "id": "sources:3@source-search"
+        },
+        {
+          "type": "click",
+          "target": "[data-square-id=\"47586631-41d8-4405-9ab6-394836c171d5\"]",
+          "instruction": "点击搜索结果中「第一性破局者 (First-Principles Breaker)」的标题。",
+          "check": "source-selected",
+          "why": "列表选择决定右侧显示哪条原文。",
+          "success": "对应的完整来源显示在右边了。",
+          "observe": {
+            "target": "#sourceCatalogDetail",
+            "message": "完整来源中出现了可展开的作者说明。"
+          },
+          "id": "sources:4@source-search"
+        },
+        {
+          "type": "click",
+          "target": "#sourceCatalogDetail details summary",
+          "instruction": "点击「作者说明」。",
+          "check": "source-author-note",
+          "why": "作者说明保留发布时的补充背景，供你判断。",
+          "success": "作者说明展开了。",
+          "observe": {
+            "target": "#sourceCatalogDetail .source-note",
+            "message": "这里是原始发布者的补充说明，正文仍独立保留。"
+          },
+          "id": "sources:5@source-search"
+        }
+      ],
+      "principle": "检索框按标题匹配；详情页含正文与作者说明，逐条保留署名。",
+      "revision": 1,
+      "overview": {
+        "purpose": "按标题检索来源并查看详情与作者说明。",
+        "when": "记得关键词，想找某条来源时。",
+        "mechanism": "检索框按标题匹配；详情页含正文与作者说明，逐条保留署名。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你能用关键词找到指定来源并查看详情。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在广场列表。",
+      "completionNote": "检索学会了，两千多条记录随取随用。",
+      "from": "sources",
+      "base": 2,
+      "chainMap": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "source-same",
+      "group": "日常操作",
+      "title": "同文记录与母模板关联",
+      "fixture": "empty",
+      "goal": "认识同一原文的多条发布记录，并回到原始记录查看母模板。",
+      "steps": [
+        {
+          "type": "input",
+          "target": "#sourceCatalogSearch",
+          "instruction": "清空来源检索框，回到全部来源。",
+          "value": "",
+          "check": "source-search:",
+          "why": "清空检索会刷新列表，继续练同文回链。",
+          "success": "全部来源列表恢复了。",
+          "observe": {
+            "target": "#sourceCatalogList",
+            "message": "实际列表回到全部主题、原始序号排序，第一条是事实核查。"
+          },
+          "id": "sources:6@source-same"
+        },
+        {
+          "type": "click",
+          "target": "[data-square-seq=\"534\"]",
+          "instruction": "点击相同正文的其他发布记录「#534」。",
+          "check": "catalog-534",
+          "why": "同文会有不同发布者，回链只是记录跳转。",
+          "success": "切到了同文的 #534 记录。",
+          "id": "sources:7@source-same",
+          "observe": {
+            "target": "#sourceCatalogDetail",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 同文不同发布者会分别保留；这个按钮是记录回链，不是重复删除。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "[data-square-seq=\"1\"]",
+          "instruction": "在同文记录中点击「#1」，回到有母模板关联的原始记录。",
+          "check": "catalog-1",
+          "why": "回到有母模板关联的那条原始记录再继续。",
+          "success": "沿回链回到了记录 #1。",
+          "observe": {
+            "target": "#sourceCatalogDetail .source-links",
+            "message": "此记录确实显示已关联母模板；下一步亲手点关联按钮。"
+          },
+          "id": "sources:8@source-same"
+        },
+        {
+          "type": "click",
+          "target": "[data-square-card=\"PC-03-002\"]",
+          "instruction": "点击关联母模板「查看策展版本」。",
+          "check": "card:PC-03-002",
+          "why": "真实关联按钮把你带回整理过的核查方法。",
+          "success": "回到关联母模板了。",
+          "id": "sources:9@source-same",
+          "observe": {
+            "target": "#workspaceTitle",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 真实关联按钮把你带回已经整理的核查方法。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "#panel [data-action=\"close\"]",
+          "instruction": "点击工作台顶部「返回模板库」。",
+          "check": "card-closed",
+          "why": "先退出模板再操作主页入口，手机上也一样。",
+          "success": "模板关上了，主页入口可用。",
+          "observe": {
+            "target": "#home .home-library-tabs",
+            "message": "已真实回到主页；现在才可以点击顶部来源广场。"
+          },
+          "id": "sources:10@source-same"
+        },
+        {
+          "type": "click",
+          "target": "#sourceCatalogBtn",
+          "instruction": "再次点击顶部「来源广场」。",
+          "check": "catalog-open",
+          "why": "来源窗口记得先前选择；重开沿用原状态。",
+          "success": "来源广场又打开了。",
+          "id": "sources:11@source-same",
+          "observe": {
+            "target": "#sourceCatalogDetail",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 来源窗口记住先前选择；重新打开不代表重新搜索。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "#sourceCatalogClose",
+          "instruction": "点击来源广场右上角的关闭按钮。",
+          "check": "catalog-closed",
+          "why": "关闭只收起窗口，内容和已选记录都留着。",
+          "success": "来源窗口关上了。",
+          "observe": {
+            "target": "#home .home-library-tabs",
+            "message": "已返回刚才打开的策展模板；来源没有被删除。"
+          },
+          "id": "sources:12@source-same"
+        }
+      ],
+      "principle": "相同正文会有多条发布记录；#1 是与母模板关联的原始记录，可查看策展版本。",
+      "revision": 1,
+      "overview": {
+        "purpose": "在同文多条记录间切换，并查看关联母模板。",
+        "when": "看到编号不同的相同正文，想知道哪条是源头时。",
+        "mechanism": "相同正文会有多条发布记录；#1 是与母模板关联的原始记录，可查看策展版本。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你能辨认原始记录，并从它跳到母模板。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在广场列表。",
+      "completionNote": "同文关系看懂了，源头一眼可辨。",
+      "from": "sources",
+      "base": 5,
+      "chainMap": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "id": "source-filter",
+      "group": "日常操作",
+      "title": "用分类、排序和检索缩小范围",
+      "fixture": "empty",
+      "goal": "组合主题分类、排序和检索，把来源列表缩到目标范围。",
+      "steps": [
+        {
+          "type": "click",
+          "target": "#sourceCatalogBtn",
+          "instruction": "再点击「来源广场」，继续练检索与翻页。",
+          "check": "catalog-open",
+          "why": "重开继续用保留状态，不代替你检索或跳转。",
+          "success": "来源广场重新打开了。",
+          "observe": {
+            "target": "#sourceCatalogList",
+            "message": "窗口保留先前选中记录；接着设置真实筛选条件。"
+          },
+          "id": "sources:13@source-filter"
+        },
+        {
+          "type": "input",
+          "target": "#sourceCatalogCategory",
+          "instruction": "将「主题分类」选为「工作与办公」。",
+          "value": "09",
+          "check": "source-category:09",
+          "why": "分类按标题和标签推断，只辅助浏览。",
+          "success": "主题筛到「工作与办公」了。",
+          "id": "sources:14@source-filter",
+          "observe": {
+            "target": "#sourceCatalogSummary",
+            "message": "输入和本地状态已核对，请看高亮的实际结果。 分类根据标题与标签推断，只辅助浏览，不改写原发布标签。"
+          },
+          "inputKind": "select"
+        },
+        {
+          "type": "input",
+          "target": "#sourceCatalogSort",
+          "instruction": "将「排序」选为「原始序号 · 从大到小」。",
+          "value": "seq-desc",
+          "check": "source-sort:seq-desc",
+          "why": "排序改变展示次序，不动正文和署名。",
+          "success": "改成从大到小排了。",
+          "id": "sources:15@source-filter",
+          "observe": {
+            "target": "#sourceCatalogSummary",
+            "message": "输入和本地状态已核对，请看高亮的实际结果。 改变展示顺序；不会改变来源正文或署名。"
+          },
+          "inputKind": "select"
+        },
+        {
+          "type": "input",
+          "target": "#sourceCatalogSearch",
+          "instruction": "在来源检索框输入「会议」。",
+          "value": "会议",
+          "check": "source-search:会议",
+          "why": "这次搜的是标题、发布者、标签和正文。",
+          "success": "搜「会议」的结果出来了。",
+          "id": "sources:16@source-filter",
+          "observe": {
+            "target": "#sourceCatalogSummary",
+            "message": "输入和本地状态已核对，请看高亮的实际结果。 这次搜的是来源标题、发布者、标签与正文，不是主页母模板筛选。"
+          }
+        },
+        {
+          "type": "input",
+          "target": "#sourceCatalogSearch",
+          "instruction": "清空来源检索框。",
+          "value": "",
+          "check": "source-search:",
+          "why": "清空关键词后分类和排序仍保留。",
+          "success": "关键词清空了。",
+          "id": "sources:17@source-filter",
+          "observe": {
+            "target": "#sourceCatalogSummary",
+            "message": "输入和本地状态已核对，请看高亮的实际结果。 清空关键词后仍保留分类和排序；想回全库还需切换全部主题。"
+          }
+        },
+        {
+          "type": "input",
+          "target": "#sourceCatalogCategory",
+          "instruction": "将主题分类切回「全部主题」。",
+          "value": "all",
+          "check": "source-category:all",
+          "why": "恢复所有来源记录，准备练翻页。",
+          "success": "回到全部主题了。",
+          "id": "sources:18@source-filter",
+          "observe": {
+            "target": "#sourceCatalogSummary",
+            "message": "输入和本地状态已核对，请看高亮的实际结果。 恢复所有来源记录，准备练翻页。"
+          },
+          "inputKind": "select"
+        },
+        {
+          "type": "input",
+          "target": "#sourceCatalogSort",
+          "instruction": "将排序切回「原始序号 · 从小到大」。",
+          "value": "seq-asc",
+          "check": "source-sort:seq-asc",
+          "why": "翻页按稳定原始序号，便于核对内容。",
+          "success": "改回从小到大排了。",
+          "id": "sources:19@source-filter",
+          "observe": {
+            "target": "#sourceCatalogSummary",
+            "message": "输入和本地状态已核对，请看高亮的实际结果。 页码练习按照稳定原始序号，便于核对具体内容。"
+          },
+          "inputKind": "select"
+        }
+      ],
+      "principle": "主题分类与排序是下拉选择，检索按标题匹配；四样组合能把范围缩到一页。",
+      "revision": 1,
+      "overview": {
+        "purpose": "组合使用分类、排序与检索筛选来源。",
+        "when": "记录太多，要按主题找时。",
+        "mechanism": "主题分类与排序是下拉选择，检索按标题匹配；四样组合能把范围缩到一页。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你能组合筛选条件，快速定位目标主题的来源。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在广场列表。",
+      "completionNote": "筛选组合会用了，大库也能秒查。",
+      "from": "sources",
+      "base": 12,
+      "chainMap": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    },
+    {
+      "id": "source-pages",
+      "group": "日常操作",
+      "title": "翻页与跳页",
+      "fixture": "empty",
+      "goal": "练习上一页、下一页和页码直跳。",
+      "steps": [
+        {
+          "type": "click",
+          "target": "[data-square-page=\"next\"]",
+          "instruction": "点击「下一页」。",
+          "check": "source-page:1",
+          "why": "从第 1 页翻到第 2 页，列表和原文一起变。",
+          "success": "翻到第 2 页了。",
+          "id": "sources:20@source-pages",
+          "observe": {
+            "target": "#sourceCatalogList",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 从第 1 页翻到第 2 页，左侧来源列表和选中原文都会改变。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "[data-square-page=\"prev\"]",
+          "instruction": "点击「上一页」。",
+          "check": "source-page:0",
+          "why": "回到第 1 页；上一页禁用表示已在首屏。",
+          "success": "回到第 1 页了。",
+          "id": "sources:21@source-pages",
+          "observe": {
+            "target": "#sourceCatalogList",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 回到第 1 页；禁用的上一页表示已经在首屏，不是程序没反应。"
+          }
+        },
+        {
+          "type": "input",
+          "target": "#sourcePageInput",
+          "instruction": "把当前页码输入框改为 2。",
+          "value": "2",
+          "check": "source-page-input",
+          "why": "输入数字本身不跳页，下一步要按回车。",
+          "success": "页码框里填了 2。",
+          "id": "sources:22@source-pages",
+          "observe": {
+            "target": "#sourcePageInput",
+            "message": "输入和本地状态已核对，请看高亮的实际结果。 输入数字本身不会跳页，下一步须按回车。"
+          }
+        },
+        {
+          "type": "key",
+          "key": "Enter",
+          "target": "#sourcePageInput",
+          "instruction": "在页码框按回车提交。",
+          "check": "source-page:1",
+          "why": "只有回车提交真实表单才会跳页。",
+          "success": "回车生效，页面翻到了第 2 页。",
+          "id": "sources:23@source-pages",
+          "observe": {
+            "target": "#sourceCatalogList",
+            "message": "回车已提交，并出现了指定页码的内容。 只有回车提交真实表单才会跳页，教程不会在输入时偷偷切页。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "#sourceCatalogList [data-square-id]",
+          "instruction": "点击第 2 页的一条来源标题。",
+          "check": "source-selected",
+          "why": "选中条目后右侧显示完整原文和署名。",
+          "success": "这条来源的全文显示出来了。",
+          "id": "sources:24@source-pages",
+          "observe": {
+            "target": "#sourceCatalogDetail",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 选中条目后右侧展示完整原文和署名；列表和正文是关联视图。"
+          }
+        }
+      ],
+      "principle": "上一页/下一页逐页移动；页码框输入后回车提交才跳页，输入不提交不切页。",
+      "revision": 1,
+      "overview": {
+        "purpose": "练习翻页与输入页码直接跳页。",
+        "when": "想在多页结果间移动时。",
+        "mechanism": "上一页/下一页逐页移动；页码框输入后回车提交才跳页，输入不提交不切页。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会用三种方式在结果页间移动。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在筛选后的列表。",
+      "completionNote": "翻页跳页都会了，长列表任你走。",
+      "from": "sources",
+      "base": 19,
+      "chainMap": [
+        19,
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    {
+      "id": "source-archive",
+      "group": "日常操作",
+      "title": "旧档案与存成我的提示词",
+      "fixture": "empty",
+      "goal": "从旧母模板档案复制旧模板，并把来源存成个人提示词。",
+      "steps": [
+        {
+          "type": "click",
+          "target": "[data-retired-id=\"PC-13-005\"]",
+          "instruction": "点击「旧母模板档案」中的 PC-13-005。",
+          "check": "retired-open",
+          "why": "退役只退出首页策展库，正文和来源仍可回查。",
+          "success": "旧母模板档案打开了。",
+          "id": "sources:25@source-archive",
+          "observe": {
+            "target": "#sourceCatalogDetail",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 退役只退出首页策展库，正文与来源仍可回查。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "[data-retired-copy=\"PC-13-005\"]",
+          "instruction": "点击「复制旧模板」。",
+          "check": "retired-copy",
+          "why": "复制旧稿供对照，档案仍保持退役。",
+          "success": "旧模板正文已复制。",
+          "id": "sources:26@source-archive",
+          "observe": {
+            "target": "#sourceCatalogDetail",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 复制旧稿供对照，不会重新启用它。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "#sourceCatalogList [data-square-id]",
+          "instruction": "点击列表标题返回原始来源。",
+          "check": "source-selected",
+          "why": "选中来源就退出旧档案视图。",
+          "success": "回到普通来源视图了。",
+          "id": "sources:27@source-archive",
+          "observe": {
+            "target": "#sourceCatalogDetail",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 选择来源退出旧档案视图，恢复正常来源操作。"
+          }
+        },
+        {
+          "type": "click",
+          "target": "[data-square-save]",
+          "instruction": "点击「存成我的提示词」。",
+          "check": "source-saved",
+          "why": "真实保存会新建个人记录并打开个人模板。",
+          "success": "已存成你的个人提示词。",
+          "id": "sources:28@source-archive",
+          "observe": {
+            "target": "#workspaceTitle",
+            "message": "已完成操作，接下来核对界面中实际出现的变化。 真实保存会新建个人记录，并打开个人模板；它不会直接覆盖官方母模板。"
+          }
+        }
+      ],
+      "principle": "旧母模板档案保留旧写法可复制；「存成我的提示词」把当前来源生成一条个人记录，进编辑器确认后才保存。",
+      "revision": 1,
+      "overview": {
+        "purpose": "从旧档案复制模板，并把来源存成个人提示词。",
+        "when": "想取用旧版写法或把来源转成自己的提示词时。",
+        "mechanism": "旧母模板档案保留旧写法可复制；「存成我的提示词」把当前来源生成一条个人记录，进编辑器确认后才保存。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会从旧档案取模板，也会把来源转成个人提示词。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在第 2 页列表。",
+      "completionNote": "旧档案和来源都能变成你自己的了。",
+      "from": "sources",
+      "base": 24,
+      "chainMap": [
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    {
+      "id": "check-run",
+      "group": "检查、整理与备份",
+      "title": "给提示词跑一次检查",
+      "fixture": "personal",
+      "goal": "对一条提示词执行本地检查，拿到逐项清单。",
+      "steps": [
+        {
+          "id": "local-check:0@check-run",
+          "type": "click",
+          "target": "#personalWorkspaceBtn",
+          "instruction": "打开顶部「我的工作区」。",
+          "check": "workspace",
+          "why": "先找到自己的资产和辅助操作入口。",
+          "success": "工作区打开了，去找辅助里的检查。",
+          "observe": {
+            "target": "#personalWorkspaceTitle",
+            "message": "先找到自己的资产与辅助操作入口。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-check:1@check-run",
+          "type": "click",
+          "target": "[data-pw-tab=\"check\"]",
+          "instruction": "点击「检查提示词」。",
+          "check": "tab:check",
+          "why": "这个页面只检查正文文字，先读用途和目的。",
+          "success": "切到检查提示词了。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "这个页面只检查提示词文字，先读作用和目的。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-check:2@check-run",
+          "type": "input",
+          "target": "#localCheckSelect",
+          "instruction": "选择「练习素材 · 会议复盘方法」。",
+          "check": "local-check-selected",
+          "why": "把这条提示词载入检查框，还没改或保存原记录。",
+          "success": "练习素材已载入检查框。",
+          "inputKind": "select",
+          "value": "USR-09-LAB",
+          "observe": {
+            "target": "#localCheckText",
+            "message": "把这条自己的提示词载入检查框；尚未修改或保存原记录。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-check:3@check-run",
+          "type": "click",
+          "target": "[data-local-check-run]",
+          "instruction": "点击「开始检查」。",
+          "check": "local-check-result",
+          "why": "得到五项文字线索，每项都写清下一步。",
+          "success": "五项检查线索出来了。",
+          "observe": {
+            "target": "#localCheckResults",
+            "message": "得到五项文字检查线索，每项都说明下一步如何处理；它不是效果评分。 请看高亮位置核对结果。"
+          }
+        }
+      ],
+      "principle": "检查按正文、任务要求、可替换材料、输出形式、缺失信息处理逐项找文字线索，不联网不评分。",
+      "revision": 1,
+      "overview": {
+        "purpose": "选择素材并执行一次本地检查。",
+        "when": "复制提示词前想做最后核对时。",
+        "mechanism": "检查按正文、任务要求、可替换材料、输出形式、缺失信息处理逐项找文字线索，不联网不评分。",
+        "prerequisites": "练习使用隔离的虚构工作区，里面已备好一条练习素材。",
+        "result": "你会对任意一条提示词发起检查并读懂清单。",
+        "boundary": "练习和正式工作区分开；先做真实动作，再看实际变化。不写系统剪贴板，不产生真实下载。"
+      },
+      "hook": "练习素材已备好，进入即选即查。",
+      "completionNote": "第一次检查跑完了，复制前多了一道保险。",
+      "from": "local-check",
+      "base": 0,
+      "chainMap": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "check-fix",
+      "group": "检查、整理与备份",
+      "title": "按清单补齐并复查",
+      "fixture": "personal",
+      "goal": "按检查清单补上缺项，再次检查确认清零。",
+      "steps": [
+        {
+          "id": "local-check:4@check-fix",
+          "type": "input",
+          "target": "#localCheckText",
+          "instruction": "用示例正文补充输出形式与缺失信息处理。",
+          "check": "local-check-edited",
+          "why": "亲手改正文，旧清单消失，原记录仍未动。",
+          "success": "正文补上了输出形式和缺失信息处理。",
+          "value": "请根据 [会议记录]，先列出待确认问题，再输出决策与待办表格。每项写负责人、动作和期限。材料未提供的信息标为待确认，不要编造。",
+          "observe": {
+            "target": "#localCheckStatus",
+            "message": "亲手修改正文，旧检查清单会消失，原记录仍未被改动。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-check:5@check-fix",
+          "type": "click",
+          "target": "[data-local-check-run]",
+          "instruction": "再次点击「开始检查」。",
+          "check": "local-check-result",
+          "why": "重新检查新正文，旧清单代表不了改后内容。",
+          "success": "按新正文重新出了清单。",
+          "observe": {
+            "target": "#localCheckResults",
+            "message": "重新检查刚才的新正文，旧清单不能代表修改后的内容。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-check:6@check-fix",
+          "type": "click",
+          "target": "[data-local-check-copy]",
+          "instruction": "点击「复制检查清单」。",
+          "check": "local-check-copy",
+          "why": "复制的是修改线索，方便复核，不发给 AI。",
+          "success": "检查清单复制好了。",
+          "observe": {
+            "target": "#localCheckResults",
+            "message": "复制的是修改线索，方便复核；不是把正文发送给AI。 请看高亮位置核对结果。"
+          }
+        }
+      ],
+      "principle": "补齐后旧清单立即失效，需要重新检查确认；每次都以最新结果为准。",
+      "revision": 1,
+      "overview": {
+        "purpose": "按清单补充内容并再次检查。",
+        "when": "检查清单发现了缺项、要补齐时。",
+        "mechanism": "补齐后旧清单立即失效，需要重新检查确认；每次都以最新结果为准。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会按清单修改并用复查确认补齐。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在首次检查结果页。",
+      "completionNote": "缺项补齐复查通过，可以放心复制了。",
+      "from": "local-check",
+      "base": 4,
+      "chainMap": [
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "check-save",
+      "group": "检查、整理与备份",
+      "title": "保存修改并对比旧版本",
+      "fixture": "personal",
+      "goal": "把检查后的修改保存进编辑器，并对比旧版本。",
+      "steps": [
+        {
+          "id": "local-check:7@check-save",
+          "type": "click",
+          "target": "[data-local-check-save]",
+          "instruction": "点击「保存修改」。",
+          "check": "editor-existing",
+          "why": "检查不自动保存，这一步进入原记录的编辑器。",
+          "success": "编辑器打开，改动已带进来。",
+          "observe": {
+            "target": "#lifecyclePrompt",
+            "message": "确认改动已带入；保存前仍可以取消，原版本尚未被替换。"
+          }
+        },
+        {
+          "id": "local-check:9@check-save",
+          "type": "click",
+          "target": "[data-lifecycle-save]",
+          "instruction": "点击「保存提示词」。",
+          "check": "local-check-saved",
+          "why": "真正保存修改，同时保留旧版本。",
+          "success": "修改已保存，旧版本留着了。",
+          "observe": {
+            "target": "#localCheckStatus",
+            "message": "真正保存修改，同时保留旧版本，以便以后比较或恢复。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-check:10@check-save",
+          "type": "click",
+          "target": "[data-pw-tab=\"prompts\"]",
+          "instruction": "返回「我的提示词」。",
+          "check": "tab:prompts",
+          "why": "检查后的记录仍是你的，不进发布流程。",
+          "success": "回到我的提示词了。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "检查后的记录仍属于自己，不进入发布审批流程。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-check:11@check-save",
+          "type": "click",
+          "target": "[data-pw-versions=\"USR-09-LAB\"]",
+          "instruction": "点击这条记录的「旧版本」。",
+          "check": "versions",
+          "why": "查看保存之前的版本，确认旧正文没丢。",
+          "success": "这条记录的版本窗口打开了。",
+          "observe": {
+            "target": "#versionInspectorBody",
+            "message": "查看保存之前的版本，确认旧正文没有丢失。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-check:12@check-save",
+          "type": "click",
+          "target": "[data-version-index=\"0\"]",
+          "instruction": "点击最早的旧版本。",
+          "check": "old-version",
+          "why": "选中历史记录后才能比较。",
+          "success": "选中的是最早的旧版本。",
+          "observe": {
+            "target": "#versionInspectorBody",
+            "message": "选择历史记录后才可以比较；当前版本不需要和自己比较。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-check:13@check-save",
+          "type": "click",
+          "target": "[data-version-diff]",
+          "instruction": "点击「与当前比较」。",
+          "check": "diff",
+          "why": "高亮增删文字，核对你到底改了什么。",
+          "success": "差异高亮出来了。",
+          "observe": {
+            "target": ".diff-box",
+            "message": "高亮增删文字，核对你到底修改了什么。 请看高亮位置核对结果。"
+          }
+        }
+      ],
+      "principle": "「保存修改」进入编辑器，点「保存提示词」才更新记录并自动保留旧版本。",
+      "revision": 1,
+      "overview": {
+        "purpose": "保存修改并对比保存前的旧版本。",
+        "when": "修改完成、要正式落盘时。",
+        "mechanism": "「保存修改」进入编辑器，点「保存提示词」才更新记录并自动保留旧版本。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会保存修改，并用旧版本确认改了什么。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在检查清单页。",
+      "completionNote": "修改已保存，旧版本可查，闭环了。",
+      "from": "local-check",
+      "base": 7,
+      "chainMap": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "id": "backup-export",
+      "group": "检查、整理与备份",
+      "title": "下载完整备份与导出",
+      "fixture": "personal",
+      "goal": "下载完整工作区备份，并单独导出我的提示词。",
+      "steps": [
+        {
+          "id": "local-backup:0@backup-export",
+          "type": "click",
+          "target": "#personalWorkspaceBtn",
+          "instruction": "打开「我的工作区」。",
+          "check": "workspace",
+          "why": "备份针对的是整个个人工作区。",
+          "success": "工作区打开了，去找辅助里的备份。",
+          "observe": {
+            "target": "#personalWorkspaceTitle",
+            "message": "备份针对自己的整个工作区。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-backup:1@backup-export",
+          "type": "click",
+          "target": "[data-pw-tab=\"backup\"]",
+          "instruction": "点击「备份与恢复」。",
+          "check": "tab:backup",
+          "why": "先看备份和恢复的区别，以及当前记录数量。",
+          "success": "切到备份与恢复了。",
+          "observe": {
+            "target": ".local-backup-current",
+            "message": "先看备份与恢复的区别，以及当前记录数量。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-backup:2@backup-export",
+          "type": "click",
+          "target": "[data-workspace-export]",
+          "instruction": "点击「下载完整备份」。",
+          "check": "local-backup-export",
+          "why": "练习场在虚拟文件区生成完整 JSON。",
+          "success": "完整备份已生成，记录数是一条。",
+          "observe": {
+            "target": "#localBackupStatus",
+            "message": "训练场在虚拟文件区生成完整JSON；正式使用会下载文件，需要自己保留。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-backup:3@backup-export",
+          "type": "click",
+          "target": "[data-import-export]",
+          "instruction": "点击「导出我的提示词」。",
+          "check": "local-backup-prompts",
+          "why": "这份文件只含提示词，适合单独导入。",
+          "success": "提示词文件已导出。",
+          "observe": {
+            "target": ".local-backup-extra",
+            "message": "这份文件只含提示词，适合单独导入；完整工作区恢复要用上一份备份。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-backup:5@backup-export",
+          "type": "click",
+          "target": "[data-pw-tab=\"prompts\"]",
+          "instruction": "返回「我的提示词」。",
+          "check": "tab:prompts",
+          "why": "用虚构记录练误删恢复，不影响正式资料。",
+          "success": "切回我的提示词列表。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "用隔离的虚构记录练习误删后恢复；不会影响正式资料。 请看高亮位置核对结果。"
+          }
+        }
+      ],
+      "principle": "完整备份包含个人资料与设置；导出只含我的提示词，用于追加导入。备份入口的选择文件按钮在导览里认识。",
+      "revision": 2,
+      "overview": {
+        "purpose": "下载完整备份并单独导出个人提示词。",
+        "when": "换设备、大改动前，或想单独留存写法时。",
+        "mechanism": "完整备份包含个人资料与设置；导出只含我的提示词，用于追加导入。备份入口的选择文件按钮在导览里认识。",
+        "prerequisites": "练习使用隔离的虚构工作区，里面已备好一条练习素材。",
+        "result": "你会拿到两种备份文件，并分清用途。",
+        "boundary": "练习和正式工作区分开；先做真实动作，再看实际变化。不写系统剪贴板，不产生真实下载。"
+      },
+      "hook": "进入后自动停在工作区备份页。",
+      "completionNote": "备份到手，数据有了副本。",
+      "from": "local-backup",
+      "base": 0,
+      "chainMap": [
+        0,
+        1,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "id": "backup-trash",
+      "group": "检查、整理与备份",
+      "title": "制造一次可恢复的误删",
+      "fixture": "personal",
+      "goal": "把练习记录移入回收站，为恢复练习做准备。",
+      "steps": [
+        {
+          "id": "local-backup:6@backup-trash",
+          "type": "click",
+          "target": "#personalWorkspaceList .pw-more summary",
+          "instruction": "展开练习记录的「更多」。",
+          "check": "local-more-open",
+          "why": "复制、收起和删除这些次要动作集中在这。",
+          "success": "更多展开了。",
+          "observe": {
+            "target": "#personalWorkspaceList .pw-more",
+            "message": "复制、收起和删除等次要动作集中在这里，日常不用一次看见全部。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-backup:7@backup-trash",
+          "type": "click",
+          "target": "[data-pw-trash=\"USR-09-LAB\"]",
+          "instruction": "点击「删除到回收站」。",
+          "check": "local-trashed",
+          "why": "删的是训练记录，仍能从回收站找回。",
+          "success": "练习记录进回收站了。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "删除的是训练记录，仍可在回收站找回；接下来练习用完整备份恢复。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-backup:8@backup-trash",
+          "type": "click",
+          "target": "[data-pw-tab=\"backup\"]",
+          "instruction": "返回「备份与恢复」。",
+          "check": "tab:backup",
+          "why": "现在我的提示词是零条，刚才的完整备份仍有一条。",
+          "success": "回到备份与恢复了。",
+          "observe": {
+            "target": ".local-backup-current",
+            "message": "当前我的提示词已变成零条，但刚才的完整备份仍有一条。 请看高亮位置核对结果。"
+          }
+        }
+      ],
+      "principle": "删除先进回收站，可完整恢复；正式页面的永久删除才不可逆。",
+      "revision": 1,
+      "overview": {
+        "purpose": "把练习记录移入回收站。",
+        "when": "练习恢复流程前的准备。",
+        "mechanism": "删除先进回收站，可完整恢复；正式页面的永久删除才不可逆。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会移入回收站，并理解它与永久删除的区别。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在备份页。",
+      "completionNote": "误删进回收站，随时能反悔。",
+      "from": "local-backup",
+      "base": 6,
+      "chainMap": [
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "backup-restore",
+      "group": "检查、整理与备份",
+      "title": "载入备份并恢复",
+      "fixture": "personal",
+      "goal": "载入虚拟备份，练习取消与确认恢复的完整核对流程。",
+      "steps": [
+        {
+          "id": "local-backup:9@backup-restore",
+          "type": "click",
+          "target": "[data-training-backup-load]",
+          "instruction": "点击「练习：载入刚才的虚拟备份」。",
+          "check": "local-restore-preview",
+          "why": "载入即刷新恢复区，此时只预览不替换。",
+          "success": "恢复区显示预览，数量对照一条。",
+          "observe": {
+            "target": "#localRestorePreview",
+            "message": "载入完成即刷新恢复区；文件名、时间、数量对照与确认按钮在一起。此时只预览，当前资料未替换。"
+          }
+        },
+        {
+          "id": "local-backup:11@backup-restore",
+          "type": "click",
+          "target": "[data-workspace-restore-cancel]",
+          "instruction": "点击「取消，不恢复」。",
+          "check": "local-restore-cancelled",
+          "why": "取消预览不会恢复或清空任何内容。",
+          "success": "取消好了，资料没动。",
+          "observe": {
+            "target": "#localBackupStatus",
+            "message": "取消预览不会恢复或清空任何内容，当前仍没有那条已删除记录。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-backup:12@backup-restore",
+          "type": "click",
+          "target": "[data-training-backup-load]",
+          "instruction": "再次载入刚才的虚拟完整备份。",
+          "check": "local-restore-preview",
+          "why": "再载入一次，准备真正确认恢复。",
+          "success": "预览又出来了。",
+          "observe": {
+            "target": "#localRestorePreview",
+            "message": "载入完成即刷新恢复区；文件名、时间、数量对照与确认按钮在一起。此时只预览，当前资料未替换。"
+          }
+        },
+        {
+          "id": "local-backup:13@backup-restore",
+          "type": "click",
+          "target": "[data-workspace-restore-confirm]",
+          "instruction": "点击「确认恢复，替换当前工作区」。",
+          "check": "local-restore-done",
+          "why": "现在才真正写入备份，记录回到工作区。",
+          "success": "恢复完成，记录回到了工作区。",
+          "observe": {
+            "target": ".local-backup-current",
+            "message": "现在才真正写入备份。一条提示词回到工作区，回收站也回到备份时的状态。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-backup:14@backup-restore",
+          "type": "click",
+          "target": "[data-pw-tab=\"prompts\"]",
+          "instruction": "返回「我的提示词」，核对找回的记录。",
+          "check": "local-backup-found",
+          "why": "确认恢复结果，正式用时还会重新载入显示设置。",
+          "success": "找回的记录出现在列表里。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "确认恢复结果，正式使用还会重新载入以应用备份中的显示设置。 请看高亮位置核对结果。"
+          }
+        }
+      ],
+      "principle": "载入先预览数量对照；取消不改变现有内容，确认才替换并重新载入。",
+      "revision": 1,
+      "overview": {
+        "purpose": "载入虚拟备份，走完取消与确认恢复。",
+        "when": "需要从备份还原工作区时。",
+        "mechanism": "载入先预览数量对照；取消不改变现有内容，确认才替换并重新载入。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会按「选择→核对→确认」完成恢复，也会安全取消。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "练习用虚拟文件代替真实文件选择；正式恢复必须选真实 JSON。",
+      "completionNote": "恢复流程走通了，误操作也不怕。",
+      "from": "local-backup",
+      "base": 9,
+      "chainMap": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "id": "organize-archive",
+      "group": "检查、整理与备份",
+      "title": "收起与重新启用",
+      "fixture": "personal",
+      "goal": "把暂不用的提示词收起，再从已收起筛选里找回。",
+      "steps": [
+        {
+          "id": "local-organize:0@organize-archive",
+          "type": "click",
+          "target": "#personalWorkspaceBtn",
+          "instruction": "打开「我的工作区」。",
+          "check": "workspace",
+          "why": "整理自己的记录，用不到模板库的发布工具。",
+          "success": "工作区打开了，准备整理一条记录。",
+          "observe": {
+            "target": "#personalWorkspaceTitle",
+            "message": "整理自己的记录不需要模板库发布工具。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-organize:1@organize-archive",
+          "type": "click",
+          "target": "#personalWorkspaceList .pw-more summary",
+          "instruction": "展开练习记录的「更多」。",
+          "check": "local-more-open",
+          "why": "次要动作集中显示，先读名称再操作。",
+          "success": "更多展开了，先读名称。",
+          "observe": {
+            "target": "#personalWorkspaceList .pw-more",
+            "message": "次要动作集中显示，先读名称再操作。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-organize:2@organize-archive",
+          "type": "click",
+          "target": "[data-pw-archive=\"USR-09-LAB\"]",
+          "instruction": "点击「收起暂不用的」。",
+          "check": "local-archived",
+          "why": "记录从可用列表收起，正文和旧版本都还在。",
+          "success": "这条记录已收起。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "记录从默认可用列表收起，没有删除正文或旧版本。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-organize:3@organize-archive",
+          "type": "input",
+          "target": "#personalWorkspaceStatus",
+          "instruction": "在状态筛选选择「已收起」。",
+          "check": "local-filter-archived",
+          "why": "收起的记录仍保留，用筛选就能找回。",
+          "success": "筛到「已收起」了。",
+          "inputKind": "select",
+          "value": "archived",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "收起的记录仍保留，通过筛选即可找回。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-organize:4@organize-archive",
+          "type": "click",
+          "target": "#personalWorkspaceList .pw-more summary",
+          "instruction": "再展开这条记录的「更多」。",
+          "check": "local-more-open",
+          "why": "已收起状态下会给出重新启用。",
+          "success": "更多又展开了。",
+          "observe": {
+            "target": "#personalWorkspaceList .pw-more",
+            "message": "已收起状态下提供重新启用。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-organize:5@organize-archive",
+          "type": "click",
+          "target": "[data-pw-archive=\"USR-09-LAB\"]",
+          "instruction": "点击「重新启用」。",
+          "check": "local-active",
+          "why": "恢复可用状态；当前筛选只看已收起，它会暂时离开列表。",
+          "success": "这条记录重新启用了。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "恢复可用状态；当前筛选只看已收起，所以记录暂时离开这个列表。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-organize:6@organize-archive",
+          "type": "input",
+          "target": "#personalWorkspaceStatus",
+          "instruction": "把状态筛选改回「可用和草稿」。",
+          "check": "local-filter-usable",
+          "why": "回到日常列表，核对记录还在。",
+          "success": "回到可用和草稿了。",
+          "inputKind": "select",
+          "value": "usable",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "回到日常列表，核对记录仍在。 请看高亮位置核对结果。"
+          }
+        }
+      ],
+      "principle": "收起后从状态筛选「已收起」找回，「重新启用」恢复为可用；状态随时可切。",
+      "revision": 1,
+      "overview": {
+        "purpose": "收起一条提示词，再重新启用它。",
+        "when": "列表里有暂不用的写法时。",
+        "mechanism": "收起后从状态筛选「已收起」找回，「重新启用」恢复为可用；状态随时可切。",
+        "prerequisites": "练习使用隔离的虚构工作区，里面已备好一条练习素材。",
+        "result": "你会收起与找回，列表只留常用。",
+        "boundary": "练习和正式工作区分开；先做真实动作，再看实际变化。不写系统剪贴板，不产生真实下载。"
+      },
+      "hook": "练习素材已备好，进入即操作。",
+      "completionNote": "收起与启用都学会了，列表由你编排。",
+      "from": "local-organize",
+      "base": 0,
+      "chainMap": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "organize-trash",
+      "group": "检查、整理与备份",
+      "title": "移入回收站",
+      "fixture": "personal",
+      "goal": "把记录移入回收站，并认识永久删除的位置。",
+      "steps": [
+        {
+          "id": "local-organize:7@organize-trash",
+          "type": "click",
+          "target": "#personalWorkspaceList .pw-more summary",
+          "instruction": "展开「更多」，准备练习删除。",
+          "check": "local-more-open",
+          "why": "删除会进回收站，和暂时收起不一样。",
+          "success": "更多又展开了，准备删除。",
+          "observe": {
+            "target": "#personalWorkspaceList .pw-more",
+            "message": "删除进入回收站，和暂时收起不同。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-organize:8@organize-trash",
+          "type": "click",
+          "target": "[data-pw-trash=\"USR-09-LAB\"]",
+          "instruction": "点击「删除到回收站」。",
+          "check": "local-trashed",
+          "why": "记录连同旧版本一起进回收站，可以找回。",
+          "success": "记录进回收站了。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "记录连同旧版本进入回收站，可以恢复。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-organize:9@organize-trash",
+          "type": "click",
+          "target": "[data-pw-tab=\"trash\"]",
+          "instruction": "切换到「回收站」。",
+          "check": "tab:trash",
+          "why": "核对记录，分清恢复和永久删除。",
+          "success": "切到回收站了。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "核对记录，并区分恢复与永久删除。 请看高亮位置核对结果。"
+          }
+        }
+      ],
+      "principle": "删除先进回收站；「永久删除」需要单独确认且不可恢复，它的位置在导览里专门指出，本课只看不点。",
+      "revision": 2,
+      "overview": {
+        "purpose": "移入回收站并认识永久删除按钮。",
+        "when": "确定不再要一条记录时。",
+        "mechanism": "删除先进回收站；「永久删除」需要单独确认且不可恢复，它的位置在导览里专门指出，本课只看不点。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会移入回收站，并知道危险按钮在哪、怎么避开。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在列表页。",
+      "completionNote": "回收站会用了，误删有退路。",
+      "from": "local-organize",
+      "base": 7,
+      "chainMap": [
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "organize-restore",
+      "group": "检查、整理与备份",
+      "title": "从回收站恢复记录",
+      "fixture": "personal",
+      "goal": "把回收站里的记录恢复回列表。",
+      "steps": [
+        {
+          "id": "local-organize:11@organize-restore",
+          "type": "click",
+          "target": "[data-trash-restore=\"USR-09-LAB\"]",
+          "instruction": "点击这条记录的「恢复」。",
+          "check": "local-restored",
+          "why": "找回整条提示词和保存过的版本，回收站会移除它。",
+          "success": "记录恢复回来了。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "找回整条提示词与保存过的版本，回收站移除它。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-organize:12@organize-restore",
+          "type": "click",
+          "target": "[data-pw-tab=\"prompts\"]",
+          "instruction": "返回「我的提示词」。",
+          "check": "tab:prompts",
+          "why": "找回的记录可以继续使用。",
+          "success": "回到我的提示词列表了。",
+          "observe": {
+            "target": "#personalWorkspaceList",
+            "message": "找回的记录可以继续使用。 请看高亮位置核对结果。"
+          }
+        }
+      ],
+      "principle": "回收站内每条记录都有「恢复」，恢复后回到原列表。",
+      "revision": 1,
+      "overview": {
+        "purpose": "从回收站恢复一条记录。",
+        "when": "发现误删、想要反悔时。",
+        "mechanism": "回收站内每条记录都有「恢复」，恢复后回到原列表。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会把误删的记录完整找回。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在回收站。",
+      "completionNote": "恢复一步到位，东西回来了。",
+      "from": "local-organize",
+      "base": 11,
+      "chainMap": [
+        11,
+        12
+      ]
+    },
+    {
+      "id": "organize-versions",
+      "group": "检查、整理与备份",
+      "title": "恢复到旧版本",
+      "fixture": "personal",
+      "goal": "选一个旧版本恢复，确认恢复前的当前版本也被保留。",
+      "steps": [
+        {
+          "id": "local-organize:13@organize-versions",
+          "type": "click",
+          "target": "[data-pw-versions=\"USR-09-LAB\"]",
+          "instruction": "点击这条记录的「旧版本」。",
+          "check": "versions",
+          "why": "改错内容时，只恢复这一条的旧版本就够。",
+          "success": "版本窗口也打开了。",
+          "observe": {
+            "target": "#versionInspectorBody",
+            "message": "内容改错时，不必恢复整个工作区，只需选择这一条的旧版本。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-organize:14@organize-versions",
+          "type": "click",
+          "target": "[data-version-index=\"0\"]",
+          "instruction": "选最早的旧版本。",
+          "check": "old-version",
+          "why": "先核对版本日期和正文，再决定恢复。",
+          "success": "选好了最早的旧版本。",
+          "observe": {
+            "target": "#versionInspectorBody",
+            "message": "先核对版本日期和正文，再决定是否恢复。 请看高亮位置核对结果。"
+          }
+        },
+        {
+          "id": "local-organize:15@organize-versions",
+          "type": "click",
+          "target": "[data-version-restore]",
+          "instruction": "点击「恢复此版本」。",
+          "check": "local-version-restored",
+          "why": "换回这条的旧正文，并留下恢复前的版本。",
+          "success": "这条正文换回旧版本了。",
+          "observe": {
+            "target": "#versionInspectorBody",
+            "message": "恢复这一条的旧正文，并留下恢复前的版本；其他模板、收藏与随手记不会被覆盖。 请看高亮位置核对结果。"
+          }
+        }
+      ],
+      "principle": "恢复旧版本只替换内容；恢复前的版本会作为新条目留在历史里，不会丢失。",
+      "revision": 1,
+      "overview": {
+        "purpose": "恢复到旧版本并确认当前版本被保留。",
+        "when": "改坏了、想退回旧版本时。",
+        "mechanism": "恢复旧版本只替换内容；恢复前的版本会作为新条目留在历史里，不会丢失。",
+        "prerequisites": "进入本课会自动先完成前面的准备步骤，再从第一个动作开始；练习全部使用隔离的虚构资料。",
+        "result": "你会安全地退回任意旧版本。",
+        "boundary": "练习和正式工作区分开；自动完成的准备步骤不计入你的操作记录，从第一个动作起才算。"
+      },
+      "hook": "进入后自动停在旧版本列表。",
+      "completionNote": "时间倒流学会了，怎么改都有退路。",
+      "from": "local-organize",
+      "base": 13,
+      "chainMap": [
+        13,
+        14,
+        15
+      ]
+    }
+  ],
+  "map": {
+    "title": "操作地图 · 一页看懂四条流程",
+    "tagline": "系统不复杂：先看地图，再跟导览，最后亲手练，约 5 分钟建立操作能力。",
+    "helpNote": "v6.61：先看这张地图认识四条核心流程；每条都能「跟导览看一遍」或直接「亲手练」。卡住时点页面上的「帮助」看当前控件的说明。",
+    "headerTour": "S0",
+    "headerTourLabel": "先跟导览认识界面（S0 · 界面总览）",
+    "flows": [
+      {
+        "id": "F1",
+        "title": "找模板 → 填材料 → 复制",
+        "intro": "最常用的一条：从一句需求到拿到完整提示词。",
+        "steps": [
+          {
+            "sel": "#q",
+            "label": "搜索框",
+            "detail": "输入任务关键词，卡片实时筛选"
+          },
+          {
+            "sel": "#needGatewayForm button[type=\"submit\"]",
+            "label": "匹配模板",
+            "detail": "把需求交给本地匹配，先看前三推荐"
+          },
+          {
+            "sel": "#home .card",
+            "label": "模板卡片",
+            "detail": "点开进入工作台",
+            "runtime": true
+          },
+          {
+            "sel": "[data-view=\"core-inputs\"] textarea",
+            "label": "填材料",
+            "detail": "把金色 [变量] 替换成实际内容",
+            "runtime": true
+          },
+          {
+            "sel": "[data-action=\"copy\"]",
+            "label": "复制模板",
+            "detail": "复制完整提示词，粘到你的 AI 工具使用",
+            "runtime": true
+          }
+        ],
+        "tour": "S1",
+        "course": "daily-match",
+        "courses": [
+          "daily-match",
+          "daily-fill",
+          "daily-copy",
+          "search"
+        ]
+      },
+      {
+        "id": "F2",
+        "title": "收藏",
+        "intro": "遇到好用的模板，点一颗星把它留住。",
+        "steps": [
+          {
+            "sel": "#home .card",
+            "label": "模板卡片",
+            "detail": "找到想留的模板",
+            "runtime": true
+          },
+          {
+            "sel": "#home [data-favorite-card]",
+            "label": "☆ 收藏",
+            "detail": "卡片上直接点亮，不用进详情"
+          },
+          {
+            "sel": "#personalWorkspaceBtn",
+            "label": "我的工作区",
+            "detail": "收藏都存在这里"
+          },
+          {
+            "sel": "[data-pw-tab=\"favorites\"]",
+            "label": "收藏页",
+            "detail": "打开原对象或删除收藏关系"
+          }
+        ],
+        "tour": "S2",
+        "course": "collect-card",
+        "courses": [
+          "collect-card",
+          "collect-open",
+          "collect-remove",
+          "collect-source-add",
+          "collect-source-manage",
+          "collect-source-cleanup",
+          "collect-recent-clear"
+        ]
+      },
+      {
+        "id": "F3",
+        "title": "个人提示词",
+        "intro": "自己的写法长期保存：新建、修改、比较版本。",
+        "steps": [
+          {
+            "sel": "#personalWorkspaceBtn",
+            "label": "我的工作区",
+            "detail": "个人提示词住在这里"
+          },
+          {
+            "sel": "[data-pw-tab=\"prompts\"]",
+            "label": "我的提示词",
+            "detail": "新建、修改或存成自己的版本"
+          },
+          {
+            "sel": "[data-pw-create]",
+            "label": "新建",
+            "detail": "填名称、用途、标签和正文后保存"
+          },
+          {
+            "sel": "[data-pw-versions]",
+            "label": "旧版本",
+            "detail": "每次保存自动保留旧稿，可比较差异"
+          }
+        ],
+        "tour": "S3",
+        "course": "personal-create",
+        "courses": [
+          "personal-create",
+          "personal-edit",
+          "personal-versions"
+        ]
+      },
+      {
+        "id": "F4",
+        "title": "检查 / 备份 / 回收站",
+        "intro": "复制前查遗漏，重要改动前留备份，误删可反悔。",
+        "steps": [
+          {
+            "sel": "[data-pw-tab=\"check\"]",
+            "label": "检查提示词",
+            "detail": "逐项找缺漏，不给评分不联网"
+          },
+          {
+            "sel": "[data-pw-tab=\"backup\"]",
+            "label": "备份与恢复",
+            "detail": "下载完整 JSON；恢复先核对再确认"
+          },
+          {
+            "sel": "[data-workspace-export]",
+            "label": "下载完整备份",
+            "detail": "生成当前工作区的完整副本",
+            "runtime": true
+          },
+          {
+            "sel": "[data-pw-tab=\"trash\"]",
+            "label": "回收站",
+            "detail": "误删的记录在这里恢复"
+          }
+        ],
+        "tour": "S4",
+        "course": "check-run",
+        "courses": [
+          "check-run",
+          "check-fix",
+          "check-save",
+          "backup-export",
+          "backup-trash",
+          "backup-restore",
+          "organize-archive",
+          "organize-trash",
+          "organize-restore",
+          "organize-versions"
+        ]
+      }
+    ]
+  },
+  "tours": [
+    {
+      "id": "S0",
+      "title": "界面总览",
+      "entryNote": "认识主页上的全局入口与显示控制，全程只看不改。",
+      "doneToast": "✓ 界面总览完成。想学找模板，跟 S1 导览或亲手练 daily-match。",
+      "steps": [
+        {
+          "sel": ".nav .brand-copy",
+          "title": "系统身份与版本",
+          "desc": "顶上这块是名称、版本和副标题，功能按钮挨着它。",
+          "origin": "migrated",
+          "src": "home:0"
+        },
+        {
+          "sel": "#navScratchBtn",
+          "title": "随手记",
+          "desc": "随手记在这儿，想法没成形时先写在这。",
+          "origin": "migrated",
+          "src": "home:1"
+        },
+        {
+          "sel": "#importBtn",
+          "title": "导入",
+          "desc": "导入从本地文件批量加你的提示词。",
+          "origin": "migrated",
+          "src": "home:2"
+        },
+        {
+          "sel": "#sourceCatalogBtn",
+          "title": "提示词广场",
+          "desc": "提示词广场是原文的住处，署名和全文都在里面。",
+          "origin": "migrated",
+          "src": "home:3"
+        },
+        {
+          "sel": "#personalWorkspaceBtn",
+          "title": "我的工作区",
+          "desc": "我的工作区放你的提示词、收藏和随手记。",
+          "origin": "migrated",
+          "src": "home:4"
+        },
+        {
+          "sel": "#devlogBtn",
+          "title": "日志",
+          "desc": "日志记下每次改动，用来核对版本。",
+          "origin": "migrated",
+          "src": "home:5"
+        },
+        {
+          "sel": "#tourBtn",
+          "title": "使用教程",
+          "desc": "使用教程就是你正在用的入口；它现在打开操作地图。",
+          "origin": "migrated",
+          "src": "home:6"
+        },
+        {
+          "sel": "#helpModeBtn",
+          "title": "帮助",
+          "desc": "帮助点一下看用途，看完退出再操作。",
+          "origin": "migrated",
+          "src": "home:7"
+        },
+        {
+          "sel": "#navReadingBtn",
+          "title": "阅读",
+          "desc": "阅读整体调字号和行距，正文保持原样。",
+          "origin": "migrated",
+          "src": "home:8"
+        },
+        {
+          "sel": "#navCountToggle",
+          "title": "主页数字开关",
+          "desc": "这个开关只管主页两个数字角标。",
+          "origin": "migrated",
+          "src": "home:9"
+        },
+        {
+          "sel": "#themeBtn",
+          "title": "主题",
+          "desc": "主题换外观，核心流程还是一样。",
+          "origin": "migrated",
+          "src": "home:10"
+        },
+        {
+          "sel": "#modeBtn",
+          "title": "场景配色",
+          "desc": "场景配色挑当前主题的场景，跟模板分类无关。",
+          "origin": "migrated",
+          "src": "home:11"
+        },
+        {
+          "sel": "#mobileBtn",
+          "title": "手机模式",
+          "desc": "手机模式切布局，名称和功能都还在。",
+          "origin": "migrated",
+          "src": "home:12"
+        },
+        {
+          "sel": "#navLayoutReset",
+          "title": "恢复按钮顺序",
+          "desc": "↺ 把按钮顺序恢复成默认，偏好会保存。",
+          "origin": "migrated",
+          "src": "home:13"
+        },
+        {
+          "sel": "#home [data-home-action=\"rotate-hero\"]",
+          "title": "换一句",
+          "desc": "换一句只轮换主题引言，不动你的记录。",
+          "origin": "migrated",
+          "src": "home:22"
+        },
+        {
+          "sel": "#home .home-primary-actions [data-scratch-open]",
+          "title": "主页随手记入口",
+          "desc": "这里和顶部随手记打开同一份草稿。",
+          "origin": "migrated",
+          "src": "home:23"
+        },
+        {
+          "sel": "#home .home-primary-actions [data-workspace-open]",
+          "title": "主页工作区入口",
+          "desc": "这里和顶部工作区进同一份个人资产。",
+          "origin": "migrated",
+          "src": "home:24"
+        },
+        {
+          "sel": "#devlogFoot",
+          "title": "页脚日志入口",
+          "desc": "页脚的日志和顶部点开的是同一套记录。",
+          "origin": "migrated",
+          "src": "home:25"
+        }
+      ]
+    },
+    {
+      "id": "S1",
+      "title": "找模板 → 填材料 → 复制",
+      "entryNote": "跟一遍「一句需求到完整提示词」要经过的每个控件。",
+      "doneToast": "✓ 找模板路线看完。去亲手练 daily-match，把这条路走一遍。",
+      "steps": [
+        {
+          "sel": "#q",
+          "title": "主页长搜索框",
+          "desc": "长搜索框筛选模板，点匹配才进推荐。",
+          "origin": "migrated",
+          "src": "home:14"
+        },
+        {
+          "sel": "#needGatewayForm button[type=\"submit\"]",
+          "title": "匹配模板",
+          "desc": "匹配模板把当前输入交给本地推荐。",
+          "origin": "migrated",
+          "src": "home:15"
+        },
+        {
+          "sel": "[data-home-library-tab=\"official\"]",
+          "title": "系统模板",
+          "desc": "系统模板是整理过的母模板，能按分类排序。",
+          "origin": "migrated",
+          "src": "home:16"
+        },
+        {
+          "sel": "[data-home-library-tab=\"personal\"]",
+          "title": "个人模板",
+          "desc": "个人模板是你自己建、导入或保存的版本。",
+          "origin": "migrated",
+          "src": "home:17"
+        },
+        {
+          "sel": "#home .home-category-tabs",
+          "title": "分类按钮",
+          "desc": "分类按钮只筛当前类型，切回全部就能全看。",
+          "origin": "migrated",
+          "src": "home:18"
+        },
+        {
+          "sel": "#sort",
+          "title": "排序",
+          "desc": "排序只改展示次序，分数代表修改判断。",
+          "origin": "migrated",
+          "src": "home:19"
+        },
+        {
+          "sel": "#home .home-pager",
+          "title": "页码",
+          "desc": "页码翻页看更多结果，改动后回到第一页。",
+          "origin": "migrated",
+          "src": "home:20"
+        },
+        {
+          "sel": "#home .card",
+          "title": "模板卡片",
+          "desc": "卡片先读任务和适用性，点开才进工作台。",
+          "origin": "migrated",
+          "src": "home:21"
+        },
+        {
+          "sel": "[data-action=\"copy\"]",
+          "open": true,
+          "beforeView": "core-prompt",
+          "title": "复制完整提示词",
+          "desc": "在工作台「03 提示词」点「复制完整提示词」，粘到你常用的 AI 工具里就能用。",
+          "origin": "authored",
+          "src": null
+        }
+      ]
+    },
+    {
+      "id": "S2",
+      "title": "收藏",
+      "entryNote": "认识卡片上的收藏开关，只看不改。",
+      "doneToast": "✓ 收藏入口认识了。去亲手练 collect-card，点亮第一颗星。",
+      "steps": [
+        {
+          "sel": "#home [data-favorite-card]",
+          "title": "☆ 收藏",
+          "desc": "☆ 在卡片上直接收藏，不用先进详情。",
+          "origin": "migrated",
+          "src": "home:favorite-entry"
+        },
+        {
+          "sel": "#personalWorkspaceBtn",
+          "title": "我的工作区",
+          "desc": "收藏都住在这里，从顶部进入。",
+          "origin": "authored",
+          "src": null
+        },
+        {
+          "sel": "[data-pw-tab=\"favorites\"]",
+          "entrySel": "#personalWorkspaceBtn",
+          "entryLabel": "点击「我的工作区」进入",
+          "title": "收藏页",
+          "desc": "收藏记录可打开原对象，或删除收藏关系。",
+          "origin": "authored",
+          "src": null
+        }
+      ]
+    },
+    {
+      "id": "S3",
+      "title": "个人提示词",
+      "entryNote": "新建、修改和版本比较的三个入口，全程只看不改。",
+      "doneToast": "✓ 个人提示词入口认识了。去亲手练 personal-create，保存第一条。",
+      "steps": [
+        {
+          "sel": "[data-pw-tab=\"prompts\"]",
+          "entrySel": "#personalWorkspaceBtn",
+          "entryLabel": "点击「我的工作区」进入",
+          "title": "我的提示词页",
+          "desc": "个人提示词住在这里；新建、修改或存成自己的版本，列表直接显示打开、修改、检查和旧版本。",
+          "origin": "authored",
+          "src": null
+        },
+        {
+          "sel": "[data-pw-create]",
+          "title": "新建入口",
+          "desc": "点「新建」进编辑器；填齐名称、用途、标签和正文，点保存才进入记录。",
+          "origin": "authored",
+          "src": null
+        },
+        {
+          "sel": "[data-pw-versions]",
+          "title": "旧版本",
+          "desc": "每次保存自动保留旧稿，在这里比较差异或恢复；还没有保存记录时，这一步会自动跳过。",
+          "origin": "authored",
+          "src": null
+        },
+        {
+          "sel": "[data-pw-tab=\"check\"]",
+          "title": "顺手认识：检查提示词",
+          "desc": "复制前想查遗漏，切到「检查提示词」逐项找文字线索，不评分不联网。",
+          "origin": "authored",
+          "src": null
+        }
+      ]
+    },
+    {
+      "id": "S4",
+      "title": "检查 / 备份 / 回收站",
+      "entryNote": "认识两个需要「只看不点」的安全位置。",
+      "doneToast": "✓ 安全位置认识了。去亲手练 check-run 或 backup-export。",
+      "steps": [
+        {
+          "sel": "[data-pw-tab=\"check\"]",
+          "entrySel": "#personalWorkspaceBtn",
+          "entryLabel": "打开我的工作区",
+          "title": "检查提示词",
+          "desc": "逐项找缺漏，不给评分不联网；进入工作区后切到这里。",
+          "origin": "authored",
+          "src": null
+        },
+        {
+          "sel": "[data-pw-tab=\"backup\"]",
+          "title": "备份与恢复",
+          "desc": "重要改动前先留备份；恢复先核对再确认。",
+          "origin": "migrated",
+          "src": "local-backup:4"
+        },
+        {
+          "sel": "[data-workspace-export]",
+          "entrySel": "[data-pw-tab=\"backup\"]",
+          "entryLabel": "切到备份页",
+          "title": "下载完整备份",
+          "desc": "点「下载完整备份」生成当前工作区的完整副本，JSON 自己保留。",
+          "origin": "authored",
+          "src": null
+        },
+        {
+          "sel": "[data-pw-tab=\"trash\"]",
+          "title": "回收站 · 永久删除按钮",
+          "desc": "回收站内的「永久删除」需要单独确认且不可恢复，本导览只看不点。",
+          "origin": "migrated",
+          "src": "local-organize:10",
+          "entrySel": "[data-pw-tab=\"trash\"]",
+          "entryLabel": "打开回收站"
+        }
+      ]
+    }
+  ],
+  "sourceNote": "本教程的方法参考用户描述，以及王者荣耀官方英雄练习场由易到难的分解练习、仿真训练与能力测试，不复刻游戏最新界面。",
+  "reference": "https://www.taptap.cn/moment/342044230677432233"
+}

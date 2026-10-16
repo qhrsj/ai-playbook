@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-10-15T12:44:16.089Z",
+  "env": "headless Chrome 1400x900, file:// dist, real UI flows",
+  "thresholds": "流畅<100ms / 可用100-300ms / 卡顿>300ms（单次交互）",
+  "scales": [
+    {
+      "scale": 100,
+      "import_commit_ms": 888,
+      "import_longtasks": "{\"n\":0,\"max\":0}",
+      "boot_ms": 187,
+      "count": 100,
+      "open_workspace_ms": 91,
+      "list_search_ms": 78,
+      "open_editor_ms": 77,
+      "typing_ms": 55,
+      "longtasks": "{\"n\":1,\"max\":58}",
+      "heap_mb": 33,
+      "save_ms": 101,
+      "longtasks_after_save": "{\"n\":1,\"max\":58}"
+    },
+    {
+      "scale": 300,
+      "import_commit_ms": 883,
+      "import_longtasks": "{\"n\":0,\"max\":0}",
+      "boot_ms": 177,
+      "count": 300,
+      "open_workspace_ms": 155,
+      "list_search_ms": 163,
+      "open_editor_ms": 93,
+      "typing_ms": 54,
+      "longtasks": "{\"n\":3,\"max\":86}",
+      "heap_mb": 33,
+      "save_ms": 177,
+      "longtasks_after_save": "{\"n\":3,\"max\":86}"
+    },
+    {
+      "scale": 700,
+      "import_commit_ms": 873,
+      "import_longtasks": "{\"n\":0,\"max\":0}",
+      "boot_ms": 4,
+      "count": 700,
+      "open_workspace_ms": 322,
+      "list_search_ms": 327,
+      "open_editor_ms": 153,
+      "typing_ms": 80,
+      "longtasks": "{\"n\":5,\"max\":239}",
+      "heap_mb": 33,
+      "save_ms": 76,
+      "longtasks_after_save": "{\"n\":5,\"max\":239}"
+    },
+    {
+      "scale": 1500,
+      "import_commit_ms": 1048,
+      "import_longtasks": "{\"n\":1,\"max\":60}",
+      "boot_ms": 204,
+      "count": 1500,
+      "open_workspace_ms": 469,
+      "list_search_ms": 645,
+      "open_editor_ms": 277,
+      "typing_ms": 85,
+      "longtasks": "{\"n\":6,\"max\":518}",
+      "heap_mb": 33,
+      "save_ms": 70,
+      "longtasks_after_save": "{\"n\":7,\"max\":518}"
+    },
+    {
+      "scale": 3000,
+      "import_commit_ms": 1195,
+      "import_longtasks": "{\"n\":0,\"max\":0}",
+      "boot_ms": 178,
+      "count": 3000,
+      "open_workspace_ms": 870,
+      "list_search_ms": 1280,
+      "open_editor_ms": 416,
+      "typing_ms": 57,
+      "longtasks": "{\"n\":12,\"max\":1063}",
+      "heap_mb": 33,
+      "save_ms": 233,
+      "longtasks_after_save": "{\"n\":13,\"max\":1063}"
+    }
+  ]
+}

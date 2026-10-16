@@ -1,0 +1,18 @@
+{
+  "version": "6.61",
+  "phase": "P83",
+  "date": "2026-10-15",
+  "tutorialVersion": "6.61",
+  "cards": 79,
+  "sources": 1612,
+  "skills": 3115,
+  "themeCount": 6,
+  "schemaVersion": 7,
+  "build": "per-tab-search",
+  "sourceManifestVersion": 1,
+  "releasePackageVersion": 1,
+  "releaseTrainVersion": 1,
+  "devlogVersion": "6.61",
+  "workspaceProfile": "personal-local",
+  "auxiliaryTools": 2
+}

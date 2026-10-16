@@ -1,0 +1,51 @@
+{
+  "generatedAt": "2026-10-16T01:31:36.013Z",
+  "results": [
+    {
+      "check": "d1-search-yanjiu-8-cards",
+      "status": "passed",
+      "message": "#grid cards=8 (expect 8), rinfo="
+    },
+    {
+      "check": "d2-search-reset-restores",
+      "status": "passed",
+      "message": "after clear: 15 (baseline 15)"
+    },
+    {
+      "check": "d3-skill-category-click-changes-count",
+      "status": "passed",
+      "message": "skills:06 expect 7 got 7, aria-pressed=true"
+    },
+    {
+      "check": "a-row1-no-zhanneiyuanchuang",
+      "status": "passed",
+      "message": "seq=1 route=站内原创 dd=\"炉子广场\""
+    },
+    {
+      "check": "a-row2-no-zhanneiyuanchuang",
+      "status": "passed",
+      "message": "seq=2 route=站内原创 dd=\"炉子广场\""
+    },
+    {
+      "check": "a-row3-no-zhanneiyuanchuang",
+      "status": "passed",
+      "message": "seq=3 route=站内原创 dd=\"炉子广场\""
+    },
+    {
+      "check": "b-luziguangchang-shown",
+      "status": "passed",
+      "message": "站内原创 entries in data: 1603; saw dd=\"炉子广场\": true"
+    },
+    {
+      "check": "c-copyright-only-passthrough",
+      "status": "passed",
+      "message": "dd=\"copyright_only\" (expect verbatim \"copyright_only\")"
+    },
+    {
+      "check": "a2-detail-never-shows-raw-route",
+      "status": "passed",
+      "message": "clean"
+    }
+  ],
+  "failed": 0
+}

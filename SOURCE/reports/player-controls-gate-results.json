@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "version": "6.54",
+  "phase": "P76",
+  "playback": [],
+  "checks": [
+    "pause freezes elapsed demo time",
+    "zero-duration wait obeys pause",
+    "speed changes remaining delay",
+    "stop cancels pending delay",
+    "speed bounds and invalid values",
+    "dial pointer bounds, dead zone, gap, cancellation and foreign pointer",
+    "all playback controls in right rail",
+    "dial keyboard and aria",
+    "repeat preserves speed",
+    "retry reconstructs current index",
+    "wrong source/nonce/out-of-range rejected",
+    "video actions cannot create practice proof",
+    "full camera toggle",
+    "already-open backup refresh",
+    "different-tab restore routing",
+    "reading status immediate",
+    "latest file wins out-of-order reads",
+    "cancel reading no writes",
+    "bad/future/oversize file states",
+    "file metadata/counts/confirmation in same restore region"
+  ],
+  "browserRun": false,
+  "limitation": "Production handlers in DOM and controlled clock/storage adapters; real browser visuals, touch and device performance were not tested."
+}

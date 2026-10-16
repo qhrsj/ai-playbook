@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "version": "6.61",
+  "phase": "P83",
+  "targets": [
+    {
+      "path": "D:\\AIProject\\提示词系统\\SOURCE\\dist\\index.html",
+      "bytes": 49044630,
+      "sha256": "c58b14378ec9bad507317c5f175655dc033ccf386403b356a84ca18c6edea586",
+      "crlf": 0
+    },
+    {
+      "path": "D:\\AIProject\\提示词系统\\OPEN-v6.61-P83.html",
+      "bytes": 49044630,
+      "sha256": "c58b14378ec9bad507317c5f175655dc033ccf386403b356a84ca18c6edea586",
+      "crlf": 0
+    },
+    {
+      "path": "D:\\AIProject\\提示词系统\\AI-Playbook-v6.61-P83.html",
+      "bytes": 49044997,
+      "sha256": "7c0098985cabc925cd4d6b577f31ba243662ebb2a900d570a99aa8f201ac5885",
+      "crlf": 0
+    }
+  ],
+  "expectedSha256": "c58b14378ec9bad507317c5f175655dc033ccf386403b356a84ca18c6edea586",
+  "rootPresent": true,
+  "rootArtifact": {
+    "path": "D:\\AIProject\\提示词系统\\AI-Playbook-v6.61-P83.html",
+    "bytes": 49044997,
+    "sha256": "7c0098985cabc925cd4d6b577f31ba243662ebb2a900d570a99aa8f201ac5885",
+    "crlf": 0,
+    "beaconBytes": 367,
+    "strippedEqualsDist": true
+  },
+  "packagedArtifact": {
+    "path": "D:\\AIProject\\提示词系统\\OPEN-v6.61-P83.html",
+    "bytes": 49044630,
+    "sha256": "c58b14378ec9bad507317c5f175655dc033ccf386403b356a84ca18c6edea586",
+    "crlf": 0
+  },
+  "browserRun": false
+}

@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "version": "6.61",
+  "phase": "P83",
+  "playback": [
+    {
+      "course": "backup-restore",
+      "mode": "guided",
+      "startIndex": 3,
+      "replayPrefix": 12,
+      "steps": 5,
+      "status": "passed"
+    }
+  ],
+  "checks": [
+    "all practice controls in right rail",
+    "retired video/demo/observe controls removed",
+    "stale :video keys ignored and purged once",
+    "guided mid-chain entry replays chain prefix (observe included) with zero proof",
+    "restore confirm/cancel flow through production handlers",
+    "already-open backup refresh",
+    "different-tab restore routing",
+    "reading status immediate",
+    "latest file wins out-of-order reads",
+    "cancel reading no writes",
+    "bad/future/oversize file states",
+    "file metadata/counts/confirmation in same restore region"
+  ],
+  "browserRun": false,
+  "limitation": "Production handlers in DOM adapters; real browser visuals, touch and device performance were not tested."
+}

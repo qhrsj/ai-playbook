@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "version": "6.61",
+  "phase": "P83",
+  "courses": 32,
+  "nonemptyGroups": 2,
+  "menuCardsAndOptionsMatch": true,
+  "removedGroupAndEmptyCatalog": true,
+  "missingGoalFallback": true,
+  "navButtons": 12,
+  "keyboardPointerSavedResetAndCancel": true,
+  "workspaceRoutes": 7,
+  "themes": [
+    "nebula",
+    "arcane",
+    "eastern",
+    "synlife",
+    "museum",
+    "aurora"
+  ],
+  "widths": [
+    320,
+    390,
+    520,
+    620,
+    760,
+    900,
+    1240,
+    1280,
+    1792
+  ],
+  "cssProfiles": 108,
+  "logTenItemListPreserved": true,
+  "oldCSSNegative": true,
+  "browserRun": false,
+  "limitation": "Production handlers run against a DOM adapter; CSS cascade checks do not compute glyph/viewport layout or replace browser screenshots."
+}

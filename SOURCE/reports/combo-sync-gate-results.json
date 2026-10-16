@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "courses": 32,
+  "actions": 130,
+  "tourPoints": 29,
+  "tourScripts": 5,
+  "schema": "ai-playbook-combo-training-v3",
+  "logs": {
+    "phases": 84,
+    "surfaces": 6,
+    "currentPhase": "P83",
+    "events": {
+      "features": 1,
+      "bugs": 2,
+      "internals": 1,
+      "timeline": 1
+    }
+  },
+  "routingTargets": [
+    "check",
+    "backup"
+  ],
+  "documentActionsMatch": true,
+  "browserRun": false
+}

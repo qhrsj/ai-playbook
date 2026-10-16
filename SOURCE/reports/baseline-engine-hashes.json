@@ -1,0 +1,5 @@
+{
+  "src/vendor/xlsx.full.min.js": "cc015130aa8521e7f088f88898eba949ccdcbfb38df0bd129b44b7273c3a6f41",
+  "src/workers/import-parser.js": "c2ce9004f7c3191b404a43b58acb61431b05ceeeac09d2906c306074b811b9c6",
+  "src/storage/playbook-database.js": "6bb107b45bdca08309e37c953bade802dc564c6ceaf6ae9e5fdb56a26eb3fc1f"
+}

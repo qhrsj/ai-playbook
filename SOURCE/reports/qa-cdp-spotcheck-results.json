@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-10-14T15:09:51.216Z",
+  "version": "6.58",
+  "phase": "P80",
+  "results": [
+    {
+      "check": "welcome-one-shot(trusted-skip)",
+      "status": "passed",
+      "detail": {
+        "shownOnce": true,
+        "hiddenAfterSkip": true,
+        "hiddenAfterReload": true
+      }
+    },
+    {
+      "check": "map-render(4 flows + overview entry)",
+      "status": "passed",
+      "detail": {
+        "flows": 4,
+        "tours": 5,
+        "courses": 4,
+        "overview": true,
+        "sub": "v6.58 · P80 · 看地图 → 跟导览 → 亲手练"
+      }
+    },
+    {
+      "check": "S0 write-guard blocks trusted click+typing",
+      "status": "passed",
+      "detail": {
+        "themeBefore": {
+          "menu": false,
+          "sheet": false,
+          "expanded": null
+        },
+        "themeAfter": {
+          "menu": false,
+          "sheet": false,
+          "expanded": null
+        },
+        "bubbleUp": true
+      }
+    },
+    {
+      "check": "S0 trusted Next advances (now at: 03 / 18)",
+      "status": "passed",
+      "detail": "03 / 18"
+    },
+    {
+      "check": "course:daily-match (3 steps, replayPrefix=0, iframe 996x732)",
+      "status": "passed",
+      "detail": "✓ 本模块教程已完成匹配路径走通了，不知道模板名也不怕。 你已亲手走完这一门。 完成记录已保存。 点击「完成并退出」返回正式主界面。完成并退出 →"
+    },
+    {
+      "check": "course:organize-restore (2 steps, replayPrefix=11, iframe 996x732)",
+      "status": "passed",
+      "detail": "✓ 本模块教程已完成恢复一步到位，东西回来了。 你已亲手走完这一门。 完成记录已保存。 点击「完成并退出」返回正式主界面。完成并退出 →"
+    }
+  ],
+  "okAll": true
+}

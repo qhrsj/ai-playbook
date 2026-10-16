@@ -1,0 +1,80 @@
+{
+  "id": "PC-14-001",
+  "name": "Midjourney 风格绘图",
+  "cat": "14-图像与多媒体",
+  "catId": "14",
+  "sub": "AI 绘图",
+  "task": "用\"主体 + 风格词 + 画质词 + 参数\"的句式构造高质量英文绘图提示词，并从 11 个风格家族、约 185 个风格词中选用风格。",
+  "fit": "Midjourney / DALL·E 等文生图；给图像找风格灵感；把中文画面描述转成规范英文提示词。",
+  "unfit": "图像编辑修图指令；需要精确排版位图的设计稿。",
+  "vars": [
+    [
+      "[画面主体]",
+      "画什么（人物/物体/场景，含动作氛围）",
+      "是"
+    ],
+    [
+      "[风格意向]",
+      "从风格家族选，或描述想要的感觉",
+      "否"
+    ],
+    [
+      "[画幅比例]",
+      "如 16:9、3:4、9:16",
+      "否（默认 16:9）"
+    ],
+    [
+      "[数量]",
+      "出几个变体方案",
+      "否（默认 3）"
+    ]
+  ],
+  "tpl": "## Role\n你是一名 Midjourney 提示词专家，熟悉风格词库与参数体系。\n\n## Goal\n把 [画面主体] 转化为 [数量] 个高质量英文提示词，每个采用不同的风格路径。\n\n## Input\n画面主体：[画面主体]；风格意向：[风格意向]；画幅：[画幅比例]\n\n## Instructions\n1. 每条提示词按句式构造：**主体描述（英文，含动作/光线/氛围）→ 风格词（大写风格名）→ 画质词（hyper-detailed / volumetric lighting 等，≤3 个）→ 参数（--ar [画幅比例] --v 6）**\n2. 风格选择：若我给了意向，从词库中匹配 2-3 个风格词；未给则跨 [数量] 个不同风格家族各出一条（如一条摄影家族、一条工艺家族、一条艺术流派）\n3. 每条附中文说明：该风格会带来什么视觉效果（一句话）\n4. 若我的描述含糊，先给一版解释再问是否需要调整\n\n## Constraints\n- 风格词必须来自下方词库或业界通用的明确风格名，不用模糊形容词堆砌\n- 单条提示词 ≤60 词，避免关键词稀释\n- 不使用真人艺术家名直引（用流派/技法替代）\n\n## Output Format\n逐条：英文提示词代码块 + 一行中文效果说明\n\n## Quality Criteria\n- 每条出图风格差异肉眼可辨\n- 主体内容在所有变体中保持一致\n- 参数正确可执行",
+  "extras": [
+    [
+      "风格家族词库",
+      "- **摄影暗房（≈32）**：DOUBLE EXPOSURE 二重曝光 / LIGHT PAINTING 光绘 / CYANOTYPE 蓝晒 / TILT-SHIFT 移轴 / POLAROID 拍立得 / PINHOLE 针孔 / SOLARGRAM 日光摄影 / BULLET TIME 子弹时间 / REDSCALE 红滤镜…\n- **数字3D（≈18）**：ISOMETRIC 等轴 / VOXEL 体素 / PIXEL 像素 / CLAY RENDER 黏土渲染 / POINT CLOUD 点云 / GLITCH 故障艺术 / KNOLLING 排列摄影…\n- **工艺材料（≈36）**：STAINED GLASS 彩窗玻璃 / MOSAIC 马赛克 / KINTSUGI 金缮 / CLOISONNÉ 掐丝珐琅 / GLASSBLOWING 吹玻璃 / FILIGREE 金丝细工 / SHIBORI 扎染 / MACRAME 结绳…\n- **绘画媒介（≈22）**：GOUACHE 水粉 / WATERCOLOR 水彩 / INK WASH 水墨 / CHARCOAL 炭笔 / IMPASTO 厚涂 / ENCAUSTIC 蜡画 / STIPPLING 点画…\n- **民族历史（≈19）**：ABORIGINAL DOT 点画 / EGYPTIAN RELIEF 埃及浮雕 / MAYAN GLYPHS 玛雅字符 / RETABLO 祭坛画 / CELTIC KNOTS 凯尔特结 / MADHUBANI 米提拉画 / AZULEJO 花砖…\n- **食物软材料（≈16）**：FRUIT CARVING 果雕 / BENTO 便当 / CHOCOLATE 巧克力雕塑 / PLUSH 毛绒 / SAND 沙雕 / ALUMINIUM FOIL 锡纸…\n- **艺术流派（≈15）**：VAPORWAVE 蒸汽波 / CYBERPUNK 赛博朋克 / ART DECO 装饰艺术 / BAUHAUS 包豪斯 / POP ART 波普 / PSYCHEDELIC 迷幻…\n- **版画印刷（≈12）**：LINOCUT 油毡版画 / HALFTONE 网点 / RISOGRAPH 孔版印刷 / MOKU HANGA 木版画 / MONOPRINT 独幅…\n- **插画平面（≈11）**：COMIC BOOK 漫画 / CHIBI Q版 / KAWAII 可爱 / STORYBOARD 分镜 / NEON SIGN 霓虹灯牌…\n- **拼贴纹理（≈6）**：COLLAGE 拼贴 / PHOTOMONTAGE 照片蒙太奇 / MARBLING 大理石纹 / EBRU 湿拓画…\n- **空间装置（≈7）**：TOPIARY 绿雕 / SHADOW ART 影子艺术 / FORCED PERSPECTIVE 强迫透视 / KOKEDAMA 苔玉…"
+    ],
+    [
+      "画质与参数速查",
+      "hyper-detailed / volumetric lighting / cinematic lighting / 8K；--ar 画幅 / --v 版本 / --s 风格化强度"
+    ]
+  ],
+  "output": "逐条（英文代码块 + 中文效果说明）",
+  "example": "输入\"一只在书房打字猫，16:9\"，得到等轴风格、蓝晒风格、蒸汽波风格三条英文提示词。",
+  "tags": [
+    "Midjourney",
+    "MJ",
+    "绘图提示词",
+    "AI绘画",
+    "风格词",
+    "文生图",
+    "prompt"
+  ],
+  "scores": {
+    "实用性": 5,
+    "通用性": 4,
+    "可复用性": 5,
+    "可控性": 4,
+    "独特价值": 4
+  },
+  "overall": 4.5,
+  "overallLabel": "非常值得保留",
+  "source": "_inbox/2026-09-11-批次01/06-Midjourney_ 200 styles.md（200 风格定义 + 8 条完整示例）；04-GPT提示词技巧.md（MJ 提示词生成器案例、绘本案例）；02-CHATGPT训练指令模板.md #13（MJ 提示词）",
+  "origin": "06 号合集每条 = 风格名 + 起源定义 + \"When applied as a style…\"效果描述（无主体无参数）；其末尾 8 条示例展示完整句式（如\"Anne Geddes 风新生儿：主体+风格+Sony A7R IV/85mm f1.4+--ar\"）。本卡把 200 条定义压缩为 11 家族词库，句式取自示例。完整原文见 _inbox 文件。",
+  "status": "新建母模板（由约 210 条合并）",
+  "mergedTo": "—",
+  "notes": "词库内同义对已去重（LIGHT PAINTING≈DRAWING WITH LIGHT、EBRU≈MARBLING、INK WASH≈ORIENTAL INK 等取一）；02#13 的参数堆叠式旧写法过时，仅保留其 /imagine 句式意识。",
+  "srcs": [
+    {
+      "f": "06-Midjourney_ 200 styles.pdf",
+      "n": "风格定义示例（CYANOTYPE）",
+      "t": "CYANOTYPE：Cyanotypes were historically used for creating blueprints in engineering, but they have also been employed in photography. This style is characterized by its distinct blue color and the high-contrast images it produces, often with a vintage or dreamy aesthetic.（200 条均为同构百科式定义：风格名+起源+视觉效果，无主体无参数）"
+    },
+    {
+      "f": "06-Midjourney_ 200 styles.pdf",
+      "n": "末尾完整示例 Prompt",
+      "t": "Coloring book for kid, cute tiny gnome, zbrush style, grayscale, low detail, clean and sharp inking, thick black outlines, white background --ar 9:11 …… PROMPT-70- Cute doll, minimalist, alcohol ink style, white background …… PROMPT-73- luminogram miniature forest, eye-level shot……（8 条示例展示了\"主体+风格词+画质词+参数\"的完整句式，本卡的句式规范即取自这里）"
+    }
+  ]
+}

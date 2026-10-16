@@ -1,0 +1,57 @@
+const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert');
+const root=path.resolve(__dirname,'..');const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const records=new Map(),elements=new Map(),listeners=[];
+function element(){return {value:'',textContent:'',innerHTML:'',hidden:false,scrollTop:0,style:{},dataset:{},classList:{contains:()=>false,toggle(){},add(){},remove(){}},addEventListener(){},setAttribute(){},querySelector(){return element()},querySelectorAll(){return []},focus(){},scrollIntoView(){}};}
+function $(selector){if(!elements.has(selector))elements.set(selector,element());return elements.get(selector)}
+const source=read('src/js/16-personal-workspace.js');
+const helper=read('src/js/07b-governance-language.js').replace('@@GOVERNANCE_TEXT_GLOSSARY@@',read('src/data/governance-language.json'));
+const user={id:'PERSONAL-1',title:'测试提示词',prompt:'请整理 [输入]，输出核查清单。',rawPrompt:'请整理 [输入]，输出核查清单。',desc:'整理会议内容',tags:['测试'],file:'测试文件',catId:'01',createdAt:'2026-10-10',updatedAt:'2026-10-10',versions:[{title:'旧稿',prompt:'请整理 [输入]',savedAt:'2026-10-09'}]};
+const core=[{id:'PC-TEST-1',name:'核查模板',cat:'01',catId:'01',desc:'检查事实',why:'检查事实',source:'测试来源',tags:['核查'],tpl:'核查 [输入] 的事实。'},{id:'PC-TEST-2',name:'写作模板',cat:'01',catId:'01',desc:'整理写作',why:'整理写作',source:'测试来源',tags:['写作'],tpl:'根据 [主题] 输出大纲。'}];
+const messages=[];
+const context={console,$,document:{querySelectorAll:()=>[],addEventListener(...a){listeners.push(a)},querySelector:$},window:{},addEventListener(){},matchMedia:()=>({matches:false}),USER_IMPORT_RECORDS:[user],DATA:core,CATS:{'01':['测试']},TPL:{},SCRATCH_ARCHIVE:[],SHOW_COUNTS:true,WorkspaceStore:{getItem:k=>records.get(k)||null,setItem:(k,v)=>records.set(k,v)},notifyLocal:t=>messages.push(t),setTimeout(){},decorateHelp(){},syncBodyLock(){},refreshLibraryStats(){},renderHome(){},copyText(){},saveUserRecords(){},RELEASE_MANIFEST:JSON.parse(read('src/data/release.json')),CORE_CARD_COUNT:core.length,confirm:()=>true,inferImportCat:()=> '01',normalizeImportedTemplate:s=>s,guardPersonalWrite:()=>true};
+context.clearTimeout=()=>{};
+vm.createContext(context);
+vm.runInContext(helper+'\n'+read('src/js/07a-context-help-catalog.js')+'\n'+source,context);
+function run(code){return vm.runInContext(code,context)}
+const tabs=['control','candidates','trains','audit','quality','policy','simulation','intelligence','reviews','remediation'];
+const out=path.join(root,'reports/chinese-render-check');fs.mkdirSync(out,{recursive:true});
+function capture(mode){for(const tab of tabs){run(`personalWorkspaceTab=${JSON.stringify(tab)};renderPersonalWorkspace()`);const html=$('#personalWorkspaceList').innerHTML;assert(html.length>0);assert(!html.includes('pw-项操作'));fs.writeFileSync(path.join(out,mode+'-'+tab+'.html'),html);}}
+capture('empty');
+const store=(k,v)=>records.set(k,JSON.stringify(v));
+store('pb_prompt_candidates_v63',[{id:'CAND-TEST',promptId:user.id,title:user.title,decision:'accepted',status:'accepted',submittedAt:'2026-10-10',finalScore:80,decisionNote:'经过试用',topSimilarity:{id:core[0].id,name:core[0].name,score:20}}]);
+store('pb_release_drafts_v65',[{id:'DRAFT-TEST',candidateId:'CAND-TEST',mode:'new',targetId:'',cardId:'PC-TEST-3',title:user.title,catId:'01',tags:['测试'],desc:user.desc,prompt:user.prompt}]);
+store('pb_release_runs_v65',[{id:'RELEASE-TEST',candidateId:'CAND-TEST',mode:'new',title:user.title,at:'2026-10-10',beforeCount:2,afterCount:3,changelog:'vNext · Release Candidate',rollback:{type:'remove',id:'PC-TEST-3'}}]);
+const pkg=JSON.parse(JSON.stringify(run("releasePackageFor(releaseRuns()[0])")));
+assert.equal(pkg.manifest.format,'ai-playbook-release-package');assert.equal(pkg.migration.path,'src/data/cards/PC-TEST-3.json');
+store('pb_release_trains_v69',[{id:'TRAIN-TEST',version:'7.0',name:'测试版本',status:'published',registryId:'VERSION-TEST',packages:[pkg],releaseOrder:[pkg.manifest.packageId],publishedAt:'2026-10-10'},{id:'TRAIN-DRAFT',version:'7.1',name:'待发布版本',status:'draft',packages:[pkg]}]);
+store('pb_version_registry_v69',[{id:'VERSION-TEST',version:'7.0',name:'测试版本',trainId:'TRAIN-TEST',packages:[pkg.manifest.packageId],rollbackStatus:'ready',channel:'preview',at:'2026-10-10'}]);
+store('pb_release_channels_v616',[{id:'preview',name:'Preview',registryId:'VERSION-TEST',version:'7.0',history:[]},{id:'stable',name:'Stable',registryId:'VERSION-TEST',version:'7.0',history:[]}]);
+store('pb_policy_audit_v619',[{action:'override-approved',decision:'auto',health:90,version:'7.0',at:'2026-10-10'}]);
+store('pb_policy_overrides_v619',[{id:'OVERRIDE-TEST',ruleId:'provenance',reason:'Policy rule failed → controlled exception decision',status:'pending',requestedAt:'2026-10-10'}]);
+store('pb_orchestrator_audit_v620',[{type:'dry-run',result:'simulated',target:'preview',version:'7.0',at:'2026-10-10'}]);
+const reviewStates=['pending','in-review','changes-requested','approved','rejected','resolved'];
+store('pb_review_queue_v621',reviewStates.map((status,i)=>({id:'RQ-TEST-'+i,status,type:'policy-override',title:'Policy Override · provenance',reason:'Original rule remains unchanged until human decision',evidence:'Rule provenance · original policy fact retained',reviewer:'local-reviewer',relatedPolicy:'provenance',beforeAfter:'Rule failed → exception approved/rejected',history:[{beforeStatus:'pending',afterStatus:status,reviewer:'local-reviewer',reason:'Review Queue manual decision',at:'2026-10-10'}]})));
+store('pb_remediation_v622',[{id:'RM-TEST',status:'open',ruleId:'provenance',title:'Provenance Coverage',rootCause:'Provenance Coverage insufficient',governanceStage:'Source Integration',affectedAssets:['Card Provenance','Source Mapping'],steps:['补齐来源资料'],recheckGate:'Provenance Coverage ≥ 95%',history:[{type:'re-check',result:'blocked',evidence:'Rule provenance = BLOCK'}]}]);
+run('captureQualitySnapshot();runGovernanceSimulation("candidate-promote")');
+const sim=JSON.parse(JSON.stringify(run('governanceSimulations()[0]')));sim.proposedChange.label='Candidate A 晋升';sim.proposedChange.description='模拟 Candidate 晋升为 Official Card';store('pb_governance_simulations_v625',[sim]);
+capture('populated');
+for(const [selector,code] of [['#curationBody',"activeCurationId='CAND-TEST';renderCuration()"],['#releaseGovernanceBody',"activeReleaseCandidateId='CAND-TEST';renderReleaseGovernance()"],['#auditExplorerBody','openAuditExplorer()']]){run(code);fs.writeFileSync(path.join(out,selector.slice(1)+'.html'),$(selector).innerHTML);}
+for(const status of reviewStates){assert(!/[A-Za-z]/.test(run(`reviewStatusLabel(${JSON.stringify(status)})`)));assert.equal(run(`governanceLabel(${JSON.stringify(status)})`),run(`reviewStatusLabel(${JSON.stringify(status)})`))}
+assert.equal(run("governanceLabel('AUTO')"),'允许继续');assert.equal(run("governanceLabel('HIGH')"),'高');assert.equal(run("governanceLabel('normal-v1')"),'常规策略第 1 版');
+assert.equal(user.prompt,'请整理 [输入]，输出核查清单。');
+// Every combination of pass/fail outcomes preserves machine IDs and decision semantics.
+for(let mask=0;mask<64;mask++){
+ const c={health:mask&32?79:100,metrics:{tutorialCoverage:mask&1?99:100,devlogCoverage:100,provenance:mask&2?94:100,parameterization:mask&4?84:100,duplicateRate:mask&8?9:0,rollbackCoverage:mask&16?99:100}};
+ store('pb_quality_snapshots_v618',[]);store('pb_policy_overrides_v619',[]);
+ context.testQuality=c;const got=run('evaluateReleasePolicy(testQuality)');const expected=mask&(1|2|16)?'block':mask&(4|8|32)?'review':'auto';assert.equal(got.decision,expected);assert(got.rules.every(x=>['evidence','provenance','parameterization','duplicates','rollback','health'].includes(x.id)));
+}
+const mutationChecks={};
+run("personalWorkspaceTab='reviews';transitionReview('RQ-TEST-0','approved')");assert.equal(run("reviewQueue().find(x=>x.id==='RQ-TEST-0').status"),'approved');mutationChecks.review=true;
+const noBusinessWrite=JSON.stringify(run('releaseChannels()'));run('runGovernanceSimulation("merge-cards")');assert.equal(JSON.stringify(run('releaseChannels()')),noBusinessWrite);mutationChecks.simulation=true;
+const routeHandler=listeners.find(([kind,fn])=>kind==='click'&&String(fn).includes('data-intelligence-route'))?.[1];assert(routeHandler);
+routeHandler({target:{closest:()=>({dataset:{intelligenceRoute:'quality',intelligenceAudit:''}})}});assert.equal(run('personalWorkspaceTab'),'quality');mutationChecks.route=true;
+// Translation must preserve the event routing values inside rendered attributes.
+const intelligence=fs.readFileSync(path.join(out,'populated-intelligence.html'),'utf8');
+for(const match of intelligence.matchAll(/data-intelligence-route="([^"]+)"/g))assert(tabs.includes(match[1]));
+fs.writeFileSync(path.join(root,'reports/chinese-gate-results.json'),JSON.stringify({status:'passed',pages:tabs.length,renderCases:tabs.length*2+3,policyCases:64,reviewStates:reviewStates.length,mutationChecks,browserRun:false,messages},null,2));
+console.log('Chinese rendering and compatibility gate passed:',tabs.length*2+3,'render cases, 64 policy combinations, legacy records, review transition and simulation boundary');

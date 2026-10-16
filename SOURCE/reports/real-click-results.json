@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-10-15T11:01:39.406Z",
+  "results": [
+    {
+      "check": "A tour tip 下一步 with real mouse (incl. mid-click rebuild)",
+      "status": "passed"
+    },
+    {
+      "check": "C note button real-click hit-test",
+      "status": "passed",
+      "detail": "{\"clicks\":[\"down:comboNoteNext@146,221\",\"up:comboNoteNext\",\"click:comboNoteNext@146,221\",\"REMOVED-BUTTON\"],\"hit\":\"MARK\"}"
+    },
+    {
+      "check": "B personal-versions note 下一步 with real mouse → completed",
+      "status": "passed"
+    }
+  ]
+}

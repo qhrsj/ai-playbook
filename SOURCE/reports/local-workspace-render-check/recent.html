@@ -1,0 +1,26 @@
+<div class="utilityOverlay personal-workspace-overlay open" id="personalWorkspaceOverlay" aria-hidden="false">
+ <div class="utilityView personal-workspace-dialog" role="dialog" aria-modal="true" aria-labelledby="personalWorkspaceTitle" data-pw-view="recent" data-pw-section="daily">
+  <header class="pw-head">
+   <div class="pw-brand"><span class="pw-sigil" aria-hidden="true">◇</span><div><div class="uv-title" id="personalWorkspaceTitle">我的工作区</div><div class="uv-sub">本地个人使用 · 保存、找回和整理</div></div></div>
+   <div class="pw-head-actions"><button class="w-btn primary pw-scratch-btn" type="button" data-scratch-open="">✎ 写随手记</button><button class="w-btn small pw-help-btn" id="workspaceHelpBtn" type="button" data-help-skip="" aria-expanded="false" aria-controls="workspaceHelpPanel">? 使用帮助</button><button class="close" type="button" data-personal-close="" aria-label="关闭我的工作区">✕</button></div>
+  </header>
+  <nav class="pw-nav" aria-label="我的工作区页面">
+   <label class="pw-jump">切换页面 <select id="personalWorkspaceTabSelect" aria-label="选择工作区页面"><option value="prompts">我的提示词</option><option value="favorites">收藏</option><option value="recent">最近使用</option><option value="scratch">随手记</option><option value="trash">回收站</option><option value="check">检查提示词</option><option value="backup">备份与恢复</option></select></label>
+   <div class="pw-daily-row"><div class="pw-tabs" role="tablist" aria-label="日常使用"><button class="pw-tab" data-pw-tab="prompts" role="tab" aria-controls="personalWorkspaceList" aria-selected="false">我的提示词 <span class="count-value" data-pw-count="prompts">1</span></button><button class="pw-tab" data-pw-tab="favorites" role="tab" aria-controls="personalWorkspaceList" aria-selected="false">收藏 <span class="count-value" data-pw-count="favorites">0</span></button><button class="pw-tab active" data-pw-tab="recent" role="tab" aria-controls="personalWorkspaceList" aria-selected="true">最近使用 <span class="count-value" data-pw-count="recent">0</span></button><button class="pw-tab" data-pw-tab="scratch" role="tab" aria-controls="personalWorkspaceList" aria-selected="false">随手记 <span class="count-value" data-pw-count="scratch">0</span></button><button class="pw-tab" data-pw-tab="trash" role="tab" aria-controls="personalWorkspaceList" aria-selected="false">回收站 <span class="count-value" data-pw-count="trash">0</span></button></div></div>
+   <div class="pw-local-tools" role="tablist" aria-label="常用辅助操作"><span aria-hidden="true">辅助</span><button type="button" class="w-btn small" data-pw-tab="check" role="tab" aria-controls="personalWorkspaceList" aria-selected="false">检查提示词</button><button type="button" class="w-btn small" data-pw-tab="backup" role="tab" aria-controls="personalWorkspaceList" aria-selected="false">备份与恢复</button></div>
+  </nav>
+  <div class="utilityBody pw-body">
+   <input type="file" id="workspaceBackupFile" accept=".json,application/json" hidden=""></input>
+   <section class="pw-help-panel" id="workspaceHelpPanel" hidden="" aria-label="工作区使用帮助"><h2 tabindex="-1">三件事就能开始</h2><ol><li><b>留住好用的：</b>主页或提示词广场点收藏，回来就能找回原模板。</li><li><b>改成适合自己的：</b>点存成我的版本，再保存；以后修改可以查看旧版本。</li><li><b>怕遗漏或丢失：</b>检查提示词列出修改线索，备份与恢复帮你保留下载副本。</li></ol><p>最近使用可以删记录；随手记先留想法；删除的个人内容可以到回收站恢复。这里用于本地个人创作，无需学习发布或审批流程。</p><p id="workspaceHelpContext">用途：找回最近打开过的模板，减少重复搜索。 想继续使用上次的模板或整理常用方法时使用。
+
+怎么用：点打开进入模板工作台；每条记录的删除只移除访问历史，之后再次打开会重新记录。
+
+留意：这里记录访问历史，不是已填参数的持久备份；重要内容请保存为个人提示词 或随手记。</p><button class="w-btn small" type="button" data-pw-help-close="">我知道了</button></section>
+   <section class="pw-hero" hidden=""><div><span class="pw-kicker">你的个人提示词</span><h2>把好用的提示词留给下次</h2><p>新建或存成自己的版本，修改后保留旧版。常用的先收藏，暂时不用的可以收起。</p></div><button class="w-btn primary pw-create" type="button" data-pw-create="">＋ 新建提示词</button></section>
+   <div class="pw-toolbar"><label class="pw-search"><span aria-hidden="true">⌕</span><input id="personalWorkspaceSearch" type="search" placeholder="搜索名称、正文、标签…"></input></label><div class="pw-toolbar-actions"><select id="personalWorkspaceStatus" class="pw-select" aria-label="状态筛选" hidden=""><option value="usable">可用和草稿</option><option value="all">全部状态</option><option value="active">使用中</option><option value="draft">草稿</option><option value="archived">已收起</option></select><select id="personalWorkspaceTag" class="pw-select" aria-label="标签筛选" hidden=""><option value="all">全部标签</option><option value="复盘">复盘</option><option value="会议">会议</option></select><select id="personalWorkspaceSort" class="pw-select" aria-label="排序" hidden=""><option value="updated-desc">最近更新</option><option value="created-desc">最近创建</option><option value="name-asc">名称 A–Z</option><option value="versions-desc">版本最多</option></select><button type="button" class="w-btn small" data-personal-import="">导入文件</button></div></div>
+   <p class="pw-tab-intro" id="workspaceTabIntro">找回最近打开过的模板，减少重复搜索。</p>
+   <div id="workspaceResetNotice" class="workspace-reset-notice" hidden="" role="status"><p>旧工作区已归零。归零前备份保留在当前浏览器，可导出查看或通过「恢复备份」找回。</p><button type="button" class="w-btn small" data-workspace-reset-backup="">导出归零前备份</button></div>
+   <div class="pw-list" id="personalWorkspaceList" role="tabpanel" aria-label="工作区内容"><div class="pw-empty"><b>这里还没有内容</b>打开模板后会留一条记录；每条都可以删除。</div></div>
+  </div>
+ </div>
+</div>

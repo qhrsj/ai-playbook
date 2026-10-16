@@ -1,0 +1,14 @@
+{
+  "version": "6.54",
+  "phase": "P76",
+  "htmlSha256": "9c1653714ac7cbe16dd155c273ffc63f61dbc81f0403413d1ecf1a5799fdfa16",
+  "htmlBytes": 8436233,
+  "requiredChecks": [
+    "Complete ZIP CRC",
+    "Independent source rebuild byte equality",
+    "Tutorial regeneration byte equality",
+    "Current reports passed",
+    "Original data and engine hashes"
+  ],
+  "browserRun": false
+}

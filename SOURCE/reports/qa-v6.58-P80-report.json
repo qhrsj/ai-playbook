@@ -1,0 +1,90 @@
+{
+  "status": "passed",
+  "version": "6.58",
+  "phase": "P80",
+  "generatedAt": "2026-10-14T15:10:00Z",
+  "qa": "software-qa-engineer-2 (independent verification, fresh-eye)",
+  "rounds": 2,
+  "roundNotes": [
+    "Round 1: all 13 gates rerun exit=0; independent data/chainMap/deliverable checks computed from scratch; browser diag rerun after deleting old results file (38/38); own CDP spot-check script had 3 test-side bugs (wrong aria-expanded assertion, missing scrollIntoView, too-strict step counter) — fixed by QA, no source bugs.",
+    "Round 2: regression rerun of own spot-check 6/6 passed; no source fixes needed at any point."
+  ],
+  "gateResults": [
+    { "gate": "python tools/build.py", "exit": 0 },
+    { "gate": "node tools/combo_sync_gate.cjs", "exit": 0 },
+    { "gate": "node tools/devlog_sync_gate.cjs", "exit": 0 },
+    { "gate": "node tools/tutorial_coverage_gate.cjs", "exit": 0 },
+    { "gate": "node tools/local_personal_gate.cjs", "exit": 0 },
+    { "gate": "node tools/player_layout_gate.cjs", "exit": 0 },
+    { "gate": "node tools/navigation_motion_gate.cjs", "exit": 0 },
+    { "gate": "node tools/combo_action_gate.cjs", "exit": 0 },
+    { "gate": "node tools/surface_training_gate.cjs", "exit": 0 },
+    { "gate": "node tools/tutorial_interaction_gate.cjs", "exit": 0 },
+    { "gate": "node tools/layout_tutorial_gate.cjs", "exit": 0 },
+    { "gate": "python tools/check.py", "exit": 0 },
+    { "gate": "python tools/checksum_verify.py", "exit": 0 }
+  ],
+  "independentChecks": {
+    "counts": {
+      "courses": 32,
+      "courseSteps": 130,
+      "stepComposition": "128 chain-sliced + 2 standalone (search has no chainMap)",
+      "chains": 8,
+      "chainEntries": 157,
+      "observeEntriesInChains": 29,
+      "chainMapVerification": "per chain: union of course chainMap arrays == all non-observe indices, seamless/ordered/no-overlap; base == chainMap[0] on every sliced course; sliced steps byte-identical to chain (instruction/check/target)",
+      "tours": { "scripts": 5, "totalPoints": 32, "migrated": 29, "migratedEqualsObserveIds": true, "authored": 3 },
+      "mapFlows": 4,
+      "coverageVersionKeys": 56,
+      "coverageNote": "TUTORIAL_COVERAGE keyed by version (v6.2–v6.58), 56 keys confirmed in 15-scratchpad-reading-boot.js; matches gate report note"
+    },
+    "deletionSurface": {
+      "grepPatterns": "video|demo|倍速|暂停|重播|comboVideoWait|comboDemoSession|camera",
+      "files": ["src/js/24-combo-training.js", "src/js/12-tour.js", "src/js/25-onboarding.js", "src/templates/index.html", "src/styles/app.css"],
+      "result": "clean — only purge-API/comments (comboPurgeVideoProgress for retired :video keys) and historical retro cards/devlog entries (allowed); no live video/demo/camera code or selectors; comboDemoPanel/combo-speed-dial absent"
+    },
+    "deliverables": {
+      "distBytes": 8529525,
+      "distSha256": "90389f563b0ff54e858cb63b30136887e8152105c8a018538265845102518adb",
+      "distEqualsOpen": true,
+      "distCRLF": 0,
+      "rootBytes": 8529892,
+      "rootStructure": "dist with 367-byte Cloudflare beacon inserted immediately before </body>; last 15 bytes byte-identical to dist tail",
+      "zipEntries": 250,
+      "docsConsistency": "START-HERE.md and DELIVERY-NOTES.md match reality: v6.58/P80, 13 gates, 32 courses / 130+29, build=tutorial-no-video, sizes and sha256 all verified"
+    },
+    "deviationDecisions": {
+      "decision1_comboOpenCourse": "code: same overlay preamble as openComboTraining present (closeMap/closeWelcome → open → ensureAdjustable → maximize); browser: sandbox iframe measured 996x732 (non-0x0) at course open",
+      "decision3_s4EntrySelChain": "S4 tour passed in full browser diag (entrySel #personalWorkspaceBtn → [data-pw-tab=\"trash\"]); tutorialPrepare entrySel path uses untrusted programmatic click which correctly bypasses tourGuard"
+    }
+  },
+  "browserDiag": {
+    "tool": "tools/browser_playback_diag.cjs (rerun by QA after deleting old results file)",
+    "exit": 0,
+    "total": 38,
+    "passed": 38,
+    "failed": 0,
+    "breakdown": "welcome-one-shot 1 + 32 guided courses (trusted CDP input, per-step proof, completion banner) + 5 tour scripts (S0 includes write-guard smoke: blocked-click-and-typing)",
+    "resultsFile": "SOURCE/reports/browser-playback-diag-results.json"
+  },
+  "ownCdpSpotCheck": {
+    "tool": "reports/qa_cdp_spotcheck.cjs (independent implementation)",
+    "exit": 0,
+    "passed": 6,
+    "checks": [
+      "welcome one-shot with TRUSTED skip click; hidden after skip; no recurrence after reload",
+      "map renders 4 flows + 5 tour entries + 4 practice entries + overview button",
+      "S0 write-guard blocks trusted #themeBtn click (themeMenu stays closed) and typed text; bubble intact",
+      "S0 trusted Next advances to 03 / 18",
+      "daily-match full guided run: 3 steps, iframe 996x732, completion banner shown",
+      "organize-restore full guided run: 2 steps, mid-chain replayPrefix=11 replayed correctly, completion banner shown"
+    ],
+    "resultsFile": "SOURCE/reports/qa-cdp-spotcheck-results.json"
+  },
+  "routing": "NoOne",
+  "findings": [
+    "No source bugs found in 2 rounds. All engineer-claimed numbers reproduced independently (32/130/8/29/5×{18,8,1,3,2}/4/56; dist 8,529,525 B; root 8,529,892 B; sha256 90389f56…).",
+    "Cosmetic only (not a defect): app.css comments at lines ~1748/1781 still use the words 'demonstration'/'mobile demo'/'playback' when describing the practice layout and control rail — stale wording left from the removed video mode; no live CSS/JS attached."
+  ],
+  "leftovers": []
+}

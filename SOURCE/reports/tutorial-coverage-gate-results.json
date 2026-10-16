@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "version": "6.61",
+  "phase": "P83",
+  "courses": 33,
+  "steps": 130,
+  "coverageKeys": 59,
+  "coverageKeyCountNote": "TUTORIAL_COVERAGE is keyed by version, not phase; count is recorded but not asserted against phase (see ARCH A4.3 deviation).",
+  "emptyModules": 0,
+  "tutorialFile": "TUTORIAL-v6.61.md",
+  "browserRun": false
+}

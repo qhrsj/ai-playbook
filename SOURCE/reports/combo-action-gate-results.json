@@ -1,0 +1,204 @@
+{
+  "version": "6.60",
+  "phase": "P82",
+  "observations": 0,
+  "operations": 130,
+  "status": "passed",
+  "courses": 33,
+  "auxiliaryCourses": 2,
+  "actions": 130,
+  "modes": [
+    "guided",
+    "solo",
+    "single"
+  ],
+  "results": [
+    {
+      "course": "search",
+      "actions": 2,
+      "status": "passed"
+    },
+    {
+      "course": "daily-match",
+      "actions": 3,
+      "status": "passed"
+    },
+    {
+      "course": "daily-fill",
+      "actions": 4,
+      "status": "passed"
+    },
+    {
+      "course": "daily-copy",
+      "actions": 2,
+      "status": "passed"
+    },
+    {
+      "course": "daily-source-first",
+      "actions": 3,
+      "status": "passed"
+    },
+    {
+      "course": "daily-source-origin",
+      "actions": 3,
+      "status": "passed"
+    },
+    {
+      "course": "daily-source-more",
+      "actions": 5,
+      "status": "passed"
+    },
+    {
+      "course": "collect-card",
+      "actions": 2,
+      "status": "passed"
+    },
+    {
+      "course": "collect-open",
+      "actions": 5,
+      "status": "passed"
+    },
+    {
+      "course": "collect-remove",
+      "actions": 5,
+      "status": "passed"
+    },
+    {
+      "course": "collect-source-add",
+      "actions": 3,
+      "status": "passed"
+    },
+    {
+      "course": "collect-source-manage",
+      "actions": 5,
+      "status": "passed"
+    },
+    {
+      "course": "collect-source-cleanup",
+      "actions": 4,
+      "status": "passed"
+    },
+    {
+      "course": "collect-recent-clear",
+      "actions": 2,
+      "status": "passed"
+    },
+    {
+      "course": "personal-create",
+      "actions": 7,
+      "status": "passed"
+    },
+    {
+      "course": "personal-edit",
+      "actions": 3,
+      "status": "passed"
+    },
+    {
+      "course": "personal-versions",
+      "actions": 3,
+      "status": "passed"
+    },
+    {
+      "course": "source-open",
+      "actions": 2,
+      "status": "passed"
+    },
+    {
+      "course": "source-search",
+      "actions": 3,
+      "status": "passed"
+    },
+    {
+      "course": "source-same",
+      "actions": 7,
+      "status": "passed"
+    },
+    {
+      "course": "source-filter",
+      "actions": 7,
+      "status": "passed"
+    },
+    {
+      "course": "source-pages",
+      "actions": 5,
+      "status": "passed"
+    },
+    {
+      "course": "source-archive",
+      "actions": 4,
+      "status": "passed"
+    },
+    {
+      "course": "check-run",
+      "actions": 4,
+      "status": "passed"
+    },
+    {
+      "course": "check-fix",
+      "actions": 3,
+      "status": "passed"
+    },
+    {
+      "course": "check-save",
+      "actions": 6,
+      "status": "passed"
+    },
+    {
+      "course": "backup-export",
+      "actions": 5,
+      "status": "passed"
+    },
+    {
+      "course": "backup-trash",
+      "actions": 3,
+      "status": "passed"
+    },
+    {
+      "course": "backup-restore",
+      "actions": 5,
+      "status": "passed"
+    },
+    {
+      "course": "organize-archive",
+      "actions": 7,
+      "status": "passed"
+    },
+    {
+      "course": "organize-trash",
+      "actions": 3,
+      "status": "passed"
+    },
+    {
+      "course": "organize-restore",
+      "actions": 2,
+      "status": "passed"
+    },
+    {
+      "course": "organize-versions",
+      "actions": 3,
+      "status": "passed"
+    }
+  ],
+  "checks": [
+    "real renderers/event handlers",
+    "state outcomes",
+    "wrong-action interception",
+    "script action has no practice credit",
+    "video and demo surfaces removed",
+    "video progress keys purged and ignored",
+    "message source and nonce",
+    "incomplete proof rejection",
+    "helped solo not independent",
+    "progress backup restore",
+    "v6.46 backup defaults",
+    "six themes same daily controls",
+    "storage failure reported",
+    "native localStorage getter never touched",
+    "IndexedDB training bypass",
+    "sandbox and CSP",
+    "mobile real paths and inert controls",
+    "premature Enter cannot skip fill stage"
+  ],
+  "browserRun": false,
+  "limitation": "DOM adapter checks behavior, not browser geometry/visual rendering"
+}

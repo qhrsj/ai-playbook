@@ -1,0 +1,12 @@
+/* GENERATED FROM src/data — do not hand-edit dist */
+const CATS = @@CATS@@;
+const DATA = @@DATA@@;
+const CORE_CARD_COUNT = DATA.length;
+const BASE_RAW_SOURCES = 2550;
+const RELEASE_MANIFEST = Object.freeze(@@RELEASE_MANIFEST@@);
+const SOURCE_CATALOG = @@SOURCE_CATALOG@@;
+const SKILL_CATALOG = @@SKILL_CATALOG@@;
+const RETIRED_CARDS = @@RETIRED_CARDS@@;
+
+const XLSX_VENDOR_SOURCE=@@XLSX_VENDOR_SOURCE@@;
+const IMPORT_WORKER_SOURCE=@@IMPORT_WORKER_SOURCE@@;

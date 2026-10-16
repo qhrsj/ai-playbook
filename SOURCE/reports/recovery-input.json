@@ -1,0 +1,6 @@
+{
+  "uploadedHtmlSha256": "7de80082e481a89018a4f58e1910c465245c0284d7ce0d33acc7661003351b30",
+  "source": "Current uploaded complete HTML plus CRC-verified entries from truncated ZIP",
+  "missingOriginalFiles": "ZIP truncates inside source-catalog.json; later original scripts/tools are unavailable",
+  "moduleCount": 25
+}

@@ -1,0 +1,538 @@
+{
+  "schema": "ai-playbook-source-manifest-v1",
+  "generatedAt": "2026-10-07",
+  "sources": [
+    {
+      "id": "batch02-luzi-prompts",
+      "originalFile": "sources/original/炉子提示词.xlsx",
+      "sha256": "2b5e7a9c4f17720f5632c626aab75b3838583fe38b4e5d716c0d061fe01c77e8",
+      "sheet": "Sheet1",
+      "promptRows": 24,
+      "promptCharacters": 53327,
+      "rowsArchive": "sources/炉子提示词_rows.json",
+      "mappingStatus": "24/24 exact text match"
+    },
+    {
+      "id": "luzi-square-text-1350",
+      "originalFile": "sources/original/炉子广场-文本提示词.xlsx",
+      "sha256": "3a0e4f2ff0793079bcccd6e1f8a471a135d41cafa65615c08e160e866fd39858",
+      "sheet": "提示词清单",
+      "promptRows": 1350,
+      "rowsArchive": "src/data/source-catalog.json",
+      "catalogSha256": "2b5496ede4f58e69cc89222b07ac938451ac4009873c867e5430fda90a22ef3c",
+      "longBodyRows": [
+        41,
+        335
+      ],
+      "overlapWithBatch02": 24
+    }
+  ],
+  "mappings": [
+    {
+      "seq": 6,
+      "title": "本科论文自查",
+      "cardId": "PC-01-004",
+      "cardName": "本科论文严格自查",
+      "sourceLabel": "Sheet1 · #06 · 本科论文自查",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 12,
+      "title": "小说创作工作流（完整版）",
+      "cardId": "PC-01-005",
+      "cardName": "小说创作全流程",
+      "sourceLabel": "Sheet1 · #12 · 小说创作工作流（完整版）",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 19,
+      "title": "樊登读书风格书籍拆解推荐提示词模板",
+      "cardId": "PC-02-001",
+      "cardName": "长文与书籍拆解",
+      "sourceLabel": "Sheet1 · #19 · 樊登读书风格书籍拆解推荐提示词模板",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 14,
+      "title": "去 GitHub 收集经验",
+      "cardId": "PC-03-001",
+      "cardName": "GitHub 技术情报调研",
+      "sourceLabel": "Sheet1 · #14 · 去 GitHub 收集经验",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 1,
+      "title": "第一性原理",
+      "cardId": "PC-04-001",
+      "cardName": "问题拆解与决策工作台",
+      "sourceLabel": "Sheet1 · #01 · 第一性原理",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 8,
+      "title": "苏格拉底式提问",
+      "cardId": "PC-04-001",
+      "cardName": "问题拆解与决策工作台",
+      "sourceLabel": "Sheet1 · #08 · 苏格拉底式提问",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 22,
+      "title": "六角度决策分析",
+      "cardId": "PC-04-001",
+      "cardName": "问题拆解与决策工作台",
+      "sourceLabel": "Sheet1 · #22 · 六角度决策分析",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 5,
+      "title": "费曼学习自测",
+      "cardId": "PC-05-001",
+      "cardName": "学习方法与费曼自测",
+      "sourceLabel": "Sheet1 · #05 · 费曼学习自测",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 3,
+      "title": "英语对话纠错",
+      "cardId": "PC-05-003",
+      "cardName": "英语对话纠错陪练",
+      "sourceLabel": "Sheet1 · #03 · 英语对话纠错",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 10,
+      "title": "异世界文字冒险",
+      "cardId": "PC-06-002",
+      "cardName": "互动文字冒险主持",
+      "sourceLabel": "Sheet1 · #10 · 异世界文字冒险",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 11,
+      "title": "爆款标题生成器",
+      "cardId": "PC-07-002",
+      "cardName": "新媒体内容生产与改写",
+      "sourceLabel": "Sheet1 · #11 · 爆款标题生成器",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 21,
+      "title": "社媒文案改写",
+      "cardId": "PC-07-002",
+      "cardName": "新媒体内容生产与改写",
+      "sourceLabel": "Sheet1 · #21 · 社媒文案改写",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 23,
+      "title": "如何找到一家好公司？",
+      "cardId": "PC-09-005",
+      "cardName": "求职公司尽调筛选",
+      "sourceLabel": "Sheet1 · #23 · 如何找到一家好公司？",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 18,
+      "title": "AI接手已有代码项目",
+      "cardId": "PC-11-001",
+      "cardName": "已有代码项目接管",
+      "sourceLabel": "Sheet1 · #18 · AI接手已有代码项目",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 17,
+      "title": "如何让 AI 帮助你写好 Prompt",
+      "cardId": "PC-13-001",
+      "cardName": "从模糊需求到好 Prompt",
+      "sourceLabel": "Sheet1 · #17 · 如何让 AI 帮助你写好 Prompt",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 2,
+      "title": "追问式提示词优化",
+      "cardId": "PC-13-002",
+      "cardName": "Prompt 架构与优化器",
+      "sourceLabel": "Sheet1 · #02 · 追问式提示词优化",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 9,
+      "title": "提示词工程师-高级版",
+      "cardId": "PC-13-002",
+      "cardName": "Prompt 架构与优化器",
+      "sourceLabel": "Sheet1 · #09 · 提示词工程师-高级版",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 24,
+      "title": "提示词优化器",
+      "cardId": "PC-13-002",
+      "cardName": "Prompt 架构与优化器",
+      "sourceLabel": "Sheet1 · #24 · 提示词优化器",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 4,
+      "title": "秋芝的Agents.md",
+      "cardId": "PC-13-006",
+      "cardName": "Agent 工作规范与记忆系统",
+      "sourceLabel": "Sheet1 · #04 · 秋芝的Agents.md",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 7,
+      "title": "Agent【全局指令保护规则】",
+      "cardId": "PC-13-006",
+      "cardName": "Agent 工作规范与记忆系统",
+      "sourceLabel": "Sheet1 · #07 · Agent【全局指令保护规则】",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 16,
+      "title": "AISkill训练员",
+      "cardId": "PC-13-007",
+      "cardName": "Skill 经验资产化锻造",
+      "sourceLabel": "Sheet1 · #16 · AISkill训练员",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 13,
+      "title": "【Skill】文案转分镜设计师",
+      "cardId": "PC-14-002",
+      "cardName": "视频分镜与生成提示词工作台",
+      "sourceLabel": "Sheet1 · #13 · 【Skill】文案转分镜设计师",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 15,
+      "title": "复刻爆款视频15″提示词",
+      "cardId": "PC-14-002",
+      "cardName": "视频分镜与生成提示词工作台",
+      "sourceLabel": "Sheet1 · #15 · 复刻爆款视频15″提示词",
+      "exactTextMatch": true,
+      "titleMatch": true
+    },
+    {
+      "seq": 20,
+      "title": "【Skill】Seedance 视频提示词撰写",
+      "cardId": "PC-14-002",
+      "cardName": "视频分镜与生成提示词工作台",
+      "sourceLabel": "Sheet1 · #20 · 【Skill】Seedance 视频提示词撰写",
+      "exactTextMatch": true,
+      "titleMatch": true
+    }
+  ],
+  "squareOverlap": [
+    {
+      "oldSeq": 1,
+      "title": "第一性原理",
+      "cardId": "PC-04-001",
+      "squareSeqs": [
+        380,
+        1337
+      ],
+      "publishers": [
+        "炉仔6350",
+        "乾三"
+      ]
+    },
+    {
+      "oldSeq": 2,
+      "title": "追问式提示词优化",
+      "cardId": "PC-13-002",
+      "squareSeqs": [
+        790,
+        1342
+      ],
+      "publishers": [
+        "何遇二三",
+        "未标注"
+      ]
+    },
+    {
+      "oldSeq": 3,
+      "title": "英语对话纠错",
+      "cardId": "PC-05-003",
+      "squareSeqs": [
+        1346
+      ],
+      "publishers": [
+        "未标注"
+      ]
+    },
+    {
+      "oldSeq": 4,
+      "title": "秋芝的Agents.md",
+      "cardId": "PC-13-006",
+      "squareSeqs": [
+        1187
+      ],
+      "publishers": [
+        "CyberSpace"
+      ]
+    },
+    {
+      "oldSeq": 5,
+      "title": "费曼学习自测",
+      "cardId": "PC-05-001",
+      "squareSeqs": [
+        1344
+      ],
+      "publishers": [
+        "未标注"
+      ]
+    },
+    {
+      "oldSeq": 6,
+      "title": "本科论文自查",
+      "cardId": "PC-01-004",
+      "squareSeqs": [
+        1034,
+        1345
+      ],
+      "publishers": [
+        "炉仔11498",
+        "未标注"
+      ]
+    },
+    {
+      "oldSeq": 7,
+      "title": "Agent【全局指令保护规则】",
+      "cardId": "PC-13-006",
+      "squareSeqs": [
+        381,
+        1322
+      ],
+      "publishers": [
+        "炉仔6350",
+        "DF9066"
+      ]
+    },
+    {
+      "oldSeq": 8,
+      "title": "苏格拉底式提问",
+      "cardId": "PC-04-001",
+      "squareSeqs": [
+        165,
+        449,
+        538,
+        1140,
+        1163,
+        1339
+      ],
+      "publishers": [
+        "炉仔18669",
+        "炉仔18340",
+        "沙楚子",
+        "炉仔7930",
+        "小马",
+        "乾三"
+      ]
+    },
+    {
+      "oldSeq": 9,
+      "title": "提示词工程师-高级版",
+      "cardId": "PC-13-002",
+      "squareSeqs": [
+        1025,
+        1183
+      ],
+      "publishers": [
+        "炉仔12332",
+        "无色猫"
+      ]
+    },
+    {
+      "oldSeq": 10,
+      "title": "异世界文字冒险",
+      "cardId": "PC-06-002",
+      "squareSeqs": [
+        1347
+      ],
+      "publishers": [
+        "未标注"
+      ]
+    },
+    {
+      "oldSeq": 11,
+      "title": "爆款标题生成器",
+      "cardId": "PC-07-002",
+      "squareSeqs": [
+        1286
+      ],
+      "publishers": [
+        "SPARKGUM"
+      ]
+    },
+    {
+      "oldSeq": 12,
+      "title": "小说创作工作流（完整版）",
+      "cardId": "PC-01-005",
+      "squareSeqs": [
+        94,
+        1160
+      ],
+      "publishers": [
+        "炉仔18701",
+        "超可爱的小宁兔子"
+      ]
+    },
+    {
+      "oldSeq": 13,
+      "title": "【Skill】文案转分镜设计师",
+      "cardId": "PC-14-002",
+      "squareSeqs": [
+        1340
+      ],
+      "publishers": [
+        "Liora"
+      ]
+    },
+    {
+      "oldSeq": 14,
+      "title": "去 GitHub 收集经验",
+      "cardId": "PC-03-001",
+      "squareSeqs": [
+        397
+      ],
+      "publishers": [
+        "李白"
+      ]
+    },
+    {
+      "oldSeq": 15,
+      "title": "复刻爆款视频15″提示词",
+      "cardId": "PC-14-002",
+      "squareSeqs": [
+        1317
+      ],
+      "publishers": [
+        "AI昊辉学长"
+      ]
+    },
+    {
+      "oldSeq": 16,
+      "title": "AISkill训练员",
+      "cardId": "PC-13-007",
+      "squareSeqs": [
+        1184
+      ],
+      "publishers": [
+        "CyberSpace"
+      ]
+    },
+    {
+      "oldSeq": 17,
+      "title": "如何让 AI 帮助你写好 Prompt",
+      "cardId": "PC-13-001",
+      "squareSeqs": [
+        99,
+        1260
+      ],
+      "publishers": [
+        "炉仔21615",
+        "cy"
+      ]
+    },
+    {
+      "oldSeq": 18,
+      "title": "AI接手已有代码项目",
+      "cardId": "PC-11-001",
+      "squareSeqs": [
+        1285
+      ],
+      "publishers": [
+        "知至知终"
+      ]
+    },
+    {
+      "oldSeq": 19,
+      "title": "樊登读书风格书籍拆解推荐提示词模板",
+      "cardId": "PC-02-001",
+      "squareSeqs": [
+        1265
+      ],
+      "publishers": [
+        "理想三旬"
+      ]
+    },
+    {
+      "oldSeq": 20,
+      "title": "【Skill】Seedance 视频提示词撰写",
+      "cardId": "PC-14-002",
+      "squareSeqs": [
+        1341
+      ],
+      "publishers": [
+        "Liora"
+      ]
+    },
+    {
+      "oldSeq": 21,
+      "title": "社媒文案改写",
+      "cardId": "PC-07-002",
+      "squareSeqs": [
+        1348
+      ],
+      "publishers": [
+        "未标注"
+      ]
+    },
+    {
+      "oldSeq": 22,
+      "title": "六角度决策分析",
+      "cardId": "PC-04-001",
+      "squareSeqs": [
+        1343
+      ],
+      "publishers": [
+        "未标注"
+      ]
+    },
+    {
+      "oldSeq": 23,
+      "title": "如何找到一家好公司？",
+      "cardId": "PC-09-005",
+      "squareSeqs": [
+        1338
+      ],
+      "publishers": [
+        "阿良"
+      ]
+    },
+    {
+      "oldSeq": 24,
+      "title": "提示词优化器",
+      "cardId": "PC-13-002",
+      "squareSeqs": [
+        1234
+      ],
+      "publishers": [
+        "炉仔4810"
+      ]
+    }
+  ]
+}

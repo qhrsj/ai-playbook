@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "version": "6.61",
+  "phase": "P83",
+  "checks": [
+    "keyboard reflow and saved order",
+    "reset cancels prior motion",
+    "cross-row pointer reflow",
+    "stable-slot small-movement buffer",
+    "ghost preserves typography and removes duplicate IDs",
+    "animated drop into slot",
+    "idempotent drop cleanup during new drag",
+    "resize cancels without saving",
+    "reduce-motion no animations",
+    "missing Animation API fallback",
+    "finished animation bookkeeping"
+  ],
+  "reflowMs": 180,
+  "dropMs": 160,
+  "browserRun": false,
+  "limitation": "Production calls verified with geometry/Animation substitutes, not browser frames or perceived smoothness"
+}
