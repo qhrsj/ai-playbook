@@ -2,6 +2,8 @@
 
 一个**纯本地、单文件、离线可用**的 AI 提示词工作系统：把策展过的提示词模板、原始发布语料和 Agent Skill 装进一个 HTML 文件，双击即用。
 
+**▶ 在线体验：<https://qhrsj.github.io/ai-playbook/>**　·　离线版：下载 [`dist/index.html`](dist/index.html) 后双击打开（Chrome / Edge）
+
 ## 网页功能介绍
 
 ### 模板库（主页第一栏）
