@@ -7,3 +7,4 @@ SOURCE/dist/
 # OS noise
 Thumbs.db
 .DS_Store
+SOURCE/dist-web/

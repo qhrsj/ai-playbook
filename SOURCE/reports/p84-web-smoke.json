@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-10-21T03:34:26.773Z",
+  "results": [
+    {
+      "check": "A first paint with inline cards (no corpora yet)",
+      "status": "passed",
+      "paintMs": 591,
+      "detail": "{\"cards\":15,\"skillTab\":\"…\",\"web\":true}"
+    },
+    {
+      "check": "B skills tab: loading state OR already rendered (local speed)",
+      "status": "passed",
+      "text": "SKILL LIBRARYSkill 广场 3115 个炉子广场收录的 Agent Skill，逐条保留署名作者与来源；"
+    },
+    {
+      "check": "C corpora arrive and skills tab renders",
+      "status": "passed",
+      "detail": "{\"skills\":3115,\"sources\":1612,\"tab\":\"3115\",\"rows\":15}"
+    },
+    {
+      "check": "D skill category filter (web)",
+      "status": "passed",
+      "detail": "{\"rows\":7,\"count\":\"筛选结果 7 个 · 第 1 / 1 页\"}"
+    },
+    {
+      "check": "E 提示词广场 opens with data (web)",
+      "status": "passed",
+      "detail": "{\"open\":true,\"rows\":0,\"detail\":\"来源记录 #1 · 2026-10-07\\n    事实核查\\n\"}"
+    },
+    {
+      "check": "F source search works (web)",
+      "status": "passed",
+      "summary": "匹配 774 / 1,612 条 · 原始发布记录，不将同文不同署名合并删除 ·"
+    }
+  ]
+}

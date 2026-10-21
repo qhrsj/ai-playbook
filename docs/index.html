@@ -6287,11 +6287,11 @@ function tutorialPurgeVideoProgress(){try{window.AI_PLAYBOOK_COMBO?.purgeVideoPr
 tutorialPurgeVideoProgress();
 window.AI_PLAYBOOK_ONBOARDING={openMap:openTutorialMap,closeMap:closeTutorialMap};
 
-/* P84 web build: heavy corpora arrive after first paint (same-origin JSON). */
+/* P84 web build: heavy corpora arrive after first paint (self-contained /docs site). */
 window.__PB_WEB__ = true;
 window.__PB_WEB_STATE__ = { skills: 0, sources: 0 };
 (function pbWebLazy(){
-  var base = 'SOURCE/src/data/';
+  var base = 'data/';
   function grab(file, apply){
     fetch(base + file, { cache: 'no-cache' })
       .then(function(r){ if(!r.ok) throw new Error(file + ' HTTP ' + r.status); return r.json(); })
